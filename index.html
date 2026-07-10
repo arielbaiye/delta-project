@@ -14,13 +14,13 @@
 <div id="bar-trigger"></div>
 <div id="utility-bar">
   <a class="ub-link ub-forum" onclick="showTab('forum')"><span class="ub-dot"></span>Forum</a>
-  <a class="ub-link" href="https://open.spotify.com/playlist/REPLACE_ME" target="_blank" rel="noopener">Spotify Playlist</a>
-  <a class="ub-link" href="https://forms.gle/REPLACE_ME" target="_blank" rel="noopener">Share Feedback</a>
-  <a class="ub-link" href="https://drive.google.com/drive/folders/REPLACE_ME" target="_blank" rel="noopener">Research &amp; Interviews</a>
+  <a class="ub-link" href="https://open.spotify.com/playlist/6NhfGKLC6Xp1E72k2JzBjh?si=ULI50h9TSjuNsazALEF53g" target="_blank" rel="noopener">Spotify Playlist</a>
+  <a class="ub-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdi079kkEh_SqEe2CEZ43gurtfbxNzGVz-3DhPPpC2FtzV7uQ/viewform?usp=dialog" target="_blank" rel="noopener">Share Feedback</a>
+  <a class="ub-link" href="https://drive.google.com/drive/folders/1-0xJCeeuGb4RIqsmR_c7o-OCWT8lrQpI?usp=sharing" target="_blank" rel="noopener">Research &amp; Interviews</a>
   <div class="ub-dropdown">
     <button class="ub-link ub-dropdown-btn" onclick="toggleDropdown(event)">Editor Sheet ▾</button>
     <div class="ub-dropdown-menu" id="editor-dropdown">
-      <a href="https://docs.google.com/spreadsheets/d/REPLACE_ME" target="_blank" rel="noopener">View Editor Google Sheet</a>
+      <a href="https://docs.google.com/spreadsheets/d/1Xf6y4uyLqFO4zrjT4_mNOWg7-rJALG3hPVKj_UsiA2A/edit?usp=sharing" target="_blank" rel="noopener">View Editor Google Sheet</a>
     </div>
   </div>
 </div>
@@ -169,25 +169,19 @@
     <div class="running-head"><span class="eyebrow" style="margin:0;">Forum</span><span class="meta">Community Discussion</span></div>
     <div class="wrap" style="padding-top:36px;">
       <p class="lede">Share thoughts about the Delta, post lingering questions, and leave feedback for the Delta Center — and read what others have said.</p>
-      <p class="body-p">This forum runs on GitHub Discussions (via giscus), so it needs a one-time setup before it will show anything:</p>
-      <ol class="body-p" style="padding-left:20px;">
-        <li>In your GitHub repo, go to <b>Settings → General → Features</b> and enable <b>Discussions</b>.</li>
-        <li>Visit <a href="https://giscus.app" target="_blank" rel="noopener" style="color:var(--steel-azure);">giscus.app</a>, enter your repo (<code>arielbaiye/delta-project</code>), and follow its setup steps.</li>
-        <li>Copy the <code>data-repo-id</code> and <code>data-category-id</code> values giscus generates and paste them into the <code>&lt;script&gt;</code> tag below, in <code>index.html</code>, right under this comment.</li>
-      </ol>
-      <!-- GISCUS CONFIG: replace data-repo-id and data-category-id with your own from giscus.app -->
+      <!-- GISCUS CONFIG: already connected to arielbaiye/delta-project's Discussions (General category) -->
       <div id="giscus-embed">
         <script src="https://giscus.app/client.js"
           data-repo="arielbaiye/delta-project"
-          data-repo-id="REPLACE_ME"
+          data-repo-id="R_kgDOTT4WDg"
           data-category="General"
-          data-category-id="REPLACE_ME"
+          data-category-id="DIC_kwDOTT4WDs4DA6VO"
           data-mapping="pathname"
           data-strict="0"
           data-reactions-enabled="1"
           data-emit-metadata="0"
           data-input-position="top"
-          data-theme="light"
+          data-theme="preferred_color_scheme"
           data-lang="en"
           crossorigin="anonymous"
           async>

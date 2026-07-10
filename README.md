@@ -61,15 +61,11 @@ At the top of `index.html`, inside `<div id="utility-bar">`, replace these place
 - Research & Interviews (e.g. a shared Drive folder) — `href="https://drive.google.com/drive/folders/REPLACE_ME"`
 - Editor Sheet (Google Sheet, in the dropdown) — `href="https://docs.google.com/spreadsheets/d/REPLACE_ME"`
 
-## Setting up the Forum
+## The Forum
 
-The Forum tab is wired to **GitHub Discussions** via [giscus](https://giscus.app) — free, no backend, comments live in your repo. One-time setup:
+The Forum tab is wired to **GitHub Discussions** via [giscus](https://giscus.app) — free, no backend, comments live in your repo's Discussions tab (`General` category). This is already configured with this repo's real IDs, so it should work as soon as you push — no more setup needed on the code side.
 
-1. In your repo: **Settings → General → Features → enable Discussions.**
-2. Go to [giscus.app](https://giscus.app), enter your repo (`arielbaiye/delta-project`), and follow its steps (it will ask you to install the giscus app on the repo).
-3. giscus will generate a config snippet with a `data-repo-id` and `data-category-id`. Copy those two values into `index.html`, inside the `<section id="forum">` block, in the `<script src="https://giscus.app/client.js">` tag — replace the two `REPLACE_ME` values.
-
-Once that's done, anyone visiting the Forum tab can post and reply, and it'll show up in your repo's **Discussions** tab too.
+If you ever move this to a different repo, or want a different category, regenerate the config at [giscus.app](https://giscus.app) and swap the `data-repo-id` / `data-category-id` values in `index.html`, inside the `<section id="forum">` block.
 
 ## Color palette
 
