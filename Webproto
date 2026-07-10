@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Delta Issue — A Documentary Workshop Publication</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#17130f;
+    --ink-soft:#241d16;
+    --paper:#e8e0cb;
+    --paper-hi:#f1ead9;
+    --clay:#a63e2c;
+    --clay-soft:#c05a3e;
+    --river:#22404c;
+    --river-deep:#152a33;
+    --gold:#c99a3d;
+    --charcoal:#2a2419;
+    --charcoal-soft:#514736;
+    --rule: rgba(42,36,25,0.18);
+    --rule-dark: rgba(232,224,203,0.22);
+    --maxw: 880px;
+    --museum-bg:#120e0a;
+    --museum-card:#1c1712;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--charcoal);
+    font-family:'Source Serif 4', serif;
+    font-size:18px;
+    line-height:1.65;
+  }
+  ::selection{background:var(--clay); color:var(--paper-hi);}
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    margin:0;
+    line-height:1.05;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    font-size:12.5px;
+    font-weight:500;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  /* ---------- SPINE NAV (now acts as tab bar) ---------- */
+  #spine{
+    position:fixed;
+    top:0; left:0; bottom:0;
+    width:64px;
+    background:var(--ink);
+    z-index:500;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:18px 0;
+    border-right:1px solid rgba(232,224,203,0.08);
+  }
+  #spine .mark{
+    width:30px;height:30px;border:1.5px solid var(--gold);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'IBM Plex Mono';font-size:10px;color:var(--gold);
+    margin-bottom:22px; flex-shrink:0; cursor:pointer;
+  }
+  #spine-list{
+    list-style:none; margin:0; padding:0;
+    display:flex; flex-direction:column; gap:2px;
+    overflow-y:auto;
+    flex:1;
+    scrollbar-width:none;
+    width:100%;
+  }
+  #spine-list::-webkit-scrollbar{display:none;}
+  #spine-list li a{
+    display:flex; align-items:center; justify-content:center;
+    height:38px; width:100%;
+    text-decoration:none; cursor:pointer;
+    font-family:'IBM Plex Mono'; font-size:11px; color:rgba(232,224,203,0.45);
+    position:relative;
+    transition:color .2s ease;
+  }
+  #spine-list li a:hover{color:var(--paper-hi);}
+  #spine-list li a.active{color:var(--gold);}
+  #spine-list li a.active::before{
+    content:"";
+    position:absolute; left:0; top:6px; bottom:6px; width:3px;
+    background:var(--gold);
+  }
+
+  /* ---------- LAYOUT ---------- */
+  main{margin-left:64px;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
+
+  /* ---------- TAB PANEL SYSTEM ---------- */
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block; animation:fadeIn .35s ease;}
+  @keyframes fadeIn{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+
+  .tab-pager{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:34px 32px 56px; max-width:var(--maxw); margin:0 auto;
+    font-family:'IBM Plex Mono'; font-size:12.5px; border-top:1px solid var(--rule);
+    color:var(--charcoal-soft);
+  }
+  [data-dark="true"] .tab-pager{border-top:1px solid var(--rule-dark); color:rgba(232,224,203,0.6);}
+  .tab-pager a{text-decoration:none; cursor:pointer; display:flex; align-items:center; gap:8px;}
+  .tab-pager a:hover{color:var(--clay-soft);}
+  .tab-pager .p-next{margin-left:auto; text-align:right;}
+  .tab-pager small{display:block; text-transform:uppercase; letter-spacing:.08em; font-size:10px; opacity:.6; margin-bottom:3px;}
+
+  /* ---------- COVER ---------- */
+  #cover{
+    min-height:100vh;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(166,62,44,0.35), transparent 55%),
+      linear-gradient(180deg, var(--ink) 0%, var(--ink-soft) 100%);
+    color:var(--paper-hi);
+  }
+  #cover .cover-inner{
+    min-height:100vh; display:flex; flex-direction:column; justify-content:space-between;
+    padding:40px 32px 20px; position:relative; overflow:hidden;
+  }
+  #cover .cover-inner::after{
+    content:"";
+    position:absolute; inset:18px;
+    border:1px solid rgba(232,224,203,0.18);
+    pointer-events:none;
+  }
+  .cover-top{
+    display:flex; justify-content:space-between; align-items:flex-start;
+    font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:.08em;
+    text-transform:uppercase; color:rgba(232,224,203,0.6);
+  }
+  .cover-mid{margin:auto 0; padding:64px 0 24px;}
+  .cover-mid .eyebrow{color:var(--gold); margin-bottom:18px; display:block;}
+  .cover-title{
+    font-size:clamp(52px, 10vw, 118px);
+    font-weight:700;
+    letter-spacing:-0.01em;
+    color:var(--paper-hi);
+  }
+  .cover-title em{
+    font-style:italic; font-weight:400; color:var(--clay-soft);
+  }
+  .cover-dek{
+    font-family:'Source Serif 4';
+    font-size:19px; max-width:520px; margin-top:22px;
+    color:rgba(232,224,203,0.82);
+  }
+  .cover-photo-slot{margin-top:36px;}
+  .cover-bottom{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    font-family:'IBM Plex Mono'; font-size:12px; color:rgba(232,224,203,0.5);
+  }
+
+  /* photo / interview placeholders */
+  .photo-slot{
+    border:1.5px dashed rgba(42,36,25,0.4);
+    background:rgba(42,36,25,0.03);
+    padding:22px;
+    display:flex; flex-direction:column; gap:8px; justify-content:center;
+    aspect-ratio: var(--ar, 16/10);
+    position:relative;
+  }
+  .photo-slot .ph-label{
+    font-family:'IBM Plex Mono'; font-size:11.5px; letter-spacing:.04em;
+    color:var(--charcoal-soft); text-transform:uppercase;
+  }
+  .photo-slot .ph-suggest{
+    font-family:'IBM Plex Mono'; font-size:12px; color:var(--clay);
+    line-height:1.5;
+  }
+  #cover .photo-slot{
+    border-color:rgba(232,224,203,0.35);
+    background:rgba(232,224,203,0.04);
+  }
+  #cover .photo-slot .ph-label{color:rgba(232,224,203,0.55);}
+  #cover .photo-slot .ph-suggest{color:var(--clay-soft);}
+
+  /* ---------- GENERIC SECTION ---------- */
+  .section-front{background:var(--paper); padding:88px 0 20px;}
+  .front-head{margin-bottom:34px;}
+  .front-head .eyebrow{color:var(--clay); margin-bottom:10px; display:block;}
+  .front-head h2{font-size:clamp(32px,5vw,46px);}
+
+  /* ---------- CHAPTER OPENERS (dark) ---------- */
+  .chapter-open{
+    background:var(--river-deep);
+    color:var(--paper-hi);
+    min-height:74vh;
+    display:flex; flex-direction:column; justify-content:center;
+    padding:80px 0 64px;
+    position:relative;
+  }
+  .chapter-open::before{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(ellipse at 80% 0%, rgba(166,62,44,0.28), transparent 60%);
+    pointer-events:none;
+  }
+  .chapter-num{
+    font-family:'IBM Plex Mono'; font-size:13px; letter-spacing:.18em;
+    color:var(--gold); margin-bottom:18px;
+  }
+  .chapter-open h2{
+    font-size:clamp(38px,6.4vw,70px);
+    color:var(--paper-hi);
+    max-width:760px;
+  }
+  .chapter-dek{
+    font-family:'Source Serif 4'; font-style:italic; font-size:19px;
+    color:rgba(232,224,203,0.75); max-width:560px; margin-top:20px;
+  }
+  .chapter-open .photo-slot{
+    margin-top:40px; border-color:rgba(232,224,203,0.35);
+    background:rgba(232,224,203,0.04); --ar:21/9;
+  }
+  .chapter-open .photo-slot .ph-label{color:rgba(232,224,203,0.55);}
+  .chapter-open .photo-slot .ph-suggest{color:var(--clay-soft);}
+
+  .chapter-body{background:var(--paper); padding:64px 0 0;}
+  .lede{font-size:21px; color:var(--charcoal); max-width:660px;}
+  .lede + p, p.body-p{margin-top:20px; max-width:660px; color:var(--charcoal-soft); font-size:17.5px;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:28px; margin:36px 0;}
+  .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin:36px 0;}
+
+  /* pull quote */
+  blockquote.pull{
+    border-left:3px solid var(--clay);
+    margin:40px 0; padding:4px 0 4px 26px;
+    font-family:'Fraunces'; font-style:italic; font-weight:400;
+    font-size:26px; line-height:1.35; color:var(--river-deep);
+    max-width:640px;
+  }
+  blockquote.pull cite{
+    display:block; font-family:'IBM Plex Mono'; font-style:normal;
+    font-size:12px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--charcoal-soft); margin-top:12px;
+  }
+
+  /* interview quote-slot for named participants */
+  .voice-slot{border-top:1px solid var(--rule); padding-top:18px; margin-top:26px;}
+  .voice-slot .who{
+    font-family:'IBM Plex Mono'; font-size:12.5px; text-transform:uppercase;
+    letter-spacing:.06em; color:var(--clay); margin-bottom:6px;
+  }
+  .voice-slot .prompt{font-family:'Source Serif 4'; font-style:italic; color:var(--charcoal-soft); font-size:16.5px;}
+
+  /* ---------- TRAIL MARKER STAT PLAQUE ---------- */
+  .markers-row{display:flex; flex-wrap:wrap; gap:22px; margin:40px 0;}
+  .trail-marker{
+    background:var(--river-deep); color:var(--paper-hi);
+    border-radius:6px 6px 34px 34px; padding:22px 20px 18px; width:220px;
+    position:relative; box-shadow:0 10px 22px rgba(21,42,51,0.28);
+    border:1px solid rgba(232,224,203,0.15);
+  }
+  .trail-marker::before{
+    content:""; position:absolute; top:10px; left:50%; transform:translateX(-50%);
+    width:22px; height:22px; border:1px solid var(--gold); border-radius:50%; opacity:.55;
+  }
+  .trail-marker .tm-eyebrow{font-family:'IBM Plex Mono'; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); margin-top:26px; text-align:center;}
+  .trail-marker .tm-num{font-family:'Fraunces'; font-weight:700; font-size:34px; text-align:center; margin-top:6px; color:var(--paper-hi);}
+  .trail-marker .tm-label{font-family:'IBM Plex Mono'; font-size:11px; text-align:center; color:rgba(232,224,203,0.7); margin-top:4px; line-height:1.4;}
+  .trail-marker .tm-source{font-family:'IBM Plex Mono'; font-size:9px; text-align:center; color:rgba(232,224,203,0.4); margin-top:12px; letter-spacing:.02em;}
+
+  /* ================= MUSEUM EXHIBIT MODULES ================= */
+  /* used for chapters built from photos/video/interviews captured on-site at museums */
+  .museum-wall{
+    background:var(--museum-bg); color:var(--paper-hi);
+    padding:72px 0; position:relative; margin-top:8px;
+  }
+  .museum-wall::before{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(ellipse at 50% -10%, rgba(201,154,61,0.14), transparent 55%);
+    pointer-events:none;
+  }
+  .museum-wall .eyebrow{color:var(--gold); position:relative;}
+  .museum-h{
+    font-family:'Fraunces'; font-weight:900; text-transform:uppercase;
+    letter-spacing:-0.01em; font-size:clamp(32px,5.6vw,58px);
+    color:var(--clay-soft); line-height:0.98; margin:10px 0 14px; position:relative;
+  }
+  .museum-sub{
+    font-family:'IBM Plex Mono'; font-size:13px; line-height:1.7;
+    color:rgba(241,234,217,0.62); max-width:560px; margin-bottom:38px; position:relative;
+  }
+  .museum-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:6px; margin:0 0 12px; position:relative;}
+  .m-tile{aspect-ratio:1; padding:12px; display:flex; flex-direction:column; justify-content:flex-end; position:relative; overflow:hidden;}
+  .m-tile.photo{background:linear-gradient(155deg, var(--t1), var(--t2));}
+  .m-tile.photo.sepia{--t1:#6b5636; --t2:#cbb98a;}
+  .m-tile.photo.green{--t1:#1c2f22; --t2:#4c7658;}
+  .m-tile.photo.blue{--t1:#16232c; --t2:#3c6070;}
+  .m-tile.photo .m-label{
+    font-family:'IBM Plex Mono'; font-size:8.5px; text-transform:uppercase; letter-spacing:.05em;
+    color:rgba(255,255,255,.92); background:rgba(0,0,0,.4); padding:4px 6px; align-self:flex-start; line-height:1.4;
+  }
+  .m-tile.placard{justify-content:center;}
+  .m-tile.placard.navy{background:#1f3a52;}
+  .m-tile.placard.rust{background:var(--clay);}
+  .m-tile.placard.olive{background:#5c4a24;}
+  .m-tile.placard h4{font-family:'Fraunces'; font-size:14px; color:#f4ecd8; text-transform:uppercase; letter-spacing:.03em; margin-bottom:6px;}
+  .m-tile.placard p{font-family:'IBM Plex Mono'; font-size:10px; line-height:1.5; color:rgba(244,236,216,.82); margin:0;}
+  .museum-caption{
+    font-family:'IBM Plex Mono'; font-size:11px; color:rgba(241,234,217,0.45);
+    margin-top:8px; position:relative;
+  }
+
+  /* museum display case: artifact / interview quote pairing */
+  .museum-case{
+    display:grid; grid-template-columns:1fr 1fr;
+    border:1px solid rgba(241,234,217,.14); margin:34px 0; position:relative;
+  }
+  .case-artifact{
+    background:#0e0b08; padding:28px; display:flex; flex-direction:column; gap:10px;
+    justify-content:center; align-items:flex-start;
+  }
+  .case-artifact .ph-label{color:rgba(241,234,217,.55); font-family:'IBM Plex Mono'; font-size:11px; text-transform:uppercase; letter-spacing:.05em;}
+  .case-artifact .ph-suggest{color:var(--clay-soft); font-family:'IBM Plex Mono'; font-size:11.5px; line-height:1.6;}
+  .case-quote{background:#38431f; padding:28px; display:flex; flex-direction:column; justify-content:center;}
+  .case-quote p{font-family:'Fraunces'; font-style:italic; font-size:18px; color:#f4ecd8; line-height:1.42; margin:0;}
+  .case-quote cite{display:block; margin-top:14px; font-family:'IBM Plex Mono'; font-size:10.5px; color:rgba(244,236,216,.6); font-style:normal; text-transform:uppercase; letter-spacing:.05em;}
+
+  /* timeline / history-at-a-glance cards */
+  .history-band{background:#161210; padding:56px 0; position:relative;}
+  .history-cards{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:10px;}
+  .h-card{background:var(--museum-card); border:1px solid rgba(241,234,217,.08); padding:16px;}
+  .h-card .yr{font-family:'IBM Plex Mono'; color:var(--gold); font-size:11.5px; margin-bottom:6px;}
+  .h-card .place{font-family:'Fraunces'; font-size:16px; color:#f4ecd8; margin-bottom:8px;}
+  .h-card p{font-family:'IBM Plex Mono'; font-size:10.5px; color:rgba(241,234,217,.6); line-height:1.55; margin:0 0 8px;}
+  .h-card .toll{font-family:'IBM Plex Mono'; font-size:10px; color:var(--clay-soft); border-top:1px solid rgba(241,234,217,.1); padding-top:8px;}
+
+  /* ---------- TOC ---------- */
+  #toc-front{background:var(--ink); color:var(--paper-hi);}
+  #toc-front .front-head .eyebrow{color:var(--gold);}
+  #toc-front .front-head h2{color:var(--paper-hi);}
+  .toc-table{width:100%; border-collapse:collapse; margin-top:20px;}
+  .toc-table tr{border-bottom:1px solid rgba(232,224,203,0.14); cursor:pointer;}
+  .toc-table tr:hover td{color:var(--gold);}
+  .toc-table td{padding:16px 6px; vertical-align:baseline; transition:color .15s;}
+  .toc-table .tnum{font-family:'IBM Plex Mono'; font-size:13px; color:var(--gold); width:44px;}
+  .toc-table .ttitle{font-family:'Fraunces'; font-size:21px; font-weight:600;}
+  .toc-table .ttitle small{display:block; font-family:'Source Serif 4'; font-style:italic; font-weight:400; font-size:14.5px; color:rgba(232,224,203,0.55); margin-top:2px;}
+  .toc-table .tpages{font-family:'IBM Plex Mono'; font-size:12.5px; color:rgba(232,224,203,0.55); text-align:right; white-space:nowrap;}
+  .toc-budget{margin-top:26px; padding-top:16px; border-top:1px solid rgba(232,224,203,0.25); display:flex; justify-content:space-between; font-family:'IBM Plex Mono'; font-size:13px; color:rgba(232,224,203,0.7);}
+  .toc-budget b{color:var(--gold);}
+
+  /* ---------- FOOTER / CLOSING ---------- */
+  #closing{background:var(--ink); color:var(--paper-hi);}
+  #closing .front-head .eyebrow{color:var(--gold);}
+  #closing .front-head h2{color:var(--paper-hi);}
+  #closing .body-p, #closing .lede{color:rgba(232,224,203,0.78);}
+  #closing .photo-slot{border-color:rgba(232,224,203,0.3); background:rgba(232,224,203,0.04);}
+  #closing .photo-slot .ph-label{color:rgba(232,224,203,0.5);}
+  .team-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:28px;}
+  .team-card{border:1px solid rgba(232,224,203,0.18); padding:16px; font-family:'IBM Plex Mono'; font-size:12px; color:rgba(232,224,203,0.6);}
+  .team-card .name{font-family:'Fraunces'; font-size:16px; color:var(--paper-hi); margin-bottom:4px;}
+  .back-cover{background:var(--river-deep); color:var(--paper-hi); padding:90px 0; text-align:center; margin-top:20px;}
+  .back-cover h3{font-size:clamp(28px,4vw,38px); max-width:640px; margin:0 auto 22px;}
+  .praise{font-family:'Fraunces'; font-style:italic; font-size:20px; max-width:560px; margin:0 auto 12px; color:rgba(232,224,203,0.85);}
+  .praise cite{display:block; font-family:'IBM Plex Mono'; font-style:normal; font-size:11px; margin-top:8px; color:var(--gold); text-transform:uppercase; letter-spacing:.06em;}
+  footer.credits{background:var(--ink); color:rgba(232,224,203,0.4); font-family:'IBM Plex Mono'; font-size:11.5px; padding:26px 0 40px; text-align:center;}
+
+  #builder-note{
+    background:var(--gold); color:var(--ink); font-family:'IBM Plex Mono'; font-size:12.5px;
+    padding:10px 16px 10px 80px; line-height:1.5; position:relative; z-index:400;
+  }
+  #builder-note b{text-transform:uppercase; letter-spacing:.05em;}
+  #builder-note button{background:var(--ink); color:var(--gold); border:none; font-family:'IBM Plex Mono'; font-size:11px; padding:4px 10px; cursor:pointer; margin-left:10px; border-radius:3px;}
+
+  @media (max-width:760px){
+    #spine{top:auto; bottom:0; left:0; right:0; height:56px; width:100%; flex-direction:row; padding:0 8px; border-right:none; border-top:1px solid rgba(232,224,203,0.08); z-index:600;}
+    #spine .mark{display:none;}
+    #spine-list{flex-direction:row; overflow-x:auto; overflow-y:visible; align-items:center; height:100%;}
+    #spine-list li a{height:100%; padding:0 12px; white-space:nowrap;}
+    #spine-list li a.active::before{left:6px; right:6px; top:auto; bottom:6px; height:2px; width:auto;}
+    main{margin-left:0; padding-bottom:56px;}
+    .grid2, .grid3{grid-template-columns:1fr;}
+    .team-grid{grid-template-columns:repeat(2,1fr);}
+    .museum-grid{grid-template-columns:repeat(2,1fr);}
+    .history-cards{grid-template-columns:1fr 1fr;}
+    .museum-case{grid-template-columns:1fr;}
+    #builder-note{padding-left:16px;}
+  }
+</style>
+</head>
+<body>
+
+<div id="builder-note">
+  <b>Prototype note —</b> Dashed boxes mark where your real photography and transcribed interviews go. Dark "museum wall" panels are styled after the exhibit photos you shared — swap the tinted tiles for your own on-site photos/video stills. Numbers in the plaques are real, sourced stats. <button onclick="document.getElementById('builder-note').style.display='none'">Dismiss</button>
+</div>
+
+<nav id="spine">
+  <div class="mark" onclick="showTab('cover')">DI</div>
+  <ul id="spine-list">
+    <li><a data-tab="cover">Cvr</a></li>
+    <li><a data-tab="intro">In</a></li>
+    <li><a data-tab="toc-front">Toc</a></li>
+    <li><a data-tab="directors-note">Dn</a></li>
+    <li><a data-tab="voices">Vo</a></li>
+    <li><a data-tab="ch-mississippi">01</a></li>
+    <li><a data-tab="ch-education">02</a></li>
+    <li><a data-tab="ch-healthcare">03</a></li>
+    <li><a data-tab="ch-immigrants">04</a></li>
+    <li><a data-tab="ch-faiths">05</a></li>
+    <li><a data-tab="ch-blues">06</a></li>
+    <li><a data-tab="ch-civilrights">07</a></li>
+    <li><a data-tab="ch-media">08</a></li>
+    <li><a data-tab="ch-commemoration">09</a></li>
+    <li><a data-tab="closing">Cl</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- ============ COVER ============ -->
+  <section id="cover" class="tab-panel" data-dark="true">
+   <div class="cover-inner">
+    <div class="cover-top">
+      <span>The Delta Issue</span>
+      <span>Vol. 04 — Documentary Workshop Publication</span>
+    </div>
+    <div class="cover-mid wrap" style="padding-left:0;padding-right:0;max-width:100%;">
+      <span class="eyebrow">A field report from the Mississippi Delta</span>
+      <h1 class="cover-title">Land,<br><em>Water,</em> and<br>What Remains</h1>
+      <p class="cover-dek">Nine chapters of reporting, portraiture, and oral history built with the people of the Delta — on flood and cotton, faith and isolation, the blues and the civil rights road, and who gets to tell the story of a place.</p>
+      <div class="cover-photo-slot photo-slot" style="--ar:16/7; max-width:640px;">
+        <div class="ph-label">Cover photograph</div>
+        <div class="ph-suggest">Suggested direction: a Delta Hill Rider portrait (contact Rory Doyle, rorydoylephoto.com — Delta Hill Riders series) or a Delta church-mothers portrait in the spirit of the NYT "Chronicling Mississippi's Church Mothers" series. License before publication; do not lift images directly from either site.</div>
+      </div>
+    </div>
+    <div class="cover-bottom wrap" style="padding-left:0;padding-right:0;max-width:100%;">
+      <span>Est. workshop, est. issue no. 4</span>
+      <span>~48 pages</span>
+    </div>
+   </div>
+   <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ INTRODUCTION ============ -->
+  <section id="intro" class="tab-panel section-front">
+    <div class="wrap">
+      <div class="front-head">
+        <span class="eyebrow">Front Matter · 01</span>
+        <h2>Introduction</h2>
+      </div>
+      <p class="lede">Poetry and photography, paired, to set the scene before the reporting begins — the flat horizon, the river's old paths, the sound a place makes before anyone speaks.</p>
+      <div class="grid2">
+        <div class="photo-slot" style="--ar:4/5;">
+          <div class="ph-label">Opening spread — image</div>
+          <div class="ph-suggest">Landscape or portrait establishing the Delta's flatness and scale. Consider a wide field, a levee line, or a single figure against sky.</div>
+        </div>
+        <div class="photo-slot" style="--ar:4/5;">
+          <div class="ph-label">Opening spread — poem</div>
+          <div class="ph-suggest">[Original poem by a workshop participant goes here. Keep it short — 8 to 16 lines — and let the photograph carry the rest of the mood.]</div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ TOC ============ -->
+  <section id="toc-front" class="tab-panel section-front" data-dark="true">
+    <div class="wrap">
+      <div class="front-head">
+        <span class="eyebrow">Front Matter · 02</span>
+        <h2>Table of Contents</h2>
+      </div>
+      <table class="toc-table">
+        <tr onclick="showTab('intro')"><td class="tnum">—</td><td class="ttitle">Introduction<small>Poetry + photography</small></td><td class="tpages">2 pp</td></tr>
+        <tr onclick="showTab('directors-note')"><td class="tnum">—</td><td class="ttitle">Director's Note<small>Interviews: Mandy · Lee</small></td><td class="tpages">2 pp</td></tr>
+        <tr onclick="showTab('voices')"><td class="tnum">—</td><td class="ttitle">Voices<small>Quotes from participants</small></td><td class="tpages">2 pp</td></tr>
+        <tr onclick="showTab('ch-mississippi')"><td class="tnum">I</td><td class="ttitle">Mississippi<small>Flood, cotton, redlining, cultural geography</small></td><td class="tpages">5 pp</td></tr>
+        <tr onclick="showTab('ch-education')"><td class="tnum">II</td><td class="ttitle">Education &amp; the Isolation of Communities<small>Lalee's Kin · Reggie Barnes</small></td><td class="tpages">4 pp</td></tr>
+        <tr onclick="showTab('ch-healthcare')"><td class="tnum">III</td><td class="ttitle">Healthcare, Historical and Modern<small>Teen pregnancy · infant mortality · Nina Ragu</small></td><td class="tpages">4 pp</td></tr>
+        <tr onclick="showTab('ch-immigrants')"><td class="tnum">IV</td><td class="ttitle">Immigrants in the Delta<small>Chinese groceries, graveyards, and god</small></td><td class="tpages">4 pp</td></tr>
+        <tr onclick="showTab('ch-faiths')"><td class="tnum">V</td><td class="ttitle">Other Faiths in the Delta<small>Mosque · synagogue</small></td><td class="tpages">2 pp</td></tr>
+        <tr onclick="showTab('ch-blues')"><td class="tnum">VI</td><td class="ttitle">Delta Blues<small>Po Monkeys · B.B. King · Emmett Till</small></td><td class="tpages">4 pp</td></tr>
+        <tr onclick="showTab('ch-civilrights')"><td class="tnum">VII</td><td class="ttitle">Civil Rights<small>Freedom Trail figures · Riders · Parchman · today</small></td><td class="tpages">6 pp</td></tr>
+        <tr onclick="showTab('ch-media')"><td class="tnum">VIII</td><td class="ttitle">Delta Coverage in Media<small>"Sinners" · Ryan Coogler · Rory Doyle</small></td><td class="tpages">3 pp</td></tr>
+        <tr onclick="showTab('ch-commemoration')"><td class="tnum">IX</td><td class="ttitle">The Importance of Commemoration<small>Blues &amp; Freedom Trails, tourism, who tells the story</small></td><td class="tpages">4 pp</td></tr>
+        <tr onclick="showTab('closing')"><td class="tnum">—</td><td class="ttitle">Closing<small>Why we do the workshop · team · poetry · praise</small></td><td class="tpages">4 pp</td></tr>
+      </table>
+      <div class="toc-budget"><span>Editorial page budget</span><span><b>48</b> / 50 pages</span></div>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ DIRECTOR'S NOTE ============ -->
+  <section id="directors-note" class="tab-panel section-front">
+    <div class="wrap">
+      <div class="front-head">
+        <span class="eyebrow">Front Matter · 03</span>
+        <h2>Director's Note</h2>
+      </div>
+      <p class="lede">[A short letter from the workshop's director, framing why this issue exists and what changed since last year's.]</p>
+      <div class="grid2">
+        <div>
+          <div class="photo-slot" style="--ar:1/1;">
+            <div class="ph-label">Portrait — Mandy</div>
+            <div class="ph-suggest">Environmental portrait, workshop office or field site.</div>
+          </div>
+          <div class="voice-slot">
+            <div class="who">Interview — Mandy</div>
+            <div class="prompt">[Transcribe: what drew Mandy to this work, what she hopes readers take from this issue.]</div>
+          </div>
+        </div>
+        <div>
+          <div class="photo-slot" style="--ar:1/1;">
+            <div class="ph-label">Portrait — Lee</div>
+            <div class="ph-suggest">Environmental portrait, workshop office or field site.</div>
+          </div>
+          <div class="voice-slot">
+            <div class="who">Interview — Lee</div>
+            <div class="prompt">[Transcribe: Lee's perspective on the workshop's growth and this year's participants.]</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ VOICES ============ -->
+  <section id="voices" class="tab-panel section-front">
+    <div class="wrap">
+      <div class="front-head">
+        <span class="eyebrow">Front Matter · 04</span>
+        <h2>Voices</h2>
+      </div>
+      <p class="lede">A chorus of short lines from this year's participants, before the reporting begins — first impressions, hopes for the issue, why they picked up a camera or a notebook.</p>
+      <blockquote class="pull">[Participant quote — one to two sentences, transcribed verbatim from a workshop session.]<cite>Participant, age / hometown</cite></blockquote>
+      <blockquote class="pull">[Second participant quote.]<cite>Participant, age / hometown</cite></blockquote>
+      <blockquote class="pull">[Third participant quote.]<cite>Participant, age / hometown</cite></blockquote>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ CHAPTER I — MISSISSIPPI ============ -->
+  <section id="ch-mississippi" class="tab-panel">
+    <div class="chapter-open">
+      <div class="wrap">
+        <div class="chapter-num">Chapter I</div>
+        <h2>Mississippi</h2>
+        <p class="chapter-dek">The flood that made the land, the crop that ran the economy, and the lines — drawn by rivers and by lenders — that still shape where people live.</p>
+        <div class="photo-slot">
+          <div class="ph-label">Chapter opener — image</div>
+          <div class="ph-suggest">Wide agricultural landscape, flood plain, or aerial-style shot of field rows.</div>
+        </div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="wrap">
+        <p class="lede">The Delta is not a delta in the geological sense — it's a floodplain, built up over centuries by the Mississippi River's habit of overflowing and depositing rich alluvial soil. That soil made the region one of the most productive cotton landscapes on earth, and also one of the poorest.</p>
+        <p class="body-p">[Section: flood history — the 1927 flood and its aftermath, the levee system, how the river's engineering reshaped settlement patterns. Pair with participant quotes on what the land means to them today.]</p>
+        <div class="markers-row">
+          <div class="trail-marker">
+            <div class="tm-eyebrow">Poverty rate</div>
+            <div class="tm-num">17.8%</div>
+            <div class="tm-label">Mississippi statewide, 2024 — highest in the U.S.</div>
+            <div class="tm-source">Source: U.S. Census / USAFacts, 2024</div>
+          </div>
+          <div class="trail-marker">
+            <div class="tm-eyebrow">Delta counties</div>
+            <div class="tm-num">30–40%</div>
+            <div class="tm-label">Poverty rate in most Delta counties</div>
+            <div class="tm-source">Source: BLS county data, 2022–23</div>
+          </div>
+          <div class="trail-marker">
+            <div class="tm-eyebrow">Cotton, 1930</div>
+            <div class="tm-num">4.16M</div>
+            <div class="tm-label">Acres planted statewide — Mississippi's historic peak</div>
+            <div class="tm-source">Source: Mississippi Encyclopedia</div>
+          </div>
+          <div class="trail-marker">
+            <div class="tm-eyebrow">Cotton, 2023</div>
+            <div class="tm-num">395K</div>
+            <div class="tm-label">Acres planted — a fraction of the historic peak</div>
+            <div class="tm-source">Source: USDA / cottongins.org, 2023</div>
+          </div>
+        </div>
+        <h3 style="font-size:26px; margin:44px 0 14px;">Cultural geography</h3>
+        <p class="body-p">[Section: how the plantation-era land pattern — large holdings, few towns, dispersed labor housing — still governs where schools, clinics, and grocery stores sit today. Reference redlining and postwar lending patterns that concentrated Black land loss.]</p>
+        <div class="photo-slot" style="--ar:16/9; margin:28px 0;">
+          <div class="ph-label">Supporting image — redlining / land ownership</div>
+          <div class="ph-suggest">Archival map excerpt (public domain / HOLC map, cite source) or a contemporary photo of a former plantation commissary or company store.</div>
+        </div>
+        <h3 style="font-size:26px; margin:44px 0 14px;">The global economy and cotton crashes</h3>
+        <p class="body-p">By the 1930s, Mississippi's cotton monoculture was already vulnerable to national and global price swings; mechanization after 1947 then eliminated most sharecropping jobs within two decades, driving the Great Migration out of the Delta. [Continue with modern context: today cotton ranks behind poultry and forestry among the state's leading agricultural sectors.]</p>
+        <blockquote class="pull">[Participant or resident quote on what farming or land ownership means to their family now.]<cite>Name, role</cite></blockquote>
+      </div>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ CHAPTER II — EDUCATION ============ -->
+  <section id="ch-education" class="tab-panel">
+    <div class="chapter-open">
+      <div class="wrap">
+        <div class="chapter-num">Chapter II</div>
+        <h2>Education &amp; the Effects of Isolation</h2>
+        <p class="chapter-dek">What it means to grow up in a place where the nearest school, and the nearest way out, can be an hour's drive.</p>
+        <div class="photo-slot">
+          <div class="ph-label">Chapter opener — image</div>
+          <div class="ph-suggest">A school building, bus stop, or long rural road shot at golden hour.</div>
+        </div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="wrap">
+        <p class="lede">Isolation in the Delta is geographic and infrastructural — small, spread-out towns with shrinking tax bases — but it is also historical, a legacy of a school system built to serve a plantation economy rather than a modern one.</p>
+        <p class="body-p">[Section: reference "Lalee's Kin: The Legacy of Slavery," the 2000 documentary following a Delta grandmother and her grandchildren through the school system, as a touchstone for how little the isolation has changed. Discuss consolidation, funding gaps, and transportation.]</p>
+        <div class="voice-slot">
+          <div class="who">Interview — Reggie Barnes</div>
+          <div class="prompt">[Transcribe: Reggie Barnes's perspective on education and isolation in the Delta — role/organization to be added.]</div>
+        </div>
+        <div class="photo-slot" style="--ar:16/9; margin:28px 0;">
+          <div class="ph-label">Supporting image</div>
+          <div class="ph-suggest">Classroom, library, or portrait tied to the Reggie Barnes interview.</div>
+        </div>
+        <blockquote class="pull">[Student or teacher quote on distance, resources, or what keeps them in the Delta.]<cite>Name, role</cite></blockquote>
+      </div>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ CHAPTER III — HEALTHCARE ============ -->
+  <section id="ch-healthcare" class="tab-panel">
+    <div class="chapter-open">
+      <div class="wrap">
+        <div class="chapter-num">Chapter III</div>
+        <h2>Healthcare, Historical and Modern</h2>
+        <p class="chapter-dek">Life expectancy, maternal health, and the coalitions trying to close the gap in one of the hardest-served regions in the country.</p>
+        <div class="photo-slot">
+          <div class="ph-label">Chapter opener — image</div>
+          <div class="ph-suggest">Clinic exterior, waiting room, or community health worker at work (with consent).</div>
+        </div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="wrap">
+        <p class="lede">Mississippi has the nation's highest infant mortality rate and the shortest life expectancy — and within the state, the Delta fares worse still.</p>
+        <div class="markers-row">
+          <div class="trail-marker">
+            <div class="tm-eyebrow">Infant mortality</div>
+            <div class="tm-num">9.7</div>
+            <div class="tm-label">Deaths per 1,000 live births, MS 2024 — a decade high</div>
+            <div class="tm-source">Source: MS Dept. of Health, 2025 report</div>
+          </div>
+          <div class="trail-marker">
+            <div class="tm-eyebrow">Racial gap</div>
+            <div class="tm-num">2.6×</div>
+            <div class="tm-label">Black infants die at more than double the rate of white infants</div>
+            <div class="tm-source">Source: MS Dept. of Health, 2025</div>
+          </div>
+          <div class="trail-marker">
+            <div class="tm-eyebrow">Life expectancy</div>
+            <div class="tm-num">68 yrs</div>
+            <div class="tm-label">Average in the Delta, vs. 71.9 statewide</div>
+            <div class="tm-source">Source: MS State Health Officer, 2024</div>
+          </div>
+        </div>
+        <h3 style="font-size:26px; margin:44px 0 14px;">Teenage pregnancy &amp; infant mortality</h3>
+        <p class="body-p">[Section: Delta-specific teen birth rate data — pull the latest county figures from MSDH/March of Dimes PeriStats — paired with prenatal care access, the region's shortage of OB providers, and "maternity care deserts."]</p>
+        <div class="photo-slot" style="--ar:16/9; margin:28px 0;">
+          <div class="ph-label">Supporting image</div>
+          <div class="ph-suggest">Clinic signage, a rural hospital exterior, or (with consent and care) a family portrait tied to a specific story.</div>
+        </div>
+        <h3 style="font-size:26px; margin:44px 0 14px;">Coalition building</h3>
+        <div class="voice-slot">
+          <div class="who">Interview — Nina Ragu</div>
+          <div class="prompt">[Transcribe: Nina Ragu on the coalitions working to expand maternal and infant health access in the Delta — organization/title to be added.]</div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ CHAPTER IV — IMMIGRANTS ============ -->
+  <section id="ch-immigrants" class="tab-panel">
+    <div class="chapter-open">
+      <div class="wrap">
+        <div class="chapter-num">Chapter IV</div>
+        <h2>Immigrants in the Delta</h2>
+        <p class="chapter-dek">Chinese groceries, graveyards, and god — the century-long story of a community that built its life between the Delta's Black and white worlds.</p>
+        <div class="photo-slot">
+          <div class="ph-label">Chapter opener — image</div>
+          <div class="ph-suggest">A remaining or former Chinese grocery storefront, or an item from the Mississippi Delta Chinese Heritage Museum at Delta State University, Cleveland.</div>
+        </div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="wrap">
+        <p class="lede">Chinese laborers first arrived in the Delta during Reconstruction, recruited to work cotton fields alongside newly emancipated Black workers. Within a generation, most had left the fields to open small family grocery stores — often the only merchants willing to extend credit to Black customers after plantation commissaries closed.</p>
+        <div class="markers-row">
+          <div class="trail-marker">
+            <div class="tm-eyebrow">Greenville, peak era</div>
+            <div class="tm-num">50</div>
+            <div class="tm-label">Chinese-owned grocery stores in a city of ~40,000</div>
+            <div class="tm-source">Source: NPR / Southern Foodways Alliance</div>
+          </div>
+          <div class="trail-marker">
+            <div class="tm-eyebrow">Delta Chinese, 1970s peak</div>
+            <div class="tm-num">~3,000</div>
+            <div class="tm-label">Population at its height, now roughly 500</div>
+            <div class="tm-source">Source: Visit Cleveland MS / heritage museum</div>
+          </div>
+        </div>
+        <p class="body-p">Assimilation was never simple: under Jim Crow's binary racial order, Chinese families were classified as neither Black nor white, and the 1927 Gong Lum v. Rice case — brought by a Delta family barred from a white school — reached the U.S. Supreme Court. [Continue: identity, language retention, Lucky Eleven events, the "Delta Wok" oral-history/recipe project at Delta State.]</p>
+        <div class="grid2">
+          <div class="photo-slot" style="--ar:4/5;">
+            <div class="ph-label">Photo — Chinese heritage center on campus</div>
+            <div class="ph-suggest">Mississippi Delta Chinese Heritage Museum, Delta State University, Cleveland, MS.</div>
+          </div>
+          <div class="photo-slot" style="--ar:4/5;">
+            <div class="ph-label">Photo — grocery store, present day</div>
+            <div class="ph-suggest">Consider a separate short interview with a remaining grocer or their descendants.</div>
+          </div>
+        </div>
+        <blockquote class="pull">[Interview quote — a Delta Chinese resident on family, faith, and staying or leaving.]<cite>Name, hometown</cite></blockquote>
+      </div>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ CHAPTER V — OTHER FAITHS ============ -->
+  <section id="ch-faiths" class="tab-panel">
+    <div class="chapter-open">
+      <div class="wrap">
+        <div class="chapter-num">Chapter V</div>
+        <h2>Other Faiths in the Delta</h2>
+        <p class="chapter-dek">Beyond the Baptist and Methodist churches that anchor most Delta towns, smaller congregations hold their own ground.</p>
+        <div class="photo-slot">
+          <div class="ph-label">Chapter opener — image</div>
+          <div class="ph-suggest">Exterior of a mosque or synagogue building in the Delta.</div>
+        </div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="wrap">
+        <p class="lede">[Section: brief overview of religious diversity in the Delta beyond the Black and white Christian churches most associated with the region.]</p>
+        <div class="grid2">
+          <div>
+            <div class="photo-slot" style="--ar:4/3;">
+              <div class="ph-label">Mosque — Islamic Society of Delta Mississippi</div>
+              <div class="ph-suggest">Cleveland, MS. Contact: 662-402-8407. Confirm current contact and request permission before visiting/photographing.</div>
+            </div>
+            <div class="voice-slot">
+              <div class="who">Interview — congregation contact</div>
+              <div class="prompt">[Transcribe: history of the congregation, size, and role in the community.]</div>
+            </div>
+          </div>
+          <div>
+            <div class="photo-slot" style="--ar:4/3;">
+              <div class="ph-label">Synagogue — Delta Jewish community</div>
+              <div class="ph-suggest">Note the historic Italian-Jewish and broader Jewish merchant presence in Delta towns; confirm current congregation status before publishing (many Delta synagogues have closed or merged).</div>
+            </div>
+            <div class="voice-slot">
+              <div class="who">Interview — congregation contact / historian</div>
+              <div class="prompt">[Transcribe: history and present-day status of the congregation.]</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ CHAPTER VI — DELTA BLUES ============ -->
+  <section id="ch-blues" class="tab-panel">
+    <div class="chapter-open">
+      <div class="wrap">
+        <div class="chapter-num">Chapter VI</div>
+        <h2>Delta Blues</h2>
+        <p class="chapter-dek">Po' Monkey's, B.B. King, and the music the Delta gave the world — plus the story it took decades to reckon with.</p>
+        <div class="photo-slot">
+          <div class="ph-label">Chapter opener — image</div>
+          <div class="ph-suggest">Juke joint exterior or interior (Po Monkey's Lounge is closed but widely documented — seek licensed archival images) or a blues club scene.</div>
+        </div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="wrap">
+        <p class="lede">The blues grew out of the same fields and churches this issue has already covered — a music of labor, migration, and survival that turned the Delta into "the Birthplace of America's Music."</p>
+        <div class="grid2">
+          <div class="photo-slot" style="--ar:4/5;">
+            <div class="ph-label">Po Monkey's Lounge</div>
+            <div class="ph-suggest">Merigold, MS — one of the last authentic juke joints, closed 2016 after owner Willie "Po Monkey" Seaberry's death. Seek licensed/archival photography.</div>
+          </div>
+          <div class="photo-slot" style="--ar:4/5;">
+            <div class="ph-label">B.B. King</div>
+            <div class="ph-suggest">B.B. King Museum and Delta Interpretive Center, Indianola, MS.</div>
+          </div>
+        </div>
+
+        <h3 style="font-size:26px; margin:44px 0 14px;">Emmett Till</h3>
+        <p class="body-p">In August 1955, 14-year-old Emmett Till was abducted and killed in Money, Mississippi; the men tried for his murder were acquitted by an all-white jury in nearby Sumner that September. The case became a catalyst for the civil rights movement — a story inseparable from the Delta's music and its reckoning alike.</p>
+
+        <div class="museum-wall" style="margin:32px 0;">
+          <div class="wrap">
+            <span class="eyebrow">On-site exhibit — bring your own capture</span>
+            <div class="museum-h">Emmett Till: Site &amp; Memory</div>
+            <p class="museum-sub">Reserved for photos, video stills, and interview audio captured at the Emmett Till Interpretive Center and Emmett Till Historic Intrepid Center in Sumner, MS. Contact the centers directly for photo and recording permissions before your visit.</p>
+            <div class="museum-case">
+              <div class="case-artifact">
+                <div class="ph-label">Artifact / site photo</div>
+                <div class="ph-suggest">E.g. the restored Tallahatchie County Courthouse, the interpretive markers, or center exhibits — with permission.</div>
+              </div>
+              <div class="case-quote">
+                <p>[Interview or docent quote captured on-site — transcribe and cite the center/collection.]</p>
+                <cite>Name / role, Emmett Till Interpretive Center</cite>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ CHAPTER VII — CIVIL RIGHTS ============ -->
+  <section id="ch-civilrights" class="tab-panel">
+    <div class="chapter-open">
+      <div class="wrap">
+        <div class="chapter-num">Chapter VII</div>
+        <h2>Civil Rights</h2>
+        <p class="chapter-dek">Freedom Trail figures, the Freedom Riders, the history of Parchman Farm, and what's changed — and hasn't — since.</p>
+        <div class="photo-slot">
+          <div class="ph-label">Chapter opener — image</div>
+          <div class="ph-suggest">A Mississippi Freedom Trail marker, or an archival civil-rights-era photograph with confirmed public-domain or licensed status.</div>
+        </div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="wrap">
+        <p class="lede">This chapter draws on your visits to civil rights museums and exhibits — the wall of portraits, the timeline panels, the display cases. Use the dark "exhibit" modules below to hold that material once you've secured permissions; everything is placeholder until then.</p>
+      </div>
+
+      <!-- MUSEUM WALL: Freedom Trail figures, styled after the portrait-grid wall -->
+      <div class="museum-wall">
+        <div class="wrap">
+          <span class="eyebrow">Freedom Trail · Portrait Wall</span>
+          <div class="museum-h">Who Carried It Forward</div>
+          <p class="museum-sub">Modeled on the portrait-and-placard wall you photographed on site. Swap each tinted tile for a Freedom Trail honoree's portrait or a themed placard; replace placard copy with your own researched text — don't reuse a museum's exhibit copy verbatim.</p>
+          <div class="museum-grid">
+            <div class="m-tile photo sepia"><div class="m-label">Portrait — Honoree 1</div></div>
+            <div class="m-tile placard navy"><h4>Organize</h4><p>[One or two lines on local organizing efforts — voter registration, mutual aid, mass meetings.]</p></div>
+            <div class="m-tile photo green"><div class="m-label">Portrait — Honoree 2</div></div>
+            <div class="m-tile photo sepia"><div class="m-label">Portrait — Honoree 3</div></div>
+            <div class="m-tile placard rust"><h4>Testify</h4><p>[One or two lines on oral history / court testimony as a form of resistance.]</p></div>
+            <div class="m-tile placard olive"><h4>Teach</h4><p>[One or two lines on Freedom Schools and community education in the Delta.]</p></div>
+            <div class="m-tile photo green"><div class="m-label">Portrait — Honoree 4</div></div>
+            <div class="m-tile photo sepia"><div class="m-label">Site photo — marker or church</div></div>
+            <div class="m-tile placard navy"><h4>Register</h4><p>[One or two lines on Delta voter-registration drives, 1961–65.]</p></div>
+            <div class="m-tile photo green"><div class="m-label">Portrait — Honoree 5</div></div>
+          </div>
+          <div class="museum-caption">Grid format inspired by the portrait wall photographed for this issue — rebuild with your own licensed images and original captions.</div>
+        </div>
+      </div>
+
+      <div class="chapter-body" style="padding-top:56px;">
+        <div class="wrap">
+          <h3 style="font-size:26px; margin:0 0 14px;">Freedom Riders &amp; the history of the penitentiary</h3>
+          <p class="body-p">In 1961, dozens of Freedom Riders arrested in Jackson were transferred to Mississippi State Penitentiary at Parchman — the same prison farm where folklorist Alan Lomax had recorded blues musicians decades earlier. Parchman carries a dual legacy: a working plantation-prison, and a site of civil rights resistance.</p>
+        </div>
+      </div>
+
+      <!-- MUSEUM CASE: interview/artifact pairing, styled after the display-case photo -->
+      <div class="museum-wall" style="padding-top:0;">
+        <div class="wrap">
+          <span class="eyebrow">Display Case · Artifact + Testimony</span>
+          <div class="museum-h" style="font-size:clamp(24px,4vw,36px);">Objects That Carry the Story</div>
+          <p class="museum-sub">Styled after the uniform-and-document case you photographed. Use this format for a physical artifact (a uniform, a document, a protest sign) paired with an interview quote or archival testimony.</p>
+          <div class="museum-case">
+            <div class="case-artifact">
+              <div class="ph-label">Artifact photo</div>
+              <div class="ph-suggest">E.g. a Freedom Rider's belongings, a Parchman-era document, or a protest artifact — photographed with permission from its holding collection.</div>
+            </div>
+            <div class="case-quote">
+              <p>[Interview or archival testimony quote — transcribed from your own recording, or paraphrased and cited if drawn from another archive.]</p>
+              <cite>Name / role, source collection</cite>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HISTORY BAND: dated factual timeline, styled after the map/toll-card panel -->
+      <div class="history-band">
+        <div class="wrap">
+          <span class="eyebrow" style="color:var(--gold);">Delta Civil Rights Timeline</span>
+          <div class="museum-h" style="font-size:clamp(24px,4vw,36px); margin-top:10px;">Four Dates, One Region</div>
+          <div class="history-cards">
+            <div class="h-card">
+              <div class="yr">Aug. 1955</div>
+              <div class="place">Money, MS</div>
+              <p>14-year-old Emmett Till is abducted and killed; his murder becomes a catalyst for the civil rights movement nationwide.</p>
+              <div class="toll">Trial held in Sumner, Tallahatchie County</div>
+            </div>
+            <div class="h-card">
+              <div class="yr">1961</div>
+              <div class="place">Parchman, MS</div>
+              <p>Freedom Riders arrested in Jackson are transferred to Mississippi State Penitentiary at Parchman and held in maximum security.</p>
+              <div class="toll">Part of the wider 1961 Freedom Rides</div>
+            </div>
+            <div class="h-card">
+              <div class="yr">June 1964</div>
+              <div class="place">Neshoba County, MS</div>
+              <p>Civil rights workers James Chaney, Andrew Goodman, and Michael Schwerner are murdered during Freedom Summer.</p>
+              <div class="toll">Catalyzed federal civil rights enforcement</div>
+            </div>
+            <div class="h-card">
+              <div class="yr">1966</div>
+              <div class="place">Near Hernando, MS</div>
+              <p>James Meredith is shot during his solo March Against Fear from Memphis to Jackson; other leaders continue the march.</p>
+              <div class="toll">March completed by movement leaders</div>
+            </div>
+          </div>
+          <div class="museum-caption">Dates and locations are well-documented historical fact; verify specifics against a primary source before publication.</div>
+        </div>
+      </div>
+
+      <div class="chapter-body" style="padding-top:56px;">
+        <div class="wrap">
+          <h3 style="font-size:26px; margin:0 0 14px;">Modern day update</h3>
+          <p class="body-p">[Section: contemporary conditions at Parchman — recent state and federal scrutiny of conditions — and present-day voting rights, representation, and organizing in the Delta. Keep this section fact-checked and current at time of publication.]</p>
+          <blockquote class="pull">[Local organizer or historian quote on what commemoration has and hasn't changed.]<cite>Name, role</cite></blockquote>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ CHAPTER VIII — MEDIA ============ -->
+  <section id="ch-media" class="tab-panel">
+    <div class="chapter-open">
+      <div class="wrap">
+        <div class="chapter-num">Chapter VIII</div>
+        <h2>Delta Coverage in Media</h2>
+        <p class="chapter-dek">From "Sinners" to decades of photojournalism — how outside storytellers have framed the Delta, and what locals make of it.</p>
+        <div class="photo-slot">
+          <div class="ph-label">Chapter opener — image</div>
+          <div class="ph-suggest">Film-set location image if available/licensed, or a portrait from a Delta photo shoot tied to your own reporting.</div>
+        </div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="wrap">
+        <p class="lede">2025's "Sinners," directed by Ryan Coogler and set in 1930s Clarksdale, put the Delta back in front of a global audience — reviving old questions about who profits when the region's history becomes entertainment.</p>
+        <p class="body-p">[Section: summarize — in your own words, never quoted at length — press interviews in which Ryan Coogler discussed the film's Delta setting and research process. Link out to the original interviews rather than reproducing them.]</p>
+        <div class="voice-slot">
+          <div class="who">Interview — Rory Doyle</div>
+          <div class="prompt">[Contact Rory Doyle (rorydoylephoto.com) for an original interview on documenting the Delta Hill Riders and the Delta more broadly — do not lift quotes from his existing published interviews (e.g. PHmuseum) without permission and attribution.]</div>
+        </div>
+        <div class="photo-slot" style="--ar:16/9; margin:28px 0;">
+          <div class="ph-label">Photo — Delta Hill Riders</div>
+          <div class="ph-suggest">License directly from Rory Doyle for reproduction; his project is at rorydoylephoto.com/delta-hill-riders.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ CHAPTER IX — COMMEMORATION ============ -->
+  <section id="ch-commemoration" class="tab-panel">
+    <div class="chapter-open">
+      <div class="wrap">
+        <div class="chapter-num">Chapter IX</div>
+        <h2>The Importance of Commemoration</h2>
+        <p class="chapter-dek">Historical markers turned the Delta into a tourist trail. Who decided which stories got a sign — and which didn't?</p>
+        <div class="photo-slot">
+          <div class="ph-label">Chapter opener — image</div>
+          <div class="ph-suggest">A Mississippi Blues Trail or Freedom Trail marker, photographed on location.</div>
+        </div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="wrap">
+        <p class="lede">The Mississippi Blues Trail's first marker was dedicated in Holly Ridge in December 2006, honoring Charley Patton. Two decades later, more than 200 markers span the state — most concentrated in the Delta — and the model has been extended to a Mississippi Freedom Trail honoring civil rights history.</p>
+        <div class="markers-row">
+          <div class="trail-marker">
+            <div class="tm-eyebrow">Coahoma County tourism</div>
+            <div class="tm-num">$68M</div>
+            <div class="tm-label">Visitor spending in 2019, driven largely by blues tourism</div>
+            <div class="tm-source">Source: MS tourism report, via NPR</div>
+          </div>
+          <div class="trail-marker">
+            <div class="tm-eyebrow">First marker</div>
+            <div class="tm-num">2006</div>
+            <div class="tm-label">Charley Patton marker dedicated, Holly Ridge, MS</div>
+            <div class="tm-source">Source: Mississippi Encyclopedia</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="museum-wall" style="margin-top:32px;">
+        <div class="wrap">
+          <span class="eyebrow">Field Archive · Markers on the Ground</span>
+          <div class="museum-h">The Trail, Photographed</div>
+          <p class="museum-sub">A running archive of every marker you photograph in the field. Replace each tile with your own on-site image; keep the caption format consistent (town, marker name, date visited).</p>
+          <div class="museum-grid" style="grid-template-columns:repeat(5,1fr);">
+            <div class="m-tile photo sepia"><div class="m-label">Holly Ridge — Charley Patton</div></div>
+            <div class="m-tile photo blue"><div class="m-label">Greenville — Nelson Street</div></div>
+            <div class="m-tile photo sepia"><div class="m-label">Clarksdale — marker TBD</div></div>
+            <div class="m-tile placard rust"><h4>Freedom Trail</h4><p>[Add a Freedom Trail marker once photographed on site.]</p></div>
+            <div class="m-tile photo blue"><div class="m-label">Parchman — Blues Trail marker</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-body" style="padding-top:56px;">
+        <div class="wrap">
+          <h3 style="font-size:26px; margin:0 0 14px;">Educational tourism effect</h3>
+          <p class="body-p">[Section: how blues tourism has revived some downtowns (Clarksdale) while barely touching others (Tchula, Holmes County) — and how Black residents in these towns describe the gap between the story told to visitors and the one they live. Balance the economic-development case with critiques from Delta-based advocates about who profits.]</p>
+          <blockquote class="pull">[Resident or advocate quote on bias, prejudice, or omission in how tourism tells the Delta's story.]<cite>Name, role</cite></blockquote>
+          <h3 style="font-size:26px; margin:44px 0 14px;">History of putting the markers in</h3>
+          <p class="body-p">[Section: the process by which a site earns a marker — local sponsorship, historian review, community sign-off — and the debates over which figures and stories get included first.]</p>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ CLOSING ============ -->
+  <section id="closing" class="tab-panel section-front" data-dark="true">
+    <div class="wrap">
+      <div class="front-head">
+        <span class="eyebrow">Back Matter</span>
+        <h2>Closing</h2>
+      </div>
+      <h3 style="font-size:24px; margin-bottom:10px;">Why we do the workshop</h3>
+      <p class="lede">[A closing statement — from the director or the group collectively — on the purpose of the workshop and this publication.]</p>
+
+      <h3 style="font-size:24px; margin:44px 0 10px;">Acknowledgements &amp; meet the team</h3>
+      <div class="team-grid">
+        <div class="team-card"><div class="name">Name</div>Role</div>
+        <div class="team-card"><div class="name">Name</div>Role</div>
+        <div class="team-card"><div class="name">Name</div>Role</div>
+        <div class="team-card"><div class="name">Name</div>Role</div>
+      </div>
+
+      <h3 style="font-size:24px; margin:44px 0 10px;">Poetry, part two</h3>
+      <div class="photo-slot" style="--ar:21/9;">
+        <div class="ph-label">Closing spread — poem + image</div>
+        <div class="ph-suggest">[A second original poem, closing the issue where the introduction opened it.]</div>
+      </div>
+    </div>
+
+    <div class="back-cover">
+      <div class="wrap">
+        <span class="eyebrow" style="color:var(--gold);">Back Cover</span>
+        <h3 style="margin-top:14px;">Praise From Participants</h3>
+        <p class="praise">[Closing participant quote — what the workshop meant to them.]<cite>Participant</cite></p>
+        <p class="praise">[Second closing participant quote.]<cite>Participant</cite></p>
+      </div>
+    </div>
+
+    <footer class="credits">
+      THE DELTA ISSUE — PROTOTYPE LAYOUT · REPLACE ALL BRACKETED COPY AND PHOTO PLACEHOLDERS BEFORE PUBLICATION
+    </footer>
+    <div class="tab-pager"></div>
+  </section>
+
+</main>
+
+<script>
+  const ORDER = ['cover','intro','toc-front','directors-note','voices',
+    'ch-mississippi','ch-education','ch-healthcare','ch-immigrants','ch-faiths',
+    'ch-blues','ch-civilrights','ch-media','ch-commemoration','closing'];
+
+  const LABELS = {
+    'cover':'Cover','intro':'Introduction','toc-front':'Contents','directors-note':"Director's Note",
+    'voices':'Voices','ch-mississippi':'I · Mississippi','ch-education':'II · Education',
+    'ch-healthcare':'III · Healthcare','ch-immigrants':'IV · Immigrants','ch-faiths':'V · Other Faiths',
+    'ch-blues':'VI · Delta Blues','ch-civilrights':'VII · Civil Rights','ch-media':'VIII · Media Coverage',
+    'ch-commemoration':'IX · Commemoration','closing':'Closing'
+  };
+
+  function buildPagers(){
+    ORDER.forEach((id, i) => {
+      const panel = document.getElementById(id);
+      const pager = panel.querySelector('.tab-pager');
+      if(!pager) return;
+      const prev = i > 0 ? ORDER[i-1] : null;
+      const next = i < ORDER.length-1 ? ORDER[i+1] : null;
+      pager.innerHTML = `
+        ${prev ? `<a class="p-prev" onclick="showTab('${prev}')"><span>&larr;</span><span><small>Previous</small>${LABELS[prev]}</span></a>` : '<span></span>'}
+        ${next ? `<a class="p-next" onclick="showTab('${next}')"><span><small>Next</small>${LABELS[next]}</span><span>&rarr;</span></a>` : '<span></span>'}
+      `;
+    });
+  }
+
+  function showTab(id){
+    if(!ORDER.includes(id)) id = 'cover';
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === id));
+    document.querySelectorAll('#spine-list a').forEach(a => a.classList.toggle('active', a.dataset.tab === id));
+    history.replaceState(null, '', '#' + id);
+    window.scrollTo(0,0);
+  }
+
+  document.querySelectorAll('#spine-list a').forEach(a => {
+    a.addEventListener('click', () => showTab(a.dataset.tab));
+  });
+
+  buildPagers();
+  const startId = (location.hash || '').replace('#','');
+  showTab(ORDER.includes(startId) ? startId : 'cover');
+</script>
+</body>
+</html>
