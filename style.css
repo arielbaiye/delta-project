@@ -47,25 +47,28 @@
   a{color:inherit;}
   img{max-width:100%;display:block;}
 
-  /* ---------- UTILITY BAR ---------- */
+  /* ---------- UTILITY BAR (hover to reveal) ---------- */
+  #bar-trigger{position:fixed; top:0; left:0; right:0; height:14px; z-index:750;}
   #utility-bar{
-    position:fixed; top:0; left:0; right:0; height:var(--bar-h); z-index:700;
+    position:fixed; top:0; left:0; right:0; z-index:700;
     background:var(--navy); border-bottom:1px solid rgba(246,241,228,0.15);
-    display:flex; align-items:center; justify-content:space-between;
-    padding:0 18px 0 82px; overflow-x:auto;
+    display:flex; align-items:center; flex-wrap:wrap; gap:22px;
+    padding:13px 18px 13px 82px;
+    transform:translateY(-100%); transition:transform .2s ease;
   }
-  .ub-left, .ub-right{display:flex; align-items:center; gap:22px; white-space:nowrap;}
+  #bar-trigger:hover + #utility-bar,
+  #utility-bar:hover{ transform:translateY(0); }
   .ub-link{
     font-family:'Inter'; font-weight:600; font-size:12px; color:rgba(246,241,228,0.82);
     text-decoration:none; cursor:pointer; background:none; border:none; padding:0;
-    display:flex; align-items:center; gap:6px; transition:color .15s;
+    display:flex; align-items:center; gap:6px; transition:color .15s; white-space:nowrap;
   }
   .ub-link:hover{color:var(--gold);}
   .ub-forum .ub-dot{width:6px; height:6px; border-radius:50%; background:var(--school-bus-yellow); display:inline-block;}
   .ub-dropdown{position:relative;}
   .ub-dropdown-btn{font-family:'Inter';}
   .ub-dropdown-menu{
-    display:none; position:absolute; top:calc(100% + 10px); right:0;
+    display:none; position:absolute; top:calc(100% + 10px); left:0;
     background:var(--paper-white); border:1px solid var(--rule-strong);
     box-shadow:0 10px 20px rgba(16,27,48,0.25); min-width:210px; padding:8px 0; z-index:800;
   }
@@ -78,7 +81,7 @@
 
   /* ---------- SPINE NAV / TAB BAR ---------- */
   #spine{
-    position:fixed; top:var(--bar-h); left:0; bottom:0; width:74px;
+    position:fixed; top:0; left:0; bottom:0; width:74px;
     background:var(--navy-deep); z-index:500;
     display:flex; flex-direction:column; align-items:center; padding:18px 0;
     border-right:1px solid rgba(246,241,228,0.1);
@@ -101,7 +104,7 @@
   #spine-list li a.active{color:var(--gold);}
   #spine-list li a.active::before{content:""; position:absolute; left:0; top:6px; bottom:6px; width:3px; background:var(--school-bus-yellow);}
 
-  main{margin-left:74px; margin-top:var(--bar-h);}
+  main{margin-left:74px;}
   .wrap{max-width:var(--maxw); margin:0 auto; padding:0 34px;}
 
   /* ---------- TAB PANEL SYSTEM ---------- */
@@ -132,22 +135,26 @@
   .running-head .rh-crumb .arrow{color:var(--steel-azure); font-size:10px;}
   .running-head.bottom{border-bottom:none; border-top:1px solid var(--rule);}
 
-  /* ---------- COVER (full-bleed photographic wash) ---------- */
+  /* ---------- COVER (full-bleed photo) ---------- */
+  /* COVER PHOTO: put your image at images/cover.jpg (or change the path below).
+     The dark gradient stays layered on top so the white text stays readable —
+     if your photo is already dark, you can lower these opacity values (the .15/.55/.75 numbers). */
   #cover{
-    min-height:calc(100vh - var(--bar-h)); color:var(--paper-white);
+    min-height:100vh; color:var(--paper-white);
     background:
-      linear-gradient(180deg, rgba(20,16,10,.15) 0%, rgba(20,16,10,.55) 78%, rgba(10,8,5,.75) 100%),
-      linear-gradient(200deg, #8a7256 0%, #cbb98a 28%, #e7d8b8 52%, #9aa8ad 78%, #5a6b74 100%);
+      linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,.55) 78%, rgba(0,0,0,.75) 100%),
+      url('images/cover.jpg') center/cover no-repeat;
+    background-color:#5a5346; /* shows briefly while the photo loads, or if the path is wrong */
   }
-  #cover .cover-inner{min-height:calc(100vh - var(--bar-h)); display:flex; flex-direction:column; justify-content:space-between; padding:40px 34px 24px;}
+  #cover .cover-inner{min-height:100vh; display:flex; flex-direction:column; justify-content:flex-start; padding:40px 34px 32px;}
   .cover-top{display:flex; justify-content:space-between; align-items:flex-start; font-family:'Inter'; font-weight:600; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:rgba(251,248,240,0.8);}
-  .cover-mid{margin:auto 0; padding:64px 0 24px;}
-  .cover-mid .eyebrow{color:#f0d9b5; margin-bottom:16px; display:block;}
+  .cover-mid{margin:64px 0 auto; padding:0;}
+  .cover-mid .eyebrow{color:#f0d9b5; margin-bottom:14px; display:block;}
   .cover-title{font-family:'Playfair Display'; font-size:clamp(48px, 9.5vw, 108px); font-weight:400; letter-spacing:-0.01em; color:var(--paper-white);}
   .cover-title .hl-italic{font-style:italic; font-weight:400;}
   .cover-title .hl-bold{font-weight:800;}
-  .cover-dek{font-family:'Source Serif 4'; font-style:italic; font-size:19px; max-width:520px; margin-top:22px; color:rgba(251,248,240,0.88);}
-  .cover-bottom{display:flex; justify-content:space-between; align-items:flex-end; font-family:'Inter'; font-weight:500; font-size:12px; color:rgba(251,248,240,0.7);}
+  .cover-dek{font-family:'Source Serif 4'; font-style:italic; font-size:19px; max-width:520px; margin-top:18px; color:rgba(251,248,240,0.88);}
+  .cover-bottom{display:flex; justify-content:space-between; align-items:flex-end; font-family:'Inter'; font-weight:500; font-size:12px; color:rgba(251,248,240,0.7); margin-top:48px;}
 
   /* photo / interview placeholders */
   .photo-slot{
@@ -266,14 +273,14 @@
     font-size:clamp(64px,13vw,168px); line-height:0.82; color:var(--navy);
     letter-spacing:-0.01em; opacity:.94; margin-bottom:10px;
   }
-  .toc-layout{display:grid; grid-template-columns:1fr 1.3fr; gap:40px; margin-top:20px;}
-  .toc-quotes{display:flex; flex-direction:column; gap:30px; padding-top:8px;}
-  .toc-quotes .tq{font-family:'Playfair Display'; font-style:italic; font-weight:500; font-size:19px; color:var(--charcoal-soft); line-height:1.35;}
-  .toc-list-item{border-bottom:1px solid var(--rule); padding:14px 0; cursor:pointer; display:flex; gap:16px;}
+  .toc-layout{display:grid; grid-template-columns:1fr 1.3fr; gap:40px; margin-top:14px;}
+  .toc-quotes{display:flex; flex-direction:column; gap:20px; padding-top:4px;}
+  .toc-quotes .tq{font-family:'Playfair Display'; font-style:italic; font-weight:500; font-size:19px; color:var(--charcoal-soft); line-height:1.3;}
+  .toc-list-item{border-bottom:1px solid var(--rule); padding:10px 0; cursor:pointer; display:flex; gap:16px; line-height:1.2;}
   .toc-list-item:hover .tl-title{color:var(--steel-azure);}
-  .toc-list-item .tl-pg{font-family:'Inter'; font-weight:700; font-size:12px; color:var(--charcoal-soft); width:44px; flex-shrink:0; padding-top:3px;}
-  .toc-list-item .tl-title{font-family:'Playfair Display'; font-weight:700; font-size:19px; color:var(--ink); transition:color .15s;}
-  .toc-list-item .tl-desc{font-family:'Source Serif 4'; font-style:italic; font-size:14px; color:var(--charcoal-soft); margin-top:3px;}
+  .toc-list-item .tl-pg{font-family:'Inter'; font-weight:700; font-size:12px; color:var(--charcoal-soft); width:44px; flex-shrink:0; padding-top:3px; line-height:1.2;}
+  .toc-list-item .tl-title{font-family:'Playfair Display'; font-weight:700; font-size:19px; color:var(--ink); transition:color .15s; line-height:1.2;}
+  .toc-list-item .tl-desc{font-family:'Source Serif 4'; font-style:italic; font-size:13.5px; color:var(--charcoal-soft); margin-top:3px; line-height:1.4;}
 
   /* ---------- FOOTER / CLOSING ---------- */
   #closing{background:var(--paper);}
@@ -298,6 +305,6 @@
     .toc-layout{grid-template-columns:1fr;}
     .bar-row{grid-template-columns:80px 1fr 40px;}
     .running-head{flex-direction:column; align-items:flex-start; gap:4px;}
-    #utility-bar{padding-left:14px; gap:14px;}
-    .ub-left, .ub-right{gap:14px;}
+    #utility-bar{padding-left:16px; padding-right:16px; gap:14px;}
+    #bar-trigger{height:20px;}
   }

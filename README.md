@@ -83,6 +83,22 @@ Defined at the top of `style.css` in the `:root` block:
 
 `--navy` and `--navy-deep` still exist as aliases pointing to `--french-blue` and `--imperial-blue` respectively, so nothing else in the code had to change — if you want to retheme again, editing the five color values at the top of `style.css` updates the whole site.
 
+## Editing text later
+
+All the visible text lives directly in `index.html`, in plain readable sentences between HTML tags — there's no separate content file or CMS. To find something:
+
+- Open `index.html` in GitHub's web editor (click the file, then the pencil icon)
+- Use Ctrl+F / Cmd+F to search for a phrase you see on the site
+- Each section is marked with a comment like `<!-- ============ CHAPTER I — MISSISSIPPI ============ -->` so you can jump around by scrolling or searching for `CHAPTER`
+- Edit the text between the tags (e.g. `<p class="body-p">your text here</p>`) — leave the tags themselves alone, just change the words inside them
+- Commit your changes the same way as before (see "Making changes later" above)
+
+`style.css` only controls appearance (colors, spacing, fonts) — you won't find sentence content there. `script.js` only controls behavior (tab switching, the dropdown) — no visible text there either.
+
+## Cover photo
+
+In `style.css`, search for `/* COVER PHOTO`. Drop your image in the `images/` folder as `cover.jpg` (or update the filename in that CSS rule to match whatever you name it). A dark gradient stays layered on top of the photo so the white title text stays readable — if your photo is already quite dark, you can lower the `.15`/`.55`/`.75` opacity numbers right above it.
+
 ## What still needs to be done before publishing
 
 - Replace every dashed placeholder box with real photography (see the inline suggestions in each one for sourcing/licensing notes).
