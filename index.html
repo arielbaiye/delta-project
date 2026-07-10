@@ -11,8 +11,8 @@
 </head>
 <body>
 
-<div id="bar-trigger"></div>
 <div id="utility-bar">
+  <span class="ub-tag">Quick Links</span>
   <a class="ub-link ub-forum" onclick="showTab('forum')"><span class="ub-dot"></span>Forum</a>
   <a class="ub-link" href="https://open.spotify.com/playlist/6NhfGKLC6Xp1E72k2JzBjh?si=ULI50h9TSjuNsazALEF53g" target="_blank" rel="noopener">Spotify Playlist</a>
   <a class="ub-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdi079kkEh_SqEe2CEZ43gurtfbxNzGVz-3DhPPpC2FtzV7uQ/viewform?usp=dialog" target="_blank" rel="noopener">Share Feedback</a>
@@ -26,7 +26,7 @@
 </div>
 
 <nav id="spine">
-  <div class="mark" onclick="showTab('cover')">DI</div>
+  <div class="mark" onclick="showTab('cover')" title="Home — back to cover">DC</div>
   <ul id="spine-list">
     <li><a data-tab="cover" title="Cover">Cover</a></li>
     <li><a data-tab="intro" title="Introduction">Intro</a></li>
@@ -42,7 +42,7 @@
     <li><a data-tab="ch-civilrights" title="Chapter VII — Civil Rights">VII</a></li>
     <li><a data-tab="ch-media" title="Chapter VIII — Media Coverage">VIII</a></li>
     <li><a data-tab="ch-commemoration" title="Chapter IX — Commemoration">IX</a></li>
-    <li><a data-tab="closing" title="Closing">Closing</a></li>
+    <li><a data-tab="closing" title="Closing">Close</a></li>
   </ul>
 </nav>
 
@@ -69,7 +69,7 @@
 
   <!-- ============ INTRODUCTION ============ -->
   <section id="intro" class="tab-panel section-front">
-    <div class="running-head"><span class="eyebrow" style="margin:0;">Introduction</span><span class="meta">Front Matter · 01</span></div>
+    <div class="running-head"><span class="eyebrow" style="margin:0;">Introduction</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
     <div class="wrap" style="padding-top:36px;">
       <p class="lede">Poetry and photography, paired, to set the scene before the reporting begins.</p>
       <div class="grid2">
@@ -88,27 +88,29 @@
 
   <!-- ============ TOC ============ -->
   <section id="toc-front" class="tab-panel section-front">
-    <div class="wrap" style="padding-top:8px;">
+    <div class="running-head"><span class="eyebrow" style="margin:0;">Contents</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
+    <div class="wrap" style="padding-top:28px;">
       <div class="toc-wordmark">Contents</div>
-      <div class="meta" style="margin-bottom:10px;">Preface &amp; Table of Contents</div>
       <div class="toc-layout">
         <div class="toc-quotes">
           <p class="tq">"The Delta is more diverse, culturally rich, beautiful, impoverished, rural, vibrant, and complicated than I had imagined."</p>
           <p class="tq">"This is my home, too."</p>
           <p class="tq">"Heaven and earth so close, but still miles apart."</p>
+          <p class="tq">[Add another participant quote here.]</p>
+          <p class="tq">[Add another participant quote here.]</p>
         </div>
         <div class="toc-listing">
-          <div class="toc-list-item" onclick="showTab('directors-note')"><div class="tl-pg">Pg. 6</div><div><div class="tl-title">Director's Note</div><div class="tl-desc">Introducing the workshop, its origins, and this year's NEH session.</div></div></div>
-          <div class="toc-list-item" onclick="showTab('ch-mississippi')"><div class="tl-pg">Pg. 12</div><div><div class="tl-title">The Mighty Mississippi River</div><div class="tl-desc">A tale of power, poverty, and the river that built the Delta.</div></div></div>
-          <div class="toc-list-item" onclick="showTab('ch-education')"><div class="tl-pg">Pg. 20</div><div><div class="tl-title">The Invisible Line</div><div class="tl-desc">The Delta is home to migrants in addition to communities established by black and white migrations.</div></div></div>
-          <div class="toc-list-item" onclick="showTab('ch-immigrants')"><div class="tl-pg">Pg. 24</div><div><div class="tl-title">Being In Between</div><div class="tl-desc">Delta immigrant culture became a mix of origin culture and Southern tradition.</div></div></div>
-          <div class="toc-list-item" onclick="showTab('ch-blues')"><div class="tl-pg">Pg. 32</div><div><div class="tl-title">The Soul of the Delta</div><div class="tl-desc">Soul music and soul food contribute to the "soul" of the Delta.</div></div></div>
-          <div class="toc-list-item" onclick="showTab('ch-civilrights')"><div class="tl-pg">Pg. 40</div><div><div class="tl-title">Telling the Story of Emmett Till</div><div class="tl-desc">First-hand stories told with first-hand accounts. What does it mean to be a storyteller of history?</div></div></div>
-          <div class="toc-list-item" onclick="showTab('ch-healthcare')"><div class="tl-pg">Pg. 16</div><div><div class="tl-title">This is my home, too</div><div class="tl-desc">The Delta is home to migrants in addition to established black and white communities.</div></div></div>
-          <div class="toc-list-item" onclick="showTab('ch-faiths')"><div class="tl-pg">Pg. 28</div><div><div class="tl-title">Preachin' the Blues</div><div class="tl-desc">The blues has origins in gospel music as songs of resistance and spirituals.</div></div></div>
-          <div class="toc-list-item" onclick="showTab('ch-media')"><div class="tl-pg">Pg. 44</div><div><div class="tl-title">Civil Rights: A Living History</div><div class="tl-desc">Many heroes of the movement still live. Is history that far gone?</div></div></div>
-          <div class="toc-list-item" onclick="showTab('ch-commemoration')"><div class="tl-pg">Pg. 48</div><div><div class="tl-title">The Power of Commemoration</div><div class="tl-desc">What is the value of commemoration for the storytellers of history?</div></div></div>
-          <div class="toc-list-item" onclick="showTab('closing')"><div class="tl-pg">Pg. 52</div><div><div class="tl-title">Closing</div><div class="tl-desc">Words from the authors concluding the project — and bios of the team.</div></div></div>
+          <div class="toc-list-item" onclick="showTab('directors-note')"><div class="tl-pg">Front</div><div><div class="tl-title">Director's Note</div><div class="tl-desc">Introducing the workshop, its origins, and this year's NEH session.</div></div></div>
+          <div class="toc-list-item" onclick="showTab('ch-mississippi')"><div class="tl-pg">I</div><div><div class="tl-title">The Mighty Mississippi River</div><div class="tl-desc">A tale of power, poverty, and the river that built the Delta.</div></div></div>
+          <div class="toc-list-item" onclick="showTab('ch-education')"><div class="tl-pg">II</div><div><div class="tl-title">The Invisible Line</div><div class="tl-desc">The Delta is home to migrants in addition to communities established by black and white migrations.</div></div></div>
+          <div class="toc-list-item" onclick="showTab('ch-healthcare')"><div class="tl-pg">III</div><div><div class="tl-title">This is my home, too</div><div class="tl-desc">The Delta is home to migrants in addition to established black and white communities.</div></div></div>
+          <div class="toc-list-item" onclick="showTab('ch-immigrants')"><div class="tl-pg">IV</div><div><div class="tl-title">Being In Between</div><div class="tl-desc">Delta immigrant culture became a mix of origin culture and Southern tradition.</div></div></div>
+          <div class="toc-list-item" onclick="showTab('ch-faiths')"><div class="tl-pg">V</div><div><div class="tl-title">Preachin' the Blues</div><div class="tl-desc">The blues has origins in gospel music as songs of resistance and spirituals.</div></div></div>
+          <div class="toc-list-item" onclick="showTab('ch-blues')"><div class="tl-pg">VI</div><div><div class="tl-title">The Soul of the Delta</div><div class="tl-desc">Soul music and soul food contribute to the "soul" of the Delta.</div></div></div>
+          <div class="toc-list-item" onclick="showTab('ch-civilrights')"><div class="tl-pg">VII</div><div><div class="tl-title">Telling the Story of Emmett Till</div><div class="tl-desc">First-hand stories told with first-hand accounts. What does it mean to be a storyteller of history?</div></div></div>
+          <div class="toc-list-item" onclick="showTab('ch-media')"><div class="tl-pg">VIII</div><div><div class="tl-title">Civil Rights: A Living History</div><div class="tl-desc">Many heroes of the movement still live. Is history that far gone?</div></div></div>
+          <div class="toc-list-item" onclick="showTab('ch-commemoration')"><div class="tl-pg">IX</div><div><div class="tl-title">The Power of Commemoration</div><div class="tl-desc">What is the value of commemoration for the storytellers of history?</div></div></div>
+          <div class="toc-list-item" onclick="showTab('closing')"><div class="tl-pg">Close</div><div><div class="tl-title">Closing</div><div class="tl-desc">Words from the authors concluding the project — and bios of the team.</div></div></div>
         </div>
       </div>
     </div>
@@ -117,7 +119,7 @@
 
   <!-- ============ DIRECTOR'S NOTE ============ -->
   <section id="directors-note" class="tab-panel section-front">
-    <div class="running-head"><span class="eyebrow" style="margin:0;">Director's Note</span><span class="meta">Front Matter · 03</span></div>
+    <div class="running-head"><span class="eyebrow" style="margin:0;">Director's Note</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
     <div class="wrap" style="padding-top:36px;">
       <p class="lede">[A short letter from the workshop's director, framing why this issue exists and what changed since last year's — see "Welcome to the Delta" and "Preachin' the Blues" style openers in your prior issue for tone.]</p>
 
@@ -154,7 +156,7 @@
 
   <!-- ============ VOICES ============ -->
   <section id="voices" class="tab-panel section-front">
-    <div class="running-head"><span class="eyebrow" style="margin:0;">Voices</span><span class="meta">Front Matter · 04</span></div>
+    <div class="running-head"><span class="eyebrow" style="margin:0;">Voices</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
     <div class="wrap" style="padding-top:36px;">
       <p class="lede">A chorus of short lines from this year's participants, before the reporting begins.</p>
       <blockquote class="pull">[Participant quote — <span class="hl-bold">one to two sentences,</span> transcribed verbatim from a workshop session.]<cite>Participant, age / hometown</cite></blockquote>
@@ -166,34 +168,26 @@
 
   <!-- ============ FORUM ============ -->
   <section id="forum" class="tab-panel section-front">
-    <div class="running-head"><span class="eyebrow" style="margin:0;">Forum</span><span class="meta">Community Discussion</span></div>
+    <div class="running-head"><span class="eyebrow" style="margin:0;">Forum</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
     <div class="wrap" style="padding-top:36px;">
-      <p class="lede">Share thoughts about the Delta, post lingering questions, and leave feedback for the Delta Center — and read what others have said.</p>
-      <!-- GISCUS CONFIG: already connected to arielbaiye/delta-project's Discussions (General category) -->
-      <div id="giscus-embed">
-        <script src="https://giscus.app/client.js"
-          data-repo="arielbaiye/delta-project"
-          data-repo-id="R_kgDOTT4WDg"
-          data-category="General"
-          data-category-id="DIC_kwDOTT4WDs4DA6VO"
-          data-mapping="pathname"
-          data-strict="0"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="top"
-          data-theme="preferred_color_scheme"
-          data-lang="en"
-          crossorigin="anonymous"
-          async>
-        </script>
+      <p class="lede">Share thoughts about the Delta, post lingering questions, and leave feedback for the Delta Center — and read what others have said. No account needed — just type a name (or "Anonymous") and your comment.</p>
+      <!-- CUSDIS CONFIG: sign up free at cusdis.com, add this site to get your App ID, then replace REPLACE_ME_APP_ID below.
+           Comments are held for your approval by email before they appear publicly — no spam filter needed since there's no login. -->
+      <div id="cusdis_thread"
+        data-host="https://cusdis.com"
+        data-app-id="REPLACE_ME_APP_ID"
+        data-page-id="delta-issue-forum"
+        data-page-url="https://arielbaiye.github.io/delta-project/#forum"
+        data-page-title="The Delta Issue — Forum"
+        data-theme="light">
       </div>
-      <p class="body-p" style="margin-top:24px;"><a href="https://github.com/arielbaiye/delta-project/discussions" target="_blank" rel="noopener" style="color:var(--steel-azure);">Or open the discussion directly on GitHub →</a></p>
+      <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
     </div>
   </section>
 
   <!-- ============ CHAPTER I — MISSISSIPPI ============ -->
   <section id="ch-mississippi" class="tab-panel">
-    <div class="running-head"><span class="eyebrow" style="margin:0;">The Mighty Mississippi</span><span class="meta">Chapter I</span></div>
+    <div class="running-head"><span class="eyebrow" style="margin:0;">The Mighty Mississippi</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
     <div class="chapter-open">
       <div class="wrap">
         <div class="chapter-num">Chapter I</div>
@@ -226,6 +220,15 @@
         <p class="body-p">River access itself is unevenly distributed: much of the riverfront is privately owned via country clubs and hunt clubs that charge $500 to $3,000 per year, or $2 to $3 per day, to hunt land that once put enslaved and tenant labor to work without pay. [Continue: redlining, postwar lending patterns, and how the plantation-era land pattern still governs where schools, clinics, and grocery stores sit today.]</p>
         <blockquote class="pull">"When I see the Delta, I see <span class="hl-bold">my ancestors on these cotton rows, picking cotton. And I see my ancestors not being paid.</span>"<cite>Participant</cite></blockquote>
 
+        <h3 style="font-size:24px; color:var(--navy); margin:40px 0 14px;">The Sanctuary — faces of Mound Bayou</h3>
+        <p class="body-p">A sanctuary is a place where Black people could go to church, to a store, to school — you can't go to that: all of it was ours to go to, as much as it existed here. Founded in 1887, Mound Bayou was one of the first and largest all-Black towns in the U.S.</p>
+        <div class="portrait-grid">
+          <div class="portrait"><div class="photo-slot"><div class="ph-label">Portrait</div></div><div class="p-name">Name</div><div class="p-role">Resident, Mound Bayou</div></div>
+          <div class="portrait"><div class="photo-slot"><div class="ph-label">Portrait</div></div><div class="p-name">Name</div><div class="p-role">Resident, Mound Bayou</div></div>
+          <div class="portrait"><div class="photo-slot"><div class="ph-label">Portrait</div></div><div class="p-name">Name</div><div class="p-role">Resident, Mound Bayou</div></div>
+          <div class="portrait"><div class="photo-slot"><div class="ph-label">Portrait</div></div><div class="p-name">Name</div><div class="p-role">Resident, Mound Bayou</div></div>
+        </div>
+
         <h3 style="font-size:24px; color:var(--navy); margin:40px 0 14px;">The global economy and cotton crashes</h3>
         <p class="body-p">By the 1930s, Mississippi's cotton monoculture was already vulnerable to national and global price swings; mechanization after 1947 then eliminated most sharecropping jobs within two decades, driving the Great Migration out of the Delta. [Continue with modern context: today cotton ranks behind poultry and forestry among the state's leading agricultural sectors.]</p>
       </div>
@@ -235,7 +238,7 @@
 
   <!-- ============ CHAPTER II — EDUCATION / THE INVISIBLE LINE ============ -->
   <section id="ch-education" class="tab-panel">
-    <div class="running-head"><span class="eyebrow" style="margin:0;">The Invisible Line</span><span class="meta">Chapter II</span></div>
+    <div class="running-head"><span class="eyebrow" style="margin:0;">The Invisible Line</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
     <div class="chapter-open">
       <div class="wrap">
         <div class="chapter-num">Chapter II</div>
@@ -274,7 +277,7 @@
 
   <!-- ============ CHAPTER III — HEALTHCARE ============ -->
   <section id="ch-healthcare" class="tab-panel">
-    <div class="running-head"><span class="eyebrow" style="margin:0;">This Is My Home, Too</span><span class="meta">Chapter III</span></div>
+    <div class="running-head"><span class="eyebrow" style="margin:0;">This Is My Home, Too</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
     <div class="chapter-open">
       <div class="wrap">
         <div class="chapter-num">Chapter III</div>
@@ -305,7 +308,7 @@
 
   <!-- ============ CHAPTER IV — IMMIGRANTS / BEING IN BETWEEN ============ -->
   <section id="ch-immigrants" class="tab-panel">
-    <div class="running-head"><span class="eyebrow" style="margin:0;">Being In Between</span><span class="meta">Chapter IV</span></div>
+    <div class="running-head"><span class="eyebrow" style="margin:0;">Being In Between</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
     <div class="chapter-open">
       <div class="wrap">
         <div class="chapter-num">Chapter IV</div>
@@ -334,7 +337,7 @@
 
   <!-- ============ CHAPTER V — OTHER FAITHS ============ -->
   <section id="ch-faiths" class="tab-panel">
-    <div class="running-head"><span class="eyebrow" style="margin:0;">Preachin' the Blues</span><span class="meta">Chapter V</span></div>
+    <div class="running-head"><span class="eyebrow" style="margin:0;">Preachin' the Blues</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
     <div class="chapter-open">
       <div class="wrap">
         <div class="chapter-num">Chapter V</div>
@@ -364,7 +367,7 @@
 
   <!-- ============ CHAPTER VI — DELTA BLUES / SOUL OF THE DELTA ============ -->
   <section id="ch-blues" class="tab-panel">
-    <div class="running-head"><span class="eyebrow" style="margin:0;">The Soul of the Delta</span><span class="meta">Chapter VI</span></div>
+    <div class="running-head"><span class="eyebrow" style="margin:0;">The Soul of the Delta</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
     <div class="chapter-open">
       <div class="wrap">
         <div class="chapter-num">Chapter VI</div>
@@ -400,7 +403,7 @@
 
   <!-- ============ CHAPTER VII — CIVIL RIGHTS: A LIVING HISTORY ============ -->
   <section id="ch-civilrights" class="tab-panel">
-    <div class="running-head"><span class="eyebrow" style="margin:0;">Civil Rights: A Living History</span><span class="meta">Chapter VII</span></div>
+    <div class="running-head"><span class="eyebrow" style="margin:0;">Civil Rights: A Living History</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
     <div class="chapter-open">
       <div class="wrap">
         <div class="chapter-num">Chapter VII</div>
@@ -461,7 +464,7 @@
 
   <!-- ============ CHAPTER VIII — MEDIA ============ -->
   <section id="ch-media" class="tab-panel">
-    <div class="running-head"><span class="eyebrow" style="margin:0;">Delta Coverage in Media</span><span class="meta">Chapter VIII</span></div>
+    <div class="running-head"><span class="eyebrow" style="margin:0;">Delta Coverage in Media</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
     <div class="chapter-open">
       <div class="wrap">
         <div class="chapter-num">Chapter VIII</div>
@@ -488,7 +491,7 @@
 
   <!-- ============ CHAPTER IX — COMMEMORATION ============ -->
   <section id="ch-commemoration" class="tab-panel">
-    <div class="running-head"><span class="eyebrow" style="margin:0;">The Power of Commemoration</span><span class="meta">Chapter IX</span></div>
+    <div class="running-head"><span class="eyebrow" style="margin:0;">The Power of Commemoration</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
     <div class="chapter-open">
       <div class="wrap">
         <div class="chapter-num">Chapter IX</div>
@@ -529,26 +532,27 @@
 
   <!-- ============ CLOSING ============ -->
   <section id="closing" class="tab-panel section-front">
-    <div class="running-head"><span class="eyebrow" style="margin:0;">Closing</span><span class="meta">Back Matter</span></div>
+    <div class="running-head"><span class="eyebrow" style="margin:0;">Closing</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
     <div class="wrap" style="padding-top:36px;">
       <h3 style="font-family:'Playfair Display'; font-size:26px; color:var(--navy); margin-bottom:10px;">Why we do the workshop</h3>
       <p class="lede">[A closing statement — from the director or the group collectively — on the purpose of the workshop and this publication.]</p>
 
-      <h3 style="font-family:'Playfair Display'; font-size:26px; color:var(--navy); margin:44px 0 10px;">The Sanctuary — faces of Mound Bayou</h3>
-      <p class="body-p">A sanctuary is a place where Black people could go to church, to a store, to school — you can't go to that: all of it was ours to go to, as much as it existed here. Founded in 1887, Mound Bayou was one of the first and largest all-Black towns in the U.S.</p>
-      <div class="portrait-grid">
-        <div class="portrait"><div class="photo-slot"><div class="ph-label">Portrait</div></div><div class="p-name">Name</div><div class="p-role">Resident, Mound Bayou</div></div>
-        <div class="portrait"><div class="photo-slot"><div class="ph-label">Portrait</div></div><div class="p-name">Name</div><div class="p-role">Resident, Mound Bayou</div></div>
-        <div class="portrait"><div class="photo-slot"><div class="ph-label">Portrait</div></div><div class="p-name">Name</div><div class="p-role">Resident, Mound Bayou</div></div>
-        <div class="portrait"><div class="photo-slot"><div class="ph-label">Portrait</div></div><div class="p-name">Name</div><div class="p-role">Resident, Mound Bayou</div></div>
-      </div>
-
       <h3 style="font-family:'Playfair Display'; font-size:26px; color:var(--navy); margin:44px 0 10px;">Acknowledgements &amp; meet the team</h3>
+      <!-- HEADSHOTS: put each photo in the images/ folder (e.g. images/team-ariel.jpg), then
+           replace the matching photo-slot div below with: <img src="images/team-ariel.jpg" alt="Ariel Baiye"> -->
       <div class="team-grid">
-        <div class="team-card"><div class="name">Name</div>Role</div>
-        <div class="team-card"><div class="name">Name</div>Role</div>
-        <div class="team-card"><div class="name">Name</div>Role</div>
-        <div class="team-card"><div class="name">Name</div>Role</div>
+        <div class="team-card">
+          <div class="photo-slot" style="--ar:1/1; margin-bottom:10px;"><div class="ph-label">Headshot — Ariel</div></div>
+          <div class="name">Ariel Baiye</div>Role
+        </div>
+        <div class="team-card">
+          <div class="photo-slot" style="--ar:1/1; margin-bottom:10px;"><div class="ph-label">Headshot — Gabriela</div></div>
+          <div class="name">Gabriela La Rota</div>Role
+        </div>
+        <div class="team-card">
+          <div class="photo-slot" style="--ar:1/1; margin-bottom:10px;"><div class="ph-label">Headshot — Leila</div></div>
+          <div class="name">Leila</div>Role
+        </div>
       </div>
 
       <h3 style="font-family:'Playfair Display'; font-size:26px; color:var(--navy); margin:44px 0 10px;">Poetry, part two</h3>

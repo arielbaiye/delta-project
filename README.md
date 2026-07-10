@@ -63,9 +63,26 @@ At the top of `index.html`, inside `<div id="utility-bar">`, replace these place
 
 ## The Forum
 
-The Forum tab is wired to **GitHub Discussions** via [giscus](https://giscus.app) — free, no backend, comments live in your repo's Discussions tab (`General` category). This is already configured with this repo's real IDs, so it should work as soon as you push — no more setup needed on the code side.
+The Forum tab runs on **[Cusdis](https://cusdis.com)** — a free, lightweight comment widget. Unlike GitHub Discussions/giscus, **visitors don't need any account at all** to comment (just an optional name) — comments are held in a moderation queue and you approve them by email, which also means no login-wall and no spam problem. It supports real threaded replies, so people can respond to each other under a comment, not just post one-off messages.
 
-If you ever move this to a different repo, or want a different category, regenerate the config at [giscus.app](https://giscus.app) and swap the `data-repo-id` / `data-category-id` values in `index.html`, inside the `<section id="forum">` block.
+One-time setup:
+
+1. Go to [cusdis.com](https://cusdis.com) and create a free account.
+2. On your dashboard, click **Create New Website**, name it (e.g. "Delta Issue"), and enter your site's URL.
+3. Cusdis gives you an **App ID** (a short code). Copy it.
+4. In `index.html`, find `REPLACE_ME_APP_ID` (inside `<section id="forum">`) and replace it with your real App ID.
+5. New comments will email you for approval — click the "Quick Approve" link in that email, no login needed on your end either.
+
+## Team headshots
+
+In `index.html`, search for `HEADSHOTS`. Each team member currently has a dashed placeholder box. To add a real photo:
+
+1. Put the image in the `images/` folder (e.g. `images/team-ariel.jpg`).
+2. Replace that person's `<div class="photo-slot">...</div>` block with:
+   ```html
+   <img src="images/team-ariel.jpg" alt="Ariel Baiye" style="aspect-ratio:1; object-fit:cover; width:100%;">
+   ```
+3. Repeat for Gabriela and Leila. Also fill in each person's "Role" text next to their name.
 
 ## Color palette
 
