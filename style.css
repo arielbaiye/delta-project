@@ -137,14 +137,15 @@
   .running-head.bottom{border-bottom:none; border-top:1px solid var(--rule);}
 
   /* ---------- COVER (full-bleed photo) ---------- */
-  /* COVER PHOTO: put your image at images/cover.jpg (or change the path below).
+  /* COVER PHOTO: upload your image as a plain file to the repo root (same place as index.html) --
+     no folder needed. Name it cover.jpg (or change the filename below to match whatever you name it).
      The dark gradient stays layered on top so the white text stays readable —
      if your photo is already dark, you can lower these opacity values (the .15/.55/.75 numbers). */
   #cover{
     min-height:calc(100vh - var(--bar-h)); color:var(--paper-white);
     background:
       linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,.55) 78%, rgba(0,0,0,.75) 100%),
-      url('images/cover.jpg') center/cover no-repeat;
+      url('cover.jpg') center/cover no-repeat;
     background-color:#5a5346; /* shows briefly while the photo loads, or if the path is wrong */
   }
   #cover .cover-inner{min-height:calc(100vh - var(--bar-h)); display:flex; flex-direction:column; justify-content:flex-start; padding:40px 34px 32px;}

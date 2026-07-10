@@ -77,11 +77,12 @@ One-time setup:
 
 In `index.html`, search for `HEADSHOTS`. Each team member currently has a dashed placeholder box. To add a real photo:
 
-1. Put the image in the `images/` folder (e.g. `images/team-ariel.jpg`).
+1. Upload the image as a plain file to the repo — same place as `index.html` (Add file → Upload files, no folder needed).
 2. Replace that person's `<div class="photo-slot">...</div>` block with:
    ```html
-   <img src="images/team-ariel.jpg" alt="Ariel Baiye" style="aspect-ratio:1; object-fit:cover; width:100%;">
+   <img src="team-ariel.jpg" alt="Ariel Baiye" style="aspect-ratio:1; object-fit:cover; width:100%;">
    ```
+   (matching whatever you actually named the uploaded file)
 3. Repeat for Gabriela and Leila. Also fill in each person's "Role" text next to their name.
 
 ## Color palette
@@ -110,7 +111,7 @@ All the visible text lives directly in `index.html`, in plain readable sentences
 
 ## Cover photo
 
-In `style.css`, search for `/* COVER PHOTO`. Drop your image in the `images/` folder as `cover.jpg` (or update the filename in that CSS rule to match whatever you name it). A dark gradient stays layered on top of the photo so the white title text stays readable — if your photo is already quite dark, you can lower the `.15`/`.55`/`.75` opacity numbers right above it.
+In `style.css`, search for `/* COVER PHOTO`. Upload your image as a plain file to the repo root (same place as `index.html`, no folder needed) named `cover.jpg` — or update the filename in that CSS rule to match whatever you actually name it. A dark gradient stays layered on top of the photo so the white title text stays readable — if your photo is already quite dark, you can lower the `.15`/`.55`/`.75` opacity numbers right above it.
 
 ## What still needs to be done before publishing
 
