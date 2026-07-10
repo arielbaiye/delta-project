@@ -111,7 +111,7 @@ All the visible text lives directly in `index.html`, in plain readable sentences
 
 ## Cover photo
 
-In `style.css`, search for `/* COVER PHOTO`. Upload your image as a plain file to the repo root (same place as `index.html`, no folder needed) named `cover.jpg` — or update the filename in that CSS rule to match whatever you actually name it. A dark gradient stays layered on top of the photo so the white title text stays readable — if your photo is already quite dark, you can lower the `.15`/`.55`/`.75` opacity numbers right above it.
+In `style.css`, search for `/* COVER PHOTO`. It's currently set to use a file called `IMG_6058.JPEG`, uploaded to the repo root (same place as `index.html`, no folder needed). If you ever swap in a different photo, upload the new file the same way and update the filename in that CSS rule to match exactly (capitalization and extension included — file paths are case-sensitive). A dark gradient stays layered on top of the photo so the white title text stays readable — if your photo is already quite dark, you can lower the `.15`/`.55`/`.75` opacity numbers right above it.
 
 ## What still needs to be done before publishing
 
