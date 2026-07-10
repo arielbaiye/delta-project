@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Delta Issue — A Documentary Workshop Publication</title>
+<title>The Delta Center for Culture and Learning — Delta Issue</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -11,28 +11,41 @@
 </head>
 <body>
 
-<div id="builder-note">
-  <b>Prototype note —</b> Restyled to match your printed issue: cream stock, navy heads, hairline frames, "Pictured:" captions, and photographed marker/clipping placeholders. Swap dashed boxes for your own images and transcripts before publishing. <button onclick="document.getElementById('builder-note').style.display='none'">Dismiss</button>
+<div id="utility-bar">
+  <div class="ub-left">
+    <a class="ub-link ub-forum" onclick="showTab('forum')"><span class="ub-dot"></span>Forum</a>
+    <a class="ub-link" href="https://open.spotify.com/playlist/REPLACE_ME" target="_blank" rel="noopener">Spotify Playlist</a>
+    <a class="ub-link" href="https://forms.gle/REPLACE_ME" target="_blank" rel="noopener">Share Feedback</a>
+    <a class="ub-link" href="https://drive.google.com/drive/folders/REPLACE_ME" target="_blank" rel="noopener">Research &amp; Interviews</a>
+  </div>
+  <div class="ub-right">
+    <div class="ub-dropdown">
+      <button class="ub-link ub-dropdown-btn" onclick="toggleDropdown(event)">Editor Sheet ▾</button>
+      <div class="ub-dropdown-menu" id="editor-dropdown">
+        <a href="https://docs.google.com/spreadsheets/d/REPLACE_ME" target="_blank" rel="noopener">View Editor Google Sheet</a>
+      </div>
+    </div>
+  </div>
 </div>
 
 <nav id="spine">
   <div class="mark" onclick="showTab('cover')">DI</div>
   <ul id="spine-list">
-    <li><a data-tab="cover">Cvr</a></li>
-    <li><a data-tab="intro">In</a></li>
-    <li><a data-tab="toc-front">Toc</a></li>
-    <li><a data-tab="directors-note">Dn</a></li>
-    <li><a data-tab="voices">Vo</a></li>
-    <li><a data-tab="ch-mississippi">01</a></li>
-    <li><a data-tab="ch-education">02</a></li>
-    <li><a data-tab="ch-healthcare">03</a></li>
-    <li><a data-tab="ch-immigrants">04</a></li>
-    <li><a data-tab="ch-faiths">05</a></li>
-    <li><a data-tab="ch-blues">06</a></li>
-    <li><a data-tab="ch-civilrights">07</a></li>
-    <li><a data-tab="ch-media">08</a></li>
-    <li><a data-tab="ch-commemoration">09</a></li>
-    <li><a data-tab="closing">Cl</a></li>
+    <li><a data-tab="cover" title="Cover">Cover</a></li>
+    <li><a data-tab="intro" title="Introduction">Intro</a></li>
+    <li><a data-tab="toc-front" title="Table of Contents">TOC</a></li>
+    <li><a data-tab="directors-note" title="Director's Note">Note</a></li>
+    <li><a data-tab="voices" title="Voices">Voices</a></li>
+    <li><a data-tab="ch-mississippi" title="Chapter I — Mississippi">I</a></li>
+    <li><a data-tab="ch-education" title="Chapter II — Education">II</a></li>
+    <li><a data-tab="ch-healthcare" title="Chapter III — Healthcare">III</a></li>
+    <li><a data-tab="ch-immigrants" title="Chapter IV — Immigrants">IV</a></li>
+    <li><a data-tab="ch-faiths" title="Chapter V — Other Faiths">V</a></li>
+    <li><a data-tab="ch-blues" title="Chapter VI — Delta Blues">VI</a></li>
+    <li><a data-tab="ch-civilrights" title="Chapter VII — Civil Rights">VII</a></li>
+    <li><a data-tab="ch-media" title="Chapter VIII — Media Coverage">VIII</a></li>
+    <li><a data-tab="ch-commemoration" title="Chapter IX — Commemoration">IX</a></li>
+    <li><a data-tab="closing" title="Closing">Close</a></li>
   </ul>
 </nav>
 
@@ -42,8 +55,8 @@
   <section id="cover" class="tab-panel">
    <div class="cover-inner">
     <div class="cover-top">
-      <span>The Delta Issue</span>
-      <span>Vol. 04 — Documentary Workshop Publication</span>
+      <span>The Delta Center for Culture and Learning</span>
+      <span>Volume 2026 – NEH Funded</span>
     </div>
     <div class="cover-mid wrap" style="padding-left:0;padding-right:0;max-width:100%;">
       <span class="eyebrow">A field report from the Mississippi Delta</span>
@@ -51,8 +64,7 @@
       <p class="cover-dek">Nine chapters of reporting, portraiture, and oral history built with the people of the Delta — on flood and cotton, faith and isolation, the blues and the civil rights road, and who gets to tell the story of a place.</p>
     </div>
     <div class="cover-bottom wrap" style="padding-left:0;padding-right:0;max-width:100%;">
-      <span>Est. workshop, est. issue no. 4</span>
-      <span>~48 pages</span>
+      <span>Developed by Gabriela La Rota and Ariel Baiye for the Delta Center for Culture and Learning</span>
     </div>
    </div>
    <div class="tab-pager"></div>
@@ -111,26 +123,32 @@
     <div class="running-head"><span class="eyebrow" style="margin:0;">Director's Note</span><span class="meta">Front Matter · 03</span></div>
     <div class="wrap" style="padding-top:36px;">
       <p class="lede">[A short letter from the workshop's director, framing why this issue exists and what changed since last year's — see "Welcome to the Delta" and "Preachin' the Blues" style openers in your prior issue for tone.]</p>
-      <div class="grid2">
-        <div>
-          <div class="photo-slot" style="--ar:1/1;">
-            <div class="ph-label">Portrait — Mandy</div>
-          </div>
-          <div class="pictured"><b>Pictured:</b> Mandy, workshop office or field site.</div>
-          <div class="voice-slot">
-            <div class="who">Interview — Mandy</div>
-            <div class="prompt">[Transcribe: what drew Mandy to this work, what she hopes readers take from this issue.]</div>
-          </div>
+
+      <div class="director-block">
+        <h3 class="director-name">Mandy</h3>
+        <div class="grid3">
+          <div class="photo-slot" style="--ar:1/1;"><div class="ph-label">Portrait — Mandy</div></div>
+          <div class="photo-slot" style="--ar:1/1;"><div class="ph-label">Mandy, in the field</div></div>
+          <div class="photo-slot" style="--ar:1/1;"><div class="ph-label">Mandy with participants</div></div>
         </div>
-        <div>
-          <div class="photo-slot" style="--ar:1/1;">
-            <div class="ph-label">Portrait — Lee</div>
-          </div>
-          <div class="pictured"><b>Pictured:</b> Lee, workshop office or field site.</div>
-          <div class="voice-slot">
-            <div class="who">Interview — Lee</div>
-            <div class="prompt">[Transcribe: Lee's perspective on the workshop's growth and this year's participants.]</div>
-          </div>
+        <div class="pictured"><b>Pictured:</b> Mandy, workshop office or field site.</div>
+        <div class="voice-slot">
+          <div class="who">Interview — Mandy</div>
+          <div class="prompt">[Transcribe: what drew Mandy to this work, what she hopes readers take from this issue.]</div>
+        </div>
+      </div>
+
+      <div class="director-block">
+        <h3 class="director-name">Lee</h3>
+        <div class="grid3">
+          <div class="photo-slot" style="--ar:1/1;"><div class="ph-label">Portrait — Lee</div></div>
+          <div class="photo-slot" style="--ar:1/1;"><div class="ph-label">Lee, in the field</div></div>
+          <div class="photo-slot" style="--ar:1/1;"><div class="ph-label">Lee with participants</div></div>
+        </div>
+        <div class="pictured"><b>Pictured:</b> Lee, workshop office or field site.</div>
+        <div class="voice-slot">
+          <div class="who">Interview — Lee</div>
+          <div class="prompt">[Transcribe: Lee's perspective on the workshop's growth and this year's participants.]</div>
         </div>
       </div>
     </div>
@@ -147,6 +165,39 @@
       <blockquote class="pull">[Third participant quote.]<cite>Participant, age / hometown</cite></blockquote>
     </div>
     <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ FORUM ============ -->
+  <section id="forum" class="tab-panel section-front">
+    <div class="running-head"><span class="eyebrow" style="margin:0;">Forum</span><span class="meta">Community Discussion</span></div>
+    <div class="wrap" style="padding-top:36px;">
+      <p class="lede">Share thoughts about the Delta, post lingering questions, and leave feedback for the Delta Center — and read what others have said.</p>
+      <p class="body-p">This forum runs on GitHub Discussions (via giscus), so it needs a one-time setup before it will show anything:</p>
+      <ol class="body-p" style="padding-left:20px;">
+        <li>In your GitHub repo, go to <b>Settings → General → Features</b> and enable <b>Discussions</b>.</li>
+        <li>Visit <a href="https://giscus.app" target="_blank" rel="noopener" style="color:var(--steel-azure);">giscus.app</a>, enter your repo (<code>arielbaiye/delta-project</code>), and follow its setup steps.</li>
+        <li>Copy the <code>data-repo-id</code> and <code>data-category-id</code> values giscus generates and paste them into the <code>&lt;script&gt;</code> tag below, in <code>index.html</code>, right under this comment.</li>
+      </ol>
+      <!-- GISCUS CONFIG: replace data-repo-id and data-category-id with your own from giscus.app -->
+      <div id="giscus-embed">
+        <script src="https://giscus.app/client.js"
+          data-repo="arielbaiye/delta-project"
+          data-repo-id="REPLACE_ME"
+          data-category="General"
+          data-category-id="REPLACE_ME"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="en"
+          crossorigin="anonymous"
+          async>
+        </script>
+      </div>
+      <p class="body-p" style="margin-top:24px;"><a href="https://github.com/arielbaiye/delta-project/discussions" target="_blank" rel="noopener" style="color:var(--steel-azure);">Or open the discussion directly on GitHub →</a></p>
+    </div>
   </section>
 
   <!-- ============ CHAPTER I — MISSISSIPPI ============ -->
@@ -174,7 +225,7 @@
 
         <div class="bar-chart">
           <div class="bar-row"><div class="b-label">Poverty, MS</div><div class="bar-track"><div class="bar-fill" style="width:65%;"></div></div><div class="b-val">17.8%</div></div>
-          <div class="bar-row"><div class="b-label">Delta counties</div><div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--red);"></div></div><div class="b-val">30–40%</div></div>
+          <div class="bar-row"><div class="b-label">Delta counties</div><div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--school-bus-yellow);"></div></div><div class="b-val">30–40%</div></div>
           <div class="bar-row"><div class="b-label">Cotton, 1930</div><div class="bar-track"><div class="bar-fill" style="width:100%;"></div></div><div class="b-val">4.16M ac</div></div>
           <div class="bar-row"><div class="b-label">Cotton, 2023</div><div class="bar-track"><div class="bar-fill" style="width:9%;"></div></div><div class="b-val">395K ac</div></div>
           <div class="bar-source">Sources: U.S. Census / USAFacts 2024; BLS county data 2022–23; Mississippi Encyclopedia; USDA / cottongins.org 2023</div>
@@ -216,7 +267,7 @@
           <div class="framed-title" style="font-size:19px;">Families Below Poverty Level by Race, Delta Counties</div>
           <div class="framed-sub" style="margin-bottom:16px;">[Rebuild from current Census/ACS data by county — Bolivar, Coahoma, Holmes, Humphreys, Issaquena, Leflore, Quitman, Sharkey, Sunflower, Tallahatchie, Tunica, Washington, Yazoo. Your prior chart used 1990 Census data; refresh with the latest ACS release.]</div>
           <div class="bar-row"><div class="b-label">Black families</div><div class="bar-track"><div class="bar-fill" style="width:70%;"></div></div><div class="b-val">[XX%]</div></div>
-          <div class="bar-row"><div class="b-label">White families</div><div class="bar-track"><div class="bar-fill" style="width:18%; background:var(--red);"></div></div><div class="b-val">[XX%]</div></div>
+          <div class="bar-row"><div class="b-label">White families</div><div class="bar-track"><div class="bar-fill" style="width:18%; background:var(--school-bus-yellow);"></div></div><div class="b-val">[XX%]</div></div>
           <div class="bar-source">Source: [U.S. Census Bureau, ACS — update citation with current release]</div>
         </div>
 
@@ -515,8 +566,7 @@
 
     <div class="back-cover">
       <div class="wrap">
-        <span class="eyebrow" style="color:#e0a97e;">Back Cover</span>
-        <h3 style="margin-top:14px;">Praise From Participants</h3>
+        <h3>Praise From Participants</h3>
         <p class="praise">[Closing participant quote — what the workshop meant to them.]<cite>Participant</cite></p>
         <p class="praise">[Second closing participant quote.]<cite>Participant</cite></p>
       </div>

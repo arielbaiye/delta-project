@@ -24,10 +24,14 @@ const ORDER = ['cover','intro','toc-front','directors-note','voices',
     });
   }
 
+  // routes that exist outside the main chapter flow (e.g. linked only from the utility bar)
+  const EXTRA_ROUTES = ['forum'];
+
   function showTab(id){
-    if(!ORDER.includes(id)) id = 'cover';
+    if(!ORDER.includes(id) && !EXTRA_ROUTES.includes(id)) id = 'cover';
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === id));
     document.querySelectorAll('#spine-list a').forEach(a => a.classList.toggle('active', a.dataset.tab === id));
+    closeDropdowns();
     try{ history.replaceState(null, '', '#' + id); }catch(e){}
     try{
       window.scrollTo(0,0);
@@ -40,6 +44,17 @@ const ORDER = ['cover','intro','toc-front','directors-note','voices',
     a.addEventListener('click', () => showTab(a.dataset.tab));
   });
 
+  // ---------- utility bar: Editor Sheet dropdown ----------
+  function toggleDropdown(evt){
+    evt.stopPropagation();
+    const menu = document.getElementById('editor-dropdown');
+    menu.classList.toggle('open');
+  }
+  function closeDropdowns(){
+    document.querySelectorAll('.ub-dropdown-menu').forEach(m => m.classList.remove('open'));
+  }
+  document.addEventListener('click', closeDropdowns);
+
   buildPagers();
   const startId = (location.hash || '').replace('#','');
-  showTab(ORDER.includes(startId) ? startId : 'cover');
+  showTab((ORDER.includes(startId) || EXTRA_ROUTES.includes(startId)) ? startId : 'cover');
