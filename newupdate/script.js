@@ -30,7 +30,11 @@ const ORDER = ['cover','intro','toc-front','directors-note','voices',
   function showTab(id){
     if(!ORDER.includes(id) && !EXTRA_ROUTES.includes(id)) id = 'cover';
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === id));
-    document.querySelectorAll('#spine-list a').forEach(a => a.classList.toggle('active', a.dataset.tab === id));
+    document.querySelectorAll('#spine-list a').forEach(a => a.classList.toggle('active', a.dataset.tab === id && !a.dataset.target));
+    document.querySelectorAll('#spine-list > li').forEach(li => {
+      const topLink = li.querySelector(':scope > a');
+      li.classList.toggle('expanded', !!topLink && topLink.dataset.tab === id);
+    });
     closeDropdowns();
     try{ history.replaceState(null, '', '#' + id); }catch(e){}
     try{
@@ -40,8 +44,24 @@ const ORDER = ['cover','intro','toc-front','directors-note','voices',
     }
   }
 
+  function jumpToSub(tabId, targetId){
+    showTab(tabId);
+    document.querySelectorAll('.spine-sub a').forEach(a => a.classList.toggle('sub-active', a.dataset.target === targetId));
+    const el = document.getElementById(targetId);
+    if(el){
+      // let the tab-panel finish becoming visible before measuring scroll position
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        try{ el.scrollIntoView({behavior:'smooth', block:'start'}); }
+        catch(e){ try{ el.scrollIntoView(); }catch(e2){} }
+      }));
+    }
+  }
+
   document.querySelectorAll('#spine-list a').forEach(a => {
-    a.addEventListener('click', () => showTab(a.dataset.tab));
+    a.addEventListener('click', () => {
+      if(a.dataset.target){ jumpToSub(a.dataset.tab, a.dataset.target); }
+      else{ showTab(a.dataset.tab); }
+    });
   });
 
   // ---------- utility bar: Editor Sheet dropdown ----------
