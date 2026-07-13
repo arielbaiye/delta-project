@@ -159,16 +159,15 @@
   .cover-dots{position:absolute; z-index:3; bottom:22px; left:50%; transform:translateX(-50%); display:flex; gap:9px;}
   .cover-dot{width:8px; height:8px; border-radius:50%; background:rgba(251,248,240,0.4); cursor:pointer; border:none; padding:0; transition:background .2s;}
   .cover-dot.active{background:var(--paper-white);}
-  #cover .cover-inner{position:relative; z-index:2; min-height:calc(100vh - var(--bar-h)); display:flex; flex-direction:column; justify-content:flex-start; padding:40px 34px 46px;}
-  .cover-top{display:flex; justify-content:space-between; align-items:flex-start; font-family:'Playfair Display'; font-weight:700; font-size:15px; color:var(--paper-white);}
-  .cover-mid{margin:48px 0 auto; padding:0;}
+  #cover .cover-inner{position:relative; z-index:2; min-height:calc(100vh - var(--bar-h)); display:flex; flex-direction:column; justify-content:flex-start; padding:40px 34px 32px;}
+  .cover-top{display:flex; justify-content:space-between; align-items:flex-start; font-family:'Inter'; font-weight:600; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:rgba(251,248,240,0.8);}
+  .cover-mid{margin:64px 0 auto; padding:0;}
   .cover-mid .eyebrow{color:#f0d9b5; margin-bottom:14px; display:block;}
-  .cover-title{font-family:'Playfair Display'; font-size:clamp(42px, 8vw, 92px); font-weight:700; letter-spacing:-0.01em; line-height:1.05; color:var(--paper-white);}
+  .cover-title{font-family:'Playfair Display'; font-size:clamp(48px, 9.5vw, 108px); font-weight:400; letter-spacing:-0.01em; color:var(--paper-white);}
   .cover-title .hl-italic{font-style:italic; font-weight:400;}
   .cover-title .hl-bold{font-weight:800;}
-  .cover-subtitle{font-family:'Source Serif 4'; font-weight:400; font-size:clamp(22px,3.4vw,34px); max-width:600px; margin-top:6px; color:rgba(251,248,240,0.92);}
   .cover-dek{font-family:'Source Serif 4'; font-style:italic; font-size:19px; max-width:520px; margin-top:18px; color:rgba(251,248,240,0.88);}
-  .cover-bottom{font-family:'Playfair Display'; font-weight:700; font-size:13px; color:rgba(251,248,240,0.85); margin-top:48px; max-width:640px;}
+  .cover-bottom{display:flex; justify-content:space-between; align-items:flex-end; font-family:'Inter'; font-weight:500; font-size:12px; color:rgba(251,248,240,0.7); margin-top:48px;}
 
   /* photo / interview placeholders */
   .photo-slot{
