@@ -1,13 +1,13 @@
 const ORDER = ['cover','intro','toc-front','directors-note','voices',
     'ch-mississippi','ch-education','ch-healthcare','ch-immigrants','ch-faiths',
-    'ch-blues','ch-civilrights','ch-media','ch-commemoration','closing'];
+    'ch-blues','ch-emmetttill','ch-civilrights','ch-media','ch-commemoration','closing'];
 
   const LABELS = {
     'cover':'Cover','intro':'Introduction','toc-front':'Contents','directors-note':"Director's Note",
     'voices':'Voices','ch-mississippi':'I · Mississippi','ch-education':'II · Education',
     'ch-healthcare':'III · Healthcare','ch-immigrants':'IV · Immigrants','ch-faiths':'V · Other Faiths',
-    'ch-blues':'VI · Delta Blues','ch-civilrights':'VII · Civil Rights','ch-media':'VIII · Media Coverage',
-    'ch-commemoration':'IX · Commemoration','closing':'Closing'
+    'ch-blues':'VI · Delta Blues','ch-emmetttill':'VII · Emmett Till','ch-civilrights':'VIII · Civil Rights',
+    'ch-media':'IX · Media Coverage','ch-commemoration':'X · Commemoration','closing':'Closing'
   };
 
   function buildPagers(){
