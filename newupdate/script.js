@@ -1,0 +1,99 @@
+const ORDER = ['cover','intro','toc-front','directors-note','voices',
+    'ch-mississippi','ch-education','ch-healthcare','ch-immigrants','ch-faiths',
+    'ch-blues','ch-civilrights','ch-media','ch-commemoration','closing'];
+
+  const LABELS = {
+    'cover':'Cover','intro':'Introduction','toc-front':'Contents','directors-note':"Director's Note",
+    'voices':'Voices','ch-mississippi':'I · Mississippi','ch-education':'II · Education',
+    'ch-healthcare':'III · Healthcare','ch-immigrants':'IV · Immigrants','ch-faiths':'V · Other Faiths',
+    'ch-blues':'VI · Delta Blues','ch-civilrights':'VII · Civil Rights','ch-media':'VIII · Media Coverage',
+    'ch-commemoration':'IX · Commemoration','closing':'Closing'
+  };
+
+  function buildPagers(){
+    ORDER.forEach((id, i) => {
+      const panel = document.getElementById(id);
+      const pager = panel.querySelector('.tab-pager');
+      if(!pager) return;
+      const prev = i > 0 ? ORDER[i-1] : null;
+      const next = i < ORDER.length-1 ? ORDER[i+1] : null;
+      pager.innerHTML = `
+        ${prev ? `<a class="p-prev" onclick="showTab('${prev}')"><span>&larr;</span><span><small>Previous</small>${LABELS[prev]}</span></a>` : '<span></span>'}
+        ${next ? `<a class="p-next" onclick="showTab('${next}')"><span><small>Next</small>${LABELS[next]}</span><span>&rarr;</span></a>` : '<span></span>'}
+      `;
+    });
+  }
+
+  // routes that exist outside the main chapter flow (e.g. linked only from the utility bar)
+  const EXTRA_ROUTES = ['forum'];
+
+  function showTab(id){
+    if(!ORDER.includes(id) && !EXTRA_ROUTES.includes(id)) id = 'cover';
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === id));
+    document.querySelectorAll('#spine-list a').forEach(a => a.classList.toggle('active', a.dataset.tab === id));
+    closeDropdowns();
+    try{ history.replaceState(null, '', '#' + id); }catch(e){}
+    try{
+      window.scrollTo(0,0);
+    }catch(e){
+      try{ document.documentElement.scrollTop = 0; document.body.scrollTop = 0; }catch(e2){}
+    }
+  }
+
+  document.querySelectorAll('#spine-list a').forEach(a => {
+    a.addEventListener('click', () => showTab(a.dataset.tab));
+  });
+
+  // ---------- utility bar: Editor Sheet dropdown ----------
+  function toggleDropdown(evt){
+    evt.stopPropagation();
+    const menu = document.getElementById('editor-dropdown');
+    menu.classList.toggle('open');
+  }
+  function closeDropdowns(){
+    document.querySelectorAll('.ub-dropdown-menu').forEach(m => m.classList.remove('open'));
+  }
+  document.addEventListener('click', closeDropdowns);
+
+  buildPagers();
+  const startId = (location.hash || '').replace('#','');
+  showTab((ORDER.includes(startId) || EXTRA_ROUTES.includes(startId)) ? startId : 'cover');
+
+  // ---------- cover carousel ----------
+  (function initCoverCarousel(){
+    const carousel = document.getElementById('cover-carousel');
+    const dotsWrap = document.getElementById('cover-dots');
+    if(!carousel || !dotsWrap) return;
+    const slides = Array.from(carousel.querySelectorAll('.cover-slide'));
+    if(slides.length < 2) return; // nothing to rotate
+
+    let current = slides.findIndex(s => s.classList.contains('active'));
+    if(current < 0) current = 0;
+    let timer = null;
+    const INTERVAL = 5500;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'cover-dot' + (i === current ? ' active' : '');
+      dot.setAttribute('aria-label', 'Show cover photo ' + (i+1));
+      dot.addEventListener('click', () => { goTo(i); restart(); });
+      dotsWrap.appendChild(dot);
+    });
+
+    function goTo(i){
+      slides[current].classList.remove('active');
+      dotsWrap.children[current].classList.remove('active');
+      current = i;
+      slides[current].classList.add('active');
+      dotsWrap.children[current].classList.add('active');
+    }
+    function next(){ goTo((current + 1) % slides.length); }
+    function start(){ timer = setInterval(next, INTERVAL); }
+    function stop(){ if(timer) clearInterval(timer); }
+    function restart(){ stop(); start(); }
+
+    start();
+    const coverSection = document.getElementById('cover');
+    coverSection.addEventListener('mouseenter', stop);
+    coverSection.addEventListener('mouseleave', start);
+  })();

@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Delta Center for Culture and Learning — Delta Issue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="utility-bar">
+  <span class="ub-tag">Quick Links</span>
+  <a class="ub-link ub-forum" onclick="showTab('forum')"><span class="ub-dot"></span>Forum</a>
+  <a class="ub-link" href="https://open.spotify.com/playlist/6NhfGKLC6Xp1E72k2JzBjh?si=ULI50h9TSjuNsazALEF53g" target="_blank" rel="noopener">Spotify Playlist</a>
+  <a class="ub-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdi079kkEh_SqEe2CEZ43gurtfbxNzGVz-3DhPPpC2FtzV7uQ/viewform?usp=dialog" target="_blank" rel="noopener">Share Feedback</a>
+  <a class="ub-link" href="https://drive.google.com/drive/folders/1-0xJCeeuGb4RIqsmR_c7o-OCWT8lrQpI?usp=sharing" target="_blank" rel="noopener">Research &amp; Interviews</a>
+  <div class="ub-dropdown">
+    <button class="ub-link ub-dropdown-btn" onclick="toggleDropdown(event)">Editor Sheet ▾</button>
+    <div class="ub-dropdown-menu" id="editor-dropdown">
+      <a href="https://docs.google.com/spreadsheets/d/1Xf6y4uyLqFO4zrjT4_mNOWg7-rJALG3hPVKj_UsiA2A/edit?usp=sharing" target="_blank" rel="noopener">View Editor Google Sheet</a>
+    </div>
+  </div>
+</div>
+
+<nav id="spine">
+  <div class="mark" onclick="showTab('cover')" title="Home — back to cover">DC</div>
+  <ul id="spine-list">
+    <li><a data-tab="cover" title="Cover">Cover</a></li>
+    <li><a data-tab="intro" title="Introduction">Intro</a></li>
+    <li><a data-tab="toc-front" title="Table of Contents">Contents</a></li>
+    <li><a data-tab="directors-note" title="Director's Note">Letter</a></li>
+    <li><a data-tab="voices" title="Voices">Voices</a></li>
+    <li><a data-tab="ch-mississippi" title="Chapter I — Mississippi">I</a></li>
+    <li><a data-tab="ch-education" title="Chapter II — Education">II</a></li>
+    <li><a data-tab="ch-healthcare" title="Chapter III — Healthcare">III</a></li>
+    <li><a data-tab="ch-immigrants" title="Chapter IV — Immigrants">IV</a></li>
+    <li><a data-tab="ch-faiths" title="Chapter V — Other Faiths">V</a></li>
+    <li><a data-tab="ch-blues" title="Chapter VI — Delta Blues">VI</a></li>
+    <li><a data-tab="ch-civilrights" title="Chapter VII — Civil Rights">VII</a></li>
+    <li><a data-tab="ch-media" title="Chapter VIII — Media Coverage">VIII</a></li>
+    <li><a data-tab="ch-commemoration" title="Chapter IX — Commemoration">IX</a></li>
+    <li><a data-tab="closing" title="Closing">Close</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- ============ COVER ============ -->
+  <section id="cover" class="tab-panel">
+   <div class="cover-carousel" id="cover-carousel">
+     <div class="cover-slide active" style="background-image:url('IMG_6058.JPEG');"></div>
+     <div class="cover-slide" style="background-image:url('cover2.jpg');"></div>
+     <div class="cover-slide" style="background-image:url('cover3.jpg');"></div>
+   </div>
+   <div class="cover-overlay"></div>
+   <div class="cover-inner">
+    <div class="cover-top">
+      <span>June and July 2026</span>
+    </div>
+    <div class="cover-mid wrap" style="padding-left:0;padding-right:0;max-width:100%;">
+      <h1 class="cover-title">The Most Southern Place on Earth</h1>
+      <p class="cover-subtitle">Stories of the Delta</p>
+    </div>
+    <div class="cover-bottom wrap" style="padding-left:0;padding-right:0;max-width:100%;">
+      <span>A project funded by the National Endowment for the Humanities and produced by the Delta Center for Culture and Learning.</span>
+    </div>
+   </div>
+   <div class="cover-dots" id="cover-dots"></div>
+   <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ INTRODUCTION ============ -->
+  <section id="intro" class="tab-panel section-front">
+    <div class="running-head"><span class="eyebrow" style="margin:0;">Introduction</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
+    <div class="wrap" style="padding-top:36px;">
+      <p class="lede">Poetry and photography, paired, to set the scene before the reporting begins.</p>
+      <div class="grid2">
+        <div class="photo-slot" style="--ar:4/5;">
+          <div class="ph-label">Opening spread — image</div>
+          <div class="ph-suggest">A road photo at dusk, big sky and clouds — the tone your own intro spread used. Wide field, levee line, or a lone figure against sky all work.</div>
+        </div>
+        <div style="padding:12px 0;">
+          <h3 style="font-family:'Playfair Display'; font-size:22px; color:var(--navy); margin-bottom:16px;">I, Too</h3>
+          <p class="body-p" style="font-style:italic; margin-top:0;">[Reserve this page for an original poem by a workshop participant — 8 to 16 lines. If you'd like to open with "I, Too" by Langston Hughes again, secure reprint permission first, since it's still under copyright; otherwise credit and link to it rather than reprinting the full text.]</p>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ TOC ============ -->
+  <section id="toc-front" class="tab-panel section-front">
+    <div class="running-head"><span class="eyebrow" style="margin:0;">Contents</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
+    <div class="wrap" style="padding-top:28px;">
+      <div class="toc-wordmark">Contents</div>
+      <div class="toc-layout">
+        <div class="toc-quotes">
+          <p class="tq">"The Delta is more diverse, culturally rich, beautiful, impoverished, rural, vibrant, and complicated than I had imagined."</p>
+          <p class="tq">"This is my home, too."</p>
+          <p class="tq">"Heaven and earth so close, but still miles apart."</p>
+          <p class="tq">[Add another participant quote here.]</p>
+          <p class="tq">[Add another participant quote here.]</p>
+        </div>
+        <div class="toc-listing">
+          <div class="toc-list-item" onclick="showTab('directors-note')"><div class="tl-pg">Front</div><div><div class="tl-title">Director's Note</div><div class="tl-desc">Introducing the workshop, its origins, and this year's NEH session.</div></div></div>
+          <div class="toc-list-item" onclick="showTab('ch-mississippi')"><div class="tl-pg">I</div><div><div class="tl-title">The Mighty Mississippi River</div><div class="tl-desc">A tale of power, poverty, and the river that built the Delta.</div></div></div>
+          <div class="toc-list-item" onclick="showTab('ch-education')"><div class="tl-pg">II</div><div><div class="tl-title">The Invisible Line</div><div class="tl-desc">The Delta is home to migrants in addition to communities established by black and white migrations.</div></div></div>
+          <div class="toc-list-item" onclick="showTab('ch-healthcare')"><div class="tl-pg">III</div><div><div class="tl-title">This is my home, too</div><div class="tl-desc">The Delta is home to migrants in addition to established black and white communities.</div></div></div>
+          <div class="toc-list-item" onclick="showTab('ch-immigrants')"><div class="tl-pg">IV</div><div><div class="tl-title">Being In Between</div><div class="tl-desc">Delta immigrant culture became a mix of origin culture and Southern tradition.</div></div></div>
+          <div class="toc-list-item" onclick="showTab('ch-faiths')"><div class="tl-pg">V</div><div><div class="tl-title">Preachin' the Blues</div><div class="tl-desc">The blues has origins in gospel music as songs of resistance and spirituals.</div></div></div>
+          <div class="toc-list-item" onclick="showTab('ch-blues')"><div class="tl-pg">VI</div><div><div class="tl-title">The Soul of the Delta</div><div class="tl-desc">Soul music and soul food contribute to the "soul" of the Delta.</div></div></div>
+          <div class="toc-list-item" onclick="showTab('ch-civilrights')"><div class="tl-pg">VII</div><div><div class="tl-title">Telling the Story of Emmett Till</div><div class="tl-desc">First-hand stories told with first-hand accounts. What does it mean to be a storyteller of history?</div></div></div>
+          <div class="toc-list-item" onclick="showTab('ch-media')"><div class="tl-pg">VIII</div><div><div class="tl-title">Civil Rights: A Living History</div><div class="tl-desc">Many heroes of the movement still live. Is history that far gone?</div></div></div>
+          <div class="toc-list-item" onclick="showTab('ch-commemoration')"><div class="tl-pg">IX</div><div><div class="tl-title">The Power of Commemoration</div><div class="tl-desc">What is the value of commemoration for the storytellers of history?</div></div></div>
+          <div class="toc-list-item" onclick="showTab('closing')"><div class="tl-pg">Close</div><div><div class="tl-title">Closing</div><div class="tl-desc">Words from the authors concluding the project — and bios of the team.</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ DIRECTOR'S NOTE ============ -->
+  <section id="directors-note" class="tab-panel section-front">
+    <div class="running-head"><span class="eyebrow" style="margin:0;">Director's Note</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
+    <div class="wrap" style="padding-top:36px;">
+      <p class="lede">[A short letter from the workshop's director, framing why this issue exists and what changed since last year's — see "Welcome to the Delta" and "Preachin' the Blues" style openers in your prior issue for tone.]</p>
+
+      <div class="director-block">
+        <h3 class="director-name">Mandy</h3>
+        <div class="grid3">
+          <div class="photo-slot" style="--ar:1/1;"><div class="ph-label">Portrait — Mandy</div></div>
+          <div class="photo-slot" style="--ar:1/1;"><div class="ph-label">Mandy, in the field</div></div>
+          <div class="photo-slot" style="--ar:1/1;"><div class="ph-label">Mandy with participants</div></div>
+        </div>
+        <div class="pictured"><b>Pictured:</b> Mandy, workshop office or field site.</div>
+        <div class="voice-slot">
+          <div class="who">Interview — Mandy</div>
+          <div class="prompt">[Transcribe: what drew Mandy to this work, what she hopes readers take from this issue.]</div>
+        </div>
+      </div>
+
+      <div class="director-block">
+        <h3 class="director-name">Lee</h3>
+        <div class="grid3">
+          <div class="photo-slot" style="--ar:1/1;"><div class="ph-label">Portrait — Lee</div></div>
+          <div class="photo-slot" style="--ar:1/1;"><div class="ph-label">Lee, in the field</div></div>
+          <div class="photo-slot" style="--ar:1/1;"><div class="ph-label">Lee with participants</div></div>
+        </div>
+        <div class="pictured"><b>Pictured:</b> Lee, workshop office or field site.</div>
+        <div class="voice-slot">
+          <div class="who">Interview — Lee</div>
+          <div class="prompt">[Transcribe: Lee's perspective on the workshop's growth and this year's participants.]</div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ VOICES ============ -->
+  <section id="voices" class="tab-panel section-front">
+    <div class="running-head"><span class="eyebrow" style="margin:0;">Voices</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
+    <div class="wrap" style="padding-top:36px;">
+      <p class="lede">A chorus of short lines from this year's participants, before the reporting begins.</p>
+      <blockquote class="pull">[Participant quote — <span class="hl-bold">one to two sentences,</span> transcribed verbatim from a workshop session.]<cite>Participant, age / hometown</cite></blockquote>
+      <blockquote class="pull">[Second participant quote.]<cite>Participant, age / hometown</cite></blockquote>
+      <blockquote class="pull">[Third participant quote.]<cite>Participant, age / hometown</cite></blockquote>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ FORUM ============ -->
+  <section id="forum" class="tab-panel section-front">
+    <div class="running-head"><span class="eyebrow" style="margin:0;">Forum</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
+    <div class="wrap" style="padding-top:36px;">
+      <p class="lede">Share thoughts about the Delta, post lingering questions, and leave feedback for the Delta Center — and read what others have said. No account needed — just type a name (or "Anonymous") and your comment.</p>
+      <!-- CUSDIS CONFIG: connected to your "Delta Issue" Cusdis project -->
+      <div id="cusdis_thread"
+        data-host="https://cusdis.com"
+        data-app-id="6c381a1c-d048-4cab-a105-7f0f362482de"
+        data-page-id="delta-issue-forum"
+        data-page-url="https://arielbaiye.github.io/delta-project/#forum"
+        data-page-title="The Delta Issue — Forum"
+        data-theme="light">
+      </div>
+      <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER I — MISSISSIPPI ============ -->
+  <section id="ch-mississippi" class="tab-panel">
+    <div class="running-head"><span class="eyebrow" style="margin:0;">The Mighty Mississippi</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
+    <div class="chapter-open">
+      <div class="wrap">
+        <div class="chapter-num">Chapter I</div>
+        <h2>Mississippi</h2>
+        <p class="chapter-dek">The flood that made the land, the crop that ran the economy, and the lines — drawn by rivers and by lenders — that still shape where people live.</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="wrap">
+        <div class="grid2">
+          <div class="photo-slot" style="--ar:4/3;"><div class="ph-label">River / floodplain photo</div></div>
+          <div class="photo-slot" style="--ar:4/3;"><div class="ph-label">Participant at the river's edge</div></div>
+        </div>
+        <div class="pictured"><b>Pictured:</b> Participants looking out over the river, some dipping their toes into the Mississippi.</div>
+
+        <h2 class="claim" style="margin-top:40px;">Heaven and earth so close, <span class="hl-italic">but still miles apart.</span></h2>
+        <p class="meta" style="margin-bottom:10px;">— High School English Teacher, Participant</p>
+
+        <p class="body-p">The Delta is not a delta in the geological sense — it's a floodplain, built up over centuries by the Mississippi River's habit of overflowing and depositing rich alluvial soil. The fields of corn in perfect rows often relegated to housing on the low flood plains were more than watering devices — they were structural to the region's economy, as a result of enslaved peoples' labor, as it built up over 1927. [Continue: how the 1927 flood's destruction did not subside affected African Americans disproportionately, "more than half a million were black," of the 640,000 people displaced.]</p>
+
+        <div class="bar-chart">
+          <div class="bar-row"><div class="b-label">Poverty, MS</div><div class="bar-track"><div class="bar-fill" style="width:65%;"></div></div><div class="b-val">17.8%</div></div>
+          <div class="bar-row"><div class="b-label">Delta counties</div><div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--school-bus-yellow);"></div></div><div class="b-val">30–40%</div></div>
+          <div class="bar-row"><div class="b-label">Cotton, 1930</div><div class="bar-track"><div class="bar-fill" style="width:100%;"></div></div><div class="b-val">4.16M ac</div></div>
+          <div class="bar-row"><div class="b-label">Cotton, 2023</div><div class="bar-track"><div class="bar-fill" style="width:9%;"></div></div><div class="b-val">395K ac</div></div>
+          <div class="bar-source">Sources: U.S. Census / USAFacts 2024; BLS county data 2022–23; Mississippi Encyclopedia; USDA / cottongins.org 2023</div>
+        </div>
+
+        <h3 style="font-size:24px; color:var(--navy); margin:40px 0 14px;">Cultural geography</h3>
+        <p class="body-p">River access itself is unevenly distributed: much of the riverfront is privately owned via country clubs and hunt clubs that charge $500 to $3,000 per year, or $2 to $3 per day, to hunt land that once put enslaved and tenant labor to work without pay. [Continue: redlining, postwar lending patterns, and how the plantation-era land pattern still governs where schools, clinics, and grocery stores sit today.]</p>
+        <blockquote class="pull">"When I see the Delta, I see <span class="hl-bold">my ancestors on these cotton rows, picking cotton. And I see my ancestors not being paid.</span>"<cite>Participant</cite></blockquote>
+
+        <h3 style="font-size:24px; color:var(--navy); margin:40px 0 14px;">The Sanctuary — faces of Mound Bayou</h3>
+        <p class="body-p">A sanctuary is a place where Black people could go to church, to a store, to school — you can't go to that: all of it was ours to go to, as much as it existed here. Founded in 1887, Mound Bayou was one of the first and largest all-Black towns in the U.S.</p>
+        <div class="portrait-grid">
+          <div class="portrait"><div class="photo-slot"><div class="ph-label">Portrait</div></div><div class="p-name">Name</div><div class="p-role">Resident, Mound Bayou</div></div>
+          <div class="portrait"><div class="photo-slot"><div class="ph-label">Portrait</div></div><div class="p-name">Name</div><div class="p-role">Resident, Mound Bayou</div></div>
+          <div class="portrait"><div class="photo-slot"><div class="ph-label">Portrait</div></div><div class="p-name">Name</div><div class="p-role">Resident, Mound Bayou</div></div>
+          <div class="portrait"><div class="photo-slot"><div class="ph-label">Portrait</div></div><div class="p-name">Name</div><div class="p-role">Resident, Mound Bayou</div></div>
+        </div>
+
+        <h3 style="font-size:24px; color:var(--navy); margin:40px 0 14px;">The global economy and cotton crashes</h3>
+        <p class="body-p">By the 1930s, Mississippi's cotton monoculture was already vulnerable to national and global price swings; mechanization after 1947 then eliminated most sharecropping jobs within two decades, driving the Great Migration out of the Delta. [Continue with modern context: today cotton ranks behind poultry and forestry among the state's leading agricultural sectors.]</p>
+      </div>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ CHAPTER II — EDUCATION / THE INVISIBLE LINE ============ -->
+  <section id="ch-education" class="tab-panel">
+    <div class="running-head"><span class="eyebrow" style="margin:0;">The Invisible Line</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
+    <div class="chapter-open">
+      <div class="wrap">
+        <div class="chapter-num">Chapter II</div>
+        <h2>Education &amp; the Effects of Isolation</h2>
+        <p class="chapter-dek">What it means to grow up in a place where the nearest school, and the nearest way out, can be an hour's drive.</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="wrap">
+        <h2 class="claim">If you don't own land, there's no way you can have generational wealth — <span class="hl-italic">only generational poverty.</span></h2>
+        <p class="body-p">Poor education continues this vicious cycle of invisible oppressors and exploited workers. Some workshop participants felt that the Tallahatchie school system's isolated location, real or noted, "invisible poverty," left many remaining opportunities and resources to opportunities left to deal with the effects of a broken system.</p>
+
+        <div class="grid2" style="margin-top:32px;">
+          <div class="photo-slot" style="--ar:4/5;"><div class="ph-label">Archival — sharecropper housing</div><div class="ph-suggest">Library of Congress FSA/OWI collection (public domain) is a legitimate source for Depression-era Delta sharecropper photographs; cite "Courtesy of the Library of Congress" as your issue does.</div></div>
+          <div class="photo-slot" style="--ar:4/5;"><div class="ph-label">Archival — tenant farmhouse</div><div class="ph-suggest">Same collection; pair a exterior and interior/portrait shot as your prior issue did.</div></div>
+        </div>
+        <div class="pictured"><b>Pictured:</b> Black sharecropping families often lived on the land they were lending from the property owners. — Courtesy of the Library of Congress</div>
+
+        <div class="bar-chart" style="margin-top:36px;">
+          <div class="framed-title" style="font-size:19px;">Families Below Poverty Level by Race, Delta Counties</div>
+          <div class="framed-sub" style="margin-bottom:16px;">[Rebuild from current Census/ACS data by county — Bolivar, Coahoma, Holmes, Humphreys, Issaquena, Leflore, Quitman, Sharkey, Sunflower, Tallahatchie, Tunica, Washington, Yazoo. Your prior chart used 1990 Census data; refresh with the latest ACS release.]</div>
+          <div class="bar-row"><div class="b-label">Black families</div><div class="bar-track"><div class="bar-fill" style="width:70%;"></div></div><div class="b-val">[XX%]</div></div>
+          <div class="bar-row"><div class="b-label">White families</div><div class="bar-track"><div class="bar-fill" style="width:18%; background:var(--school-bus-yellow);"></div></div><div class="b-val">[XX%]</div></div>
+          <div class="bar-source">Source: [U.S. Census Bureau, ACS — update citation with current release]</div>
+        </div>
+
+        <p class="body-p" style="margin-top:32px;">[Section: reference "Lalee's Kin: The Legacy of Slavery," the documentary following a Delta grandmother and her grandchildren through the Tallahatchie school system, as a touchstone for how little the isolation has changed since its 2001 release.]</p>
+        <div class="voice-slot">
+          <div class="who">Interview — Reggie Barnes</div>
+          <div class="prompt">[Transcribe: Reggie Barnes, former Superintendent of the West Tallahatchie School District, on education and isolation in the Delta.]</div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ CHAPTER III — HEALTHCARE ============ -->
+  <section id="ch-healthcare" class="tab-panel">
+    <div class="running-head"><span class="eyebrow" style="margin:0;">This Is My Home, Too</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
+    <div class="chapter-open">
+      <div class="wrap">
+        <div class="chapter-num">Chapter III</div>
+        <h2>Healthcare, Historical and Modern</h2>
+        <p class="chapter-dek">Life expectancy, maternal health, and the coalitions trying to close the gap in one of the hardest-served regions in the country.</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="wrap">
+        <div class="photo-slot" style="--ar:21/9;"><div class="ph-label">Clinic / community health image</div></div>
+        <p class="lede" style="margin-top:28px;">Mississippi has the nation's highest infant mortality rate and the shortest life expectancy — and within the state, the Delta fares worse still.</p>
+        <div class="stat-row">
+          <div class="stat"><div class="s-num">9.7</div><div class="s-label">Infant deaths per 1,000 live births, MS 2024 — a decade high</div><div class="s-source">MS Dept. of Health, 2025</div></div>
+          <div class="stat"><div class="s-num">2.6×</div><div class="s-label">Black infants die at more than double the rate of white infants</div><div class="s-source">MS Dept. of Health, 2025</div></div>
+          <div class="stat"><div class="s-num">68 yrs</div><div class="s-label">Average life expectancy in the Delta, vs. 71.9 statewide</div><div class="s-source">MS State Health Officer, 2024</div></div>
+        </div>
+        <h3 style="font-size:24px; color:var(--navy); margin:40px 0 14px;">Teenage pregnancy &amp; infant mortality</h3>
+        <p class="body-p">[Section: Delta-specific teen birth rate data — pull the latest county figures from MSDH / March of Dimes PeriStats — paired with prenatal care access and the region's "maternity care deserts."]</p>
+        <h3 style="font-size:24px; color:var(--navy); margin:40px 0 14px;">Coalition building</h3>
+        <div class="voice-slot">
+          <div class="who">Interview — Nina Ragu</div>
+          <div class="prompt">[Transcribe: Nina Ragu on the coalitions working to expand maternal and infant health access in the Delta — organization/title to be added.]</div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ CHAPTER IV — IMMIGRANTS / BEING IN BETWEEN ============ -->
+  <section id="ch-immigrants" class="tab-panel">
+    <div class="running-head"><span class="eyebrow" style="margin:0;">Being In Between</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
+    <div class="chapter-open">
+      <div class="wrap">
+        <div class="chapter-num">Chapter IV</div>
+        <h2>Immigrants in the Delta</h2>
+        <p class="chapter-dek">Chinese groceries, graveyards, and god — the century-long story of a community that built its life between the Delta's Black and white worlds.</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="wrap">
+        <p class="lede">Delta immigrant culture became a mix of origin culture and Southern tradition.</p>
+        <div class="stat-row">
+          <div class="stat"><div class="s-num">50</div><div class="s-label">Chinese-owned grocery stores in Greenville at its peak, city of ~40,000</div><div class="s-source">NPR / Southern Foodways Alliance</div></div>
+          <div class="stat"><div class="s-num">~3,000</div><div class="s-label">Delta Chinese population at its 1970s peak, roughly 500 today</div><div class="s-source">Visit Cleveland MS / heritage museum</div></div>
+        </div>
+        <p class="body-p">Assimilation was never simple: under Jim Crow's binary racial order, Chinese families were classified as neither Black nor white, and the 1927 Gong Lum v. Rice case — brought by a Delta family barred from a white school — reached the U.S. Supreme Court. [Continue: identity, language retention, and the "Delta Wok" oral-history/recipe project at Delta State.]</p>
+        <div class="grid2">
+          <div class="photo-slot" style="--ar:4/5;"><div class="ph-label">Chinese heritage center on campus</div></div>
+          <div class="photo-slot" style="--ar:4/5;"><div class="ph-label">Grocery store, present day</div></div>
+        </div>
+        <div class="pictured"><b>Pictured:</b> The Mississippi Delta Chinese Heritage Museum, Delta State University, Cleveland, MS.</div>
+        <blockquote class="pull">[Interview quote — a Delta Chinese resident on family, faith, and staying or leaving.]<cite>Name, hometown</cite></blockquote>
+      </div>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ CHAPTER V — OTHER FAITHS ============ -->
+  <section id="ch-faiths" class="tab-panel">
+    <div class="running-head"><span class="eyebrow" style="margin:0;">Preachin' the Blues</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
+    <div class="chapter-open">
+      <div class="wrap">
+        <div class="chapter-num">Chapter V</div>
+        <h2>Other Faiths in the Delta</h2>
+        <p class="chapter-dek">Beyond the Baptist and Methodist churches that anchor most Delta towns, smaller congregations hold their own ground.</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="wrap">
+        <p class="lede">[Section: brief overview of religious diversity in the Delta beyond the Black and white Christian churches most associated with the region.]</p>
+        <div class="grid2">
+          <div>
+            <div class="photo-slot" style="--ar:4/3;"><div class="ph-label">Islamic Society of Delta Mississippi</div></div>
+            <div class="pictured"><b>Pictured:</b> Cleveland, MS. Contact: 662-402-8407 — confirm current contact before visiting.</div>
+            <div class="voice-slot"><div class="who">Interview — congregation contact</div><div class="prompt">[Transcribe: history of the congregation, size, and role in the community.]</div></div>
+          </div>
+          <div>
+            <div class="photo-slot" style="--ar:4/3;"><div class="ph-label">Delta Jewish community</div></div>
+            <div class="pictured"><b>Pictured:</b> confirm current congregation status — many Delta synagogues have closed or merged.</div>
+            <div class="voice-slot"><div class="who">Interview — congregation contact / historian</div><div class="prompt">[Transcribe: history and present-day status of the congregation.]</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ CHAPTER VI — DELTA BLUES / SOUL OF THE DELTA ============ -->
+  <section id="ch-blues" class="tab-panel">
+    <div class="running-head"><span class="eyebrow" style="margin:0;">The Soul of the Delta</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
+    <div class="chapter-open">
+      <div class="wrap">
+        <div class="chapter-num">Chapter VI</div>
+        <h2>Delta Blues</h2>
+        <p class="chapter-dek">Po' Monkey's, B.B. King, and the music the Delta gave the world — plus the story it took decades to reckon with.</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="wrap">
+        <p class="lede">The blues grew out of the same fields and churches this issue has already covered — a music of labor, migration, and survival that turned the Delta into "the Birthplace of America's Music."</p>
+        <div class="grid2">
+          <div class="photo-slot" style="--ar:4/5;"><div class="ph-label">Po Monkey's Lounge</div><div class="ph-suggest">Merigold, MS — closed 2016. Seek licensed/archival photography.</div></div>
+          <div class="photo-slot" style="--ar:4/5;"><div class="ph-label">B.B. King Museum</div><div class="ph-suggest">Indianola, MS.</div></div>
+        </div>
+
+        <div class="framed" style="margin-top:40px;">
+          <div class="framed-title">Emmett Till</div>
+          <div class="framed-sub">Reserved for material from the Emmett Till Interpretive Center and Emmett Till Historic Intrepid Center, Sumner, MS. Contact the centers directly for photo and recording permissions before your visit.</div>
+          <p class="body-p" style="margin-top:0;">In August 1955, 14-year-old Emmett Till was abducted from his great-uncle's home in Money and murdered; the two men tried for his killing were acquitted that September by an all-white jury in Sumner, after the jury deliberated just over an hour. One of the men later confessed to the murder in a magazine interview, protected by double jeopardy. The case galvanized national and international attention and sparked the American civil rights movement.</p>
+          <div class="marker-row">
+            <div class="marker-photo" style="--rot:-2deg;"><div class="mk-eyebrow">Mississippi Freedom Trail</div><div class="mk-title">Emmett Till Murder Trial</div><div class="mk-sub">Tallahatchie County Courthouse, Sumner, MS</div></div>
+            <div class="marker-photo" style="--rot:1.5deg; background:linear-gradient(160deg,#2a1d1a,#4a2f28);"><div class="mk-eyebrow">Mississippi Freedom Trail</div><div class="mk-title">Bryant's Grocery</div><div class="mk-sub">Money, MS</div></div>
+          </div>
+          <div class="voice-slot">
+            <div class="who">On-site interview / docent quote</div>
+            <div class="prompt">[Transcribe audio captured on-site, or cite the center's exhibit text — don't reproduce marker or exhibit copy verbatim.]</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ CHAPTER VII — CIVIL RIGHTS: A LIVING HISTORY ============ -->
+  <section id="ch-civilrights" class="tab-panel">
+    <div class="running-head"><span class="eyebrow" style="margin:0;">Civil Rights: A Living History</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
+    <div class="chapter-open">
+      <div class="wrap">
+        <div class="chapter-num">Chapter VII</div>
+        <h2>Civil Rights</h2>
+        <p class="chapter-dek">Freedom Trail figures, the Freedom Riders, the history of Parchman Farm, and what's changed — and hasn't — since. Many heroes of the movement still live. Is history that far gone?</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="wrap">
+        <p class="lede">Events reflecting the past and present of racial challenges, seen through news clippings and archives.</p>
+
+        <div class="framed">
+          <div class="framed-title">A Living History</div>
+          <div class="framed-sub">A collage of period front pages, styled after the clipping spread in your printed issue. Replace each clipping with your own scanned front page or licensed archival reproduction — cite the paper and date on every one.</div>
+          <div class="clipping-field">
+            <div class="clipping" style="width:270px; top:0; left:8%; transform:rotate(-3deg);">
+              <div class="c-mast">The New York Times</div>
+              <div class="c-head">High Court Bans School Segregation; 9-to-0 Decision Grants Time to Comply</div>
+              <div class="c-label">[Insert scan — May 18, 1954]</div>
+            </div>
+            <div class="clipping" style="width:250px; top:120px; left:38%; transform:rotate(2deg);">
+              <div class="c-mast">The New York Times</div>
+              <div class="c-head">25,000 Go to Alabama's Capitol; White Rights Worker Is Slain</div>
+              <div class="c-label">[Insert scan — Mar. 1965]</div>
+            </div>
+            <div class="clipping" style="width:250px; top:20px; left:64%; transform:rotate(-1.5deg);">
+              <div class="c-mast">Evening Tribune</div>
+              <div class="c-head">Governor Defies School Order — Negro Pupils Turned Back in Arkansas</div>
+              <div class="c-label">[Insert scan — Sept. 1957]</div>
+            </div>
+            <div class="clipping" style="width:280px; top:230px; left:14%; transform:rotate(1deg);">
+              <div class="c-mast">The New York Times</div>
+              <div class="c-head">"Threatening the Future": The High Stakes of Deepening School Segregation</div>
+              <div class="c-label">[Insert current-day coverage — cite date and byline]</div>
+            </div>
+          </div>
+          <p class="meta" style="margin-top:10px;">Courtesy of The New York Times and the Guardian — replace with your own licensed reproductions or public-domain scans.</p>
+        </div>
+
+        <h3 style="font-size:24px; color:var(--navy); margin:44px 0 14px;">Freedom Riders &amp; the history of the penitentiary</h3>
+        <p class="body-p">In 1961, dozens of Freedom Riders arrested in Jackson were transferred to Mississippi State Penitentiary at Parchman — the same prison farm where folklorist Alan Lomax had recorded blues musicians decades earlier. Parchman carries a dual legacy: a working plantation-prison, and a site of civil rights resistance.</p>
+
+        <div class="framed-title" style="font-size:20px; margin-top:36px;">Freedom Trail Markers, Photographed</div>
+        <div class="framed-sub">A running archive of every marker you photograph in the field — mirroring the scalloped, navy Mississippi Freedom Trail plaques. Replace with your own on-site photos.</div>
+        <div class="marker-row">
+          <div class="marker-photo" style="--rot:-1deg;"><div class="mk-eyebrow">Freedom Trail</div><div class="mk-title">Freedom Riders</div><div class="mk-sub">Parchman, MS — 1961</div></div>
+          <div class="marker-photo" style="--rot:2deg;"><div class="mk-eyebrow">Freedom Trail</div><div class="mk-title">Marker TBD</div><div class="mk-sub">Add once photographed</div></div>
+          <div class="marker-photo" style="--rot:-1.5deg;"><div class="mk-eyebrow">Freedom Trail</div><div class="mk-title">Marker TBD</div><div class="mk-sub">Add once photographed</div></div>
+        </div>
+
+        <h3 style="font-size:24px; color:var(--navy); margin:40px 0 14px;">Modern day update</h3>
+        <p class="body-p">[Section: contemporary conditions at Parchman — recent state and federal scrutiny of conditions — and present-day voting rights, representation, and organizing in the Delta. Keep this section fact-checked and current at time of publication.]</p>
+        <blockquote class="pull">[Local organizer or historian quote on what commemoration has and hasn't changed.]<cite>Name, role</cite></blockquote>
+      </div>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ CHAPTER VIII — MEDIA ============ -->
+  <section id="ch-media" class="tab-panel">
+    <div class="running-head"><span class="eyebrow" style="margin:0;">Delta Coverage in Media</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
+    <div class="chapter-open">
+      <div class="wrap">
+        <div class="chapter-num">Chapter VIII</div>
+        <h2>Delta Coverage in Media</h2>
+        <p class="chapter-dek">From "Sinners" to decades of photojournalism — how outside storytellers have framed the Delta, and what locals make of it.</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="wrap">
+        <p class="lede">2025's "Sinners," directed by Ryan Coogler and set in 1930s Clarksdale, put the Delta back in front of a global audience — reviving old questions about who profits when the region's history becomes entertainment.</p>
+        <p class="body-p">[Section: summarize — in your own words, never quoted at length — press interviews in which Ryan Coogler discussed the film's Delta setting and research process. Link out to the original interviews rather than reproducing them.]</p>
+        <div class="voice-slot">
+          <div class="who">Interview — Rory Doyle</div>
+          <div class="prompt">[Contact Rory Doyle (rorydoylephoto.com) for an original interview on documenting the Delta Hill Riders and the Delta more broadly — do not lift quotes from his existing published interviews without permission and attribution.]</div>
+        </div>
+        <div class="photo-slot" style="--ar:16/9; margin:28px 0;">
+          <div class="ph-label">Photo — Delta Hill Riders</div>
+          <div class="ph-suggest">License directly from Rory Doyle for reproduction; his project is at rorydoylephoto.com/delta-hill-riders.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ CHAPTER IX — COMMEMORATION ============ -->
+  <section id="ch-commemoration" class="tab-panel">
+    <div class="running-head"><span class="eyebrow" style="margin:0;">The Power of Commemoration</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
+    <div class="chapter-open">
+      <div class="wrap">
+        <div class="chapter-num">Chapter IX</div>
+        <h2>The Importance of Commemoration</h2>
+        <p class="chapter-dek">"For 50 years, I didn't say anything to anyone," Lula Orsby-Jones said. She felt her story wasn't important enough to be told. What is the value of commemoration for the storytellers of history?</p>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <div class="wrap">
+        <p class="lede">The museum is built for consumption. Its whole purpose is to be a publicly available space of education and commemorative power. Every day, people walk the entire length of a museum, taking in the stories being told in a variety of ways: the stories line the walls — and are also commemorated in a deeper, more atmospheric sense, in how the museum came to be there.</p>
+
+        <div class="framed">
+          <div class="framed-title">The National Civil Rights Museum, Lorraine Motel</div>
+          <div class="framed-sub">Memphis, TN. Built out of the Lorraine Motel, the site of Dr. King's assassination — an active, informative, and thought-provoking experience.</div>
+          <div class="grid2">
+            <div class="photo-slot" style="--ar:4/3;"><div class="ph-label">Lorraine Motel sign / balcony</div></div>
+            <div class="photo-slot" style="--ar:4/3;"><div class="ph-label">"I Am A Man" march / protest signage</div></div>
+          </div>
+          <p class="meta" style="margin-top:10px;">Photos featuring the National Civil Rights Museum at the Lorraine Motel — replace with your own visit photography; request permission for interior exhibit shots.</p>
+        </div>
+
+        <div class="marker-row" style="margin-top:36px;">
+          <div class="marker-photo" style="--rot:-2deg;"><div class="mk-eyebrow">Mississippi Blues Trail</div><div class="mk-title">Birthplace of the Blues?</div><div class="mk-sub">Dockery Farms, MS</div></div>
+          <div class="marker-photo" style="--rot:1deg;"><div class="mk-eyebrow">Mississippi Freedom Trail</div><div class="mk-title">Mound Bayou</div><div class="mk-sub">Founded 1887 by Isaiah T. Montgomery &amp; Benjamin T. Green</div></div>
+          <div class="marker-photo" style="--rot:-1deg;"><div class="mk-eyebrow">Mississippi</div><div class="mk-title">1927 Flood</div><div class="mk-sub">Broke levee, April 21, 1927</div></div>
+        </div>
+
+        <h3 style="font-size:24px; color:var(--navy); margin:40px 0 14px;">Commemoration as healing</h3>
+        <p class="body-p">In 2009, the records of the 1969 Delta State sit-in, "one of Delta State's most important insight into commemoration: its ability to heal," conducted by asking students questions about their families and connecting them to storytellers directly affects how the stories come to be presented in each exhibit. Who were the storytellers, and what did it take for them to share their stories?</p>
+        <blockquote class="pull">"The Delta State never said anything about it. <span class="hl-bold">For 50 years, I didn't say anything to anyone.</span>"<cite>Lula Orsby-Jones, participant in the 1969 Delta State sit-in</cite></blockquote>
+
+        <h3 style="font-size:24px; color:var(--navy); margin:40px 0 14px;">The importance of listening</h3>
+        <p class="body-p">[Section: how blues and civil rights tourism has revived some downtowns while barely touching others — and how residents describe the gap between the story told to visitors and the one they live. Balance the economic-development case with critiques from Delta-based advocates about who profits and who tells the story.]</p>
+      </div>
+    </div>
+    <div class="tab-pager"></div>
+  </section>
+
+  <!-- ============ CLOSING ============ -->
+  <section id="closing" class="tab-panel section-front">
+    <div class="running-head"><span class="eyebrow" style="margin:0;">Closing</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
+    <div class="wrap" style="padding-top:36px;">
+      <h3 style="font-family:'Playfair Display'; font-size:26px; color:var(--navy); margin-bottom:10px;">Why we do the workshop</h3>
+      <p class="lede">[A closing statement — from the director or the group collectively — on the purpose of the workshop and this publication.]</p>
+
+      <h3 style="font-family:'Playfair Display'; font-size:26px; color:var(--navy); margin:44px 0 10px;">Acknowledgements &amp; meet the team</h3>
+      <!-- HEADSHOTS: upload each photo as a plain file to the repo root (same place as index.html) --
+           no folder needed. Then reference it here as: <img src="team-ariel.jpg" alt="Ariel Baiye"> -->
+      <div class="team-grid">
+        <div class="team-card">
+          <img src="arieldelta.jpeg" alt="Ariel Baiye" style="aspect-ratio:1; object-fit:cover; width:100%; margin-bottom:10px;">
+          <div class="name">Ariel Baiye</div>Designer and Editor
+        </div>
+        <div class="team-card">
+          <div class="photo-slot" style="--ar:1/1; margin-bottom:10px;"><div class="ph-label">Headshot — Gabriela</div></div>
+          <div class="name">Gabriela La Rota</div>Designer and Editor
+        </div>
+        <div class="team-card">
+          <img src="leiladelta.jpeg" alt="Leila" style="aspect-ratio:1; object-fit:cover; width:100%; margin-bottom:10px;">
+          <div class="name">Leila</div>Photographer and Editor
+        </div>
+      </div>
+
+      <h3 style="font-family:'Playfair Display'; font-size:26px; color:var(--navy); margin:44px 0 10px;">Poetry, part two</h3>
+      <div class="photo-slot" style="--ar:21/9;"><div class="ph-label">Closing spread — poem + image</div><div class="ph-suggest">A second original poem, closing the issue where the introduction opened it.</div></div>
+    </div>
+
+    <div class="back-cover">
+      <div class="wrap">
+        <h3>Praise From Participants</h3>
+        <p class="praise">[Closing participant quote — what the workshop meant to them.]<cite>Participant</cite></p>
+        <p class="praise">[Second closing participant quote.]<cite>Participant</cite></p>
+      </div>
+    </div>
+
+    <footer class="credits">THE DELTA ISSUE — PROTOTYPE LAYOUT · REPLACE ALL BRACKETED COPY AND PHOTO PLACEHOLDERS BEFORE PUBLICATION</footer>
+    <div class="tab-pager"></div>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
