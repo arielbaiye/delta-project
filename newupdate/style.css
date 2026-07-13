@@ -81,18 +81,30 @@
   .ub-dropdown-menu a:hover{background:var(--paper); color:var(--steel-azure);}
 
   /* ---------- SPINE NAV / TAB BAR ---------- */
+  :root{ --spine-w: 230px; }
   #spine{
-    position:fixed; top:var(--bar-h); left:0; bottom:0; width:230px;
+    position:fixed; top:var(--bar-h); left:0; bottom:0; width:var(--spine-w);
     background:var(--navy-deep); z-index:500;
     display:flex; flex-direction:column; align-items:center; padding:18px 0;
     border-right:1px solid rgba(246,241,228,0.1);
+    transition:width .25s ease;
   }
+  .spine-head{display:flex; align-items:center; justify-content:space-between; width:100%; padding:0 16px; margin-bottom:22px;}
   #spine .mark{
     width:30px;height:30px;border:1.5px solid var(--paper); border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
+    display:flex;align-items:center;justify-content:center; flex-shrink:0;
     font-family:'Playfair Display'; font-weight:700; font-size:12px; color:var(--paper);
-    margin-bottom:22px; flex-shrink:0; cursor:pointer;
+    cursor:pointer;
   }
+  .spine-toggle{
+    width:30px; height:30px; border:none; background:none; cursor:pointer;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
+    flex-shrink:0;
+  }
+  .spine-toggle span{width:16px; height:2px; background:rgba(246,241,228,0.6); transition:background .2s;}
+  .spine-toggle:hover span{background:var(--paper);}
+  #spine.wide .spine-toggle span{background:var(--school-bus-yellow);}
+
   #spine-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:2px; overflow-y:auto; flex:1; scrollbar-width:none; width:100%;}
   #spine-list::-webkit-scrollbar{display:none;}
   #spine-list li a{
@@ -100,6 +112,7 @@
     text-decoration:none; cursor:pointer; text-align:left; padding:0 16px;
     font-family:'Inter'; font-weight:600; font-size:12px; color:rgba(246,241,228,0.55);
     position:relative; transition:color .2s ease;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
   }
   #spine-list li a:hover{color:var(--paper);}
   #spine-list li a.active{color:var(--gold);}
@@ -110,14 +123,15 @@
     transition:max-height .3s ease;
   }
   #spine-list > li.expanded > .spine-sub{max-height:260px;}
+  #spine.wide #spine-list > li > .spine-sub{max-height:260px;} /* hamburger toggle: show every chapter's subheadings at once */
   .spine-sub li a{
     height:30px; padding-left:32px; font-weight:500; font-size:11px;
-    color:rgba(246,241,228,0.4); line-height:1.3;
+    color:rgba(246,241,228,0.4); line-height:1.3; white-space:normal;
   }
   .spine-sub li a:hover{color:var(--paper);}
   .spine-sub li a.sub-active{color:var(--school-bus-yellow);}
 
-  main{margin-left:230px; margin-top:var(--bar-h);}
+  main{margin-left:var(--spine-w); margin-top:var(--bar-h); transition:margin-left .25s ease;}
   .wrap{max-width:var(--maxw); margin:0 auto; padding:0 34px;}
 
   /* ---------- TAB PANEL SYSTEM ---------- */
@@ -321,9 +335,9 @@
 
   @media (max-width:760px){
     #spine{top:auto; bottom:0; left:0; right:0; height:56px; width:100%; flex-direction:row; padding:0 8px; border-right:none; border-top:1px solid rgba(246,241,228,0.1); z-index:600;}
-    #spine .mark{display:none;}
+    .spine-head{display:none;}
     #spine-list{flex-direction:row; overflow-x:auto; overflow-y:visible; align-items:center; height:100%;}
-    #spine-list li a{height:100%; padding:0 12px; white-space:nowrap;}
+    #spine-list li a{height:100%; padding:0 12px; white-space:nowrap; overflow:visible; text-overflow:clip;}
     #spine-list li a.active::before{left:6px; right:6px; top:auto; bottom:6px; height:2px; width:auto;}
     .spine-sub{display:none;}
     main{margin-left:0; padding-bottom:56px;}

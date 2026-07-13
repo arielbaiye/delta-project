@@ -26,59 +26,63 @@
 </div>
 
 <nav id="spine">
-  <div class="mark" onclick="showTab('cover')" title="Home — back to cover">DC</div>
+  <div class="spine-head">
+    <div class="mark" onclick="showTab('cover')" title="Home — back to cover">DC</div>
+    <button id="spine-toggle" class="spine-toggle" onclick="toggleSpine()" aria-label="Expand sidebar" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
   <ul id="spine-list">
-    <li><a data-tab="cover" title="Cover">Cover</a></li>
-    <li><a data-tab="intro" title="Introduction">Intro</a>
+    <li><a data-tab="intro" title="Introduction">Introduction</a>
       <ul class="spine-sub">
         <li><a data-tab="intro" data-target="sub-i-too">I, Too</a></li>
       </ul>
     </li>
     <li><a data-tab="toc-front" title="Table of Contents">Contents</a></li>
-    <li><a data-tab="directors-note" title="Director's Note">Letter</a>
+    <li><a data-tab="directors-note" title="Director's Note">Director's Note</a>
       <ul class="spine-sub">
         <li><a data-tab="directors-note" data-target="sub-mandy">Mandy Truman</a></li>
         <li><a data-tab="directors-note" data-target="sub-lee">Lee</a></li>
       </ul>
     </li>
     <li><a data-tab="voices" title="Voices">Voices</a></li>
-    <li><a data-tab="ch-mississippi" title="Chapter I — Mississippi">I · Mississippi</a>
+    <li><a data-tab="ch-mississippi" title="Chapter I — Mississippi">Mississippi</a>
       <ul class="spine-sub">
         <li><a data-tab="ch-mississippi" data-target="sub-cultural-geography">Cultural geography</a></li>
         <li><a data-tab="ch-mississippi" data-target="sub-sanctuary">The Sanctuary</a></li>
         <li><a data-tab="ch-mississippi" data-target="sub-global-economy">Global economy &amp; cotton crashes</a></li>
       </ul>
     </li>
-    <li><a data-tab="ch-education" title="Chapter II — Education">II · Education</a></li>
-    <li><a data-tab="ch-healthcare" title="Chapter III — Healthcare">III · Healthcare</a>
+    <li><a data-tab="ch-education" title="Chapter II — Education">Education &amp; Isolation</a></li>
+    <li><a data-tab="ch-healthcare" title="Chapter III — Healthcare">Healthcare</a>
       <ul class="spine-sub">
         <li><a data-tab="ch-healthcare" data-target="sub-teen-pregnancy">Teen pregnancy &amp; infant mortality</a></li>
         <li><a data-tab="ch-healthcare" data-target="sub-coalition-building">Coalition building</a></li>
       </ul>
     </li>
-    <li><a data-tab="ch-immigrants" title="Chapter IV — Immigrants">IV · Immigrants</a></li>
-    <li><a data-tab="ch-faiths" title="Chapter V — Other Faiths">V · Faith</a></li>
-    <li><a data-tab="ch-blues" title="Chapter VI — Delta Blues">VI · Delta Blues</a></li>
-    <li><a data-tab="ch-emmetttill" title="Chapter VII — Emmett Till">VII · Emmett Till</a>
+    <li><a data-tab="ch-immigrants" title="Chapter IV — Immigrants">Immigrants</a></li>
+    <li><a data-tab="ch-faiths" title="Chapter V — Other Faiths">Faith</a></li>
+    <li><a data-tab="ch-blues" title="Chapter VI — Delta Blues">Delta Blues</a></li>
+    <li><a data-tab="ch-emmetttill" title="Chapter VII — Emmett Till">Emmett Till</a>
       <ul class="spine-sub">
         <li><a data-tab="ch-emmetttill" data-target="sub-other-museums">Other museums &amp; panel</a></li>
       </ul>
     </li>
-    <li><a data-tab="ch-civilrights" title="Chapter VIII — Civil Rights">VIII · Civil Rights</a>
+    <li><a data-tab="ch-civilrights" title="Chapter VIII — Civil Rights">Civil Rights</a>
       <ul class="spine-sub">
         <li><a data-tab="ch-civilrights" data-target="sub-freedom-trail-figures">Freedom Trail figures</a></li>
         <li><a data-tab="ch-civilrights" data-target="sub-freedom-riders">Freedom Riders &amp; Parchman</a></li>
         <li><a data-tab="ch-civilrights" data-target="sub-modern-day-update">Modern day update</a></li>
       </ul>
     </li>
-    <li><a data-tab="ch-media" title="Chapter IX — Media Coverage">IX · Media</a></li>
-    <li><a data-tab="ch-commemoration" title="Chapter X — Commemoration">X · Commemoration</a>
+    <li><a data-tab="ch-media" title="Chapter IX — Media Coverage">Media Coverage</a></li>
+    <li><a data-tab="ch-commemoration" title="Chapter X — Commemoration">Commemoration</a>
       <ul class="spine-sub">
         <li><a data-tab="ch-commemoration" data-target="sub-commemoration-healing">Commemoration as healing</a></li>
         <li><a data-tab="ch-commemoration" data-target="sub-importance-listening">The importance of listening</a></li>
       </ul>
     </li>
-    <li><a data-tab="closing" title="Closing">Close</a>
+    <li><a data-tab="closing" title="Closing">Closing</a>
       <ul class="spine-sub">
         <li><a data-tab="closing" data-target="sub-why-workshop">Why we do the workshop</a></li>
         <li><a data-tab="closing" data-target="sub-acknowledgements">Acknowledgements &amp; team</a></li>

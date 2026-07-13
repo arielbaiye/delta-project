@@ -64,6 +64,16 @@ const ORDER = ['cover','intro','toc-front','directors-note','voices',
     });
   });
 
+  // ---------- sidebar hamburger toggle ----------
+  function toggleSpine(){
+    const spine = document.getElementById('spine');
+    const btn = document.getElementById('spine-toggle');
+    const isWide = spine.classList.toggle('wide');
+    document.documentElement.style.setProperty('--spine-w', isWide ? '320px' : '230px');
+    btn.setAttribute('aria-expanded', isWide ? 'true' : 'false');
+    btn.setAttribute('aria-label', isWide ? 'Collapse sidebar' : 'Expand sidebar');
+  }
+
   // ---------- utility bar: Editor Sheet dropdown ----------
   function toggleDropdown(evt){
     evt.stopPropagation();
