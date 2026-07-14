@@ -198,7 +198,6 @@
 
   /* ---------- INTRODUCTION: cinematic scroll-driven spread ---------- */
   .intro-cinematic{background:var(--ink); padding:0;}
-  .intro-cinematic .running-head{background:var(--paper); position:relative; z-index:5;}
 
   .intro-scroll-track{position:relative;} /* height set by script.js at runtime */
 
