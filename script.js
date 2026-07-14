@@ -127,3 +127,51 @@ const ORDER = ['cover','intro','toc-front','directors-note','voices',
     coverSection.addEventListener('mouseenter', stop);
     coverSection.addEventListener('mouseleave', start);
   })();
+
+/*
+  Immersive poem reveal
+*/
+
+document.documentElement.classList.add("js");
+
+document.addEventListener("DOMContentLoaded", function () {
+  const poemLines = document.querySelectorAll(".poem-line");
+
+  // Stop here on pages where the poem is not present
+  if (!poemLines.length) {
+    return;
+  }
+
+  // Show everything immediately if the browser does not support
+  // IntersectionObserver
+  if (!("IntersectionObserver" in window)) {
+    poemLines.forEach(function (line) {
+      line.classList.add("is-visible");
+    });
+
+    return;
+  }
+
+  const poemObserver = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+
+          // Stop watching a line once it has appeared
+          poemObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.25,
+      rootMargin: "0px 0px -40px 0px"
+    }
+  );
+
+  poemLines.forEach(function (line, index) {
+    // Creates a gentle staggered reveal
+    line.style.transitionDelay = index * 45 + "ms";
+    poemObserver.observe(line);
+  });
+});
