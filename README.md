@@ -107,6 +107,16 @@ All the visible text lives directly in `index.html`, in plain readable sentences
 
 `style.css` only controls appearance (colors, spacing, fonts) — you won't find sentence content there. `script.js` only controls behavior (tab switching, the dropdown) — no visible text there either.
 
+## Introduction spread (cinematic photo + poem reveal)
+
+The Introduction tab is a full-bleed photo with a subtle parallax drift as you scroll, and a translucent poem card that reveals one line at a time. It's already wired to `images/introphoto.JPG` — if you swap in a different photo, upload it the same way (repo root, no folder needed unless you're keeping it in `images/`) and update the filename in `index.html`, search for `intro-photo` to find the exact spot.
+
+**The poem lines are placeholders.** Search `index.html` for `POEM TEXT` — you'll find 8 bracketed `<p class="poem-line">` lines plus a credit line. Replace the placeholder text with a real poem (ideally an original one from a workshop participant). **Do not paste in the actual Langston Hughes "I, Too" text** — it's still copyrighted; if you want to reference it, link to it or credit it instead of reproducing it. You can add or remove `<p class="poem-line">` lines freely — the reveal timing automatically adjusts to however many lines exist.
+
+Accessibility: anyone with "reduce motion" turned on in their OS/browser settings automatically gets a static version — full photo, full poem, no parallax, no scroll-triggered reveal. That's handled automatically; no setup needed.
+
+On mobile, the photo crops toward the right side of the frame (assuming that's roughly where the flag sits in your photo) — if your actual photo's main subject is positioned differently, search `style.css` for `78% center` (inside the mobile media query, under `.intro-photo`) and adjust that percentage until it frames correctly on a phone-sized screen.
+
 ## Cover photo carousel
 
 The cover now rotates through multiple photos automatically (every ~5.5 seconds), with small dots at the bottom people can click to jump to a specific photo directly. It pauses while your mouse is over it.

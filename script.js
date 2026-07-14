@@ -128,50 +128,61 @@ const ORDER = ['cover','intro','toc-front','directors-note','voices',
     coverSection.addEventListener('mouseleave', start);
   })();
 
-/*
-  Immersive poem reveal
-*/
+  // ---------- intro cinematic scroll (parallax photo + line-by-line poem reveal) ----------
+  (function initIntroCinematic(){
+    const track = document.getElementById('intro-scroll-track');
+    const sticky = document.getElementById('intro-sticky');
+    const photo = document.getElementById('intro-photo');
+    const card = document.getElementById('intro-poem-card');
+    if(!track || !sticky || !photo || !card) return;
+    const lines = Array.from(card.querySelectorAll('.poem-line'));
 
-document.documentElement.classList.add("js");
+    let reduceMotion = false;
+    try{ reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
 
-document.addEventListener("DOMContentLoaded", function () {
-  const poemLines = document.querySelectorAll(".poem-line");
-
-  // Stop here on pages where the poem is not present
-  if (!poemLines.length) {
-    return;
-  }
-
-  // Show everything immediately if the browser does not support
-  // IntersectionObserver
-  if (!("IntersectionObserver" in window)) {
-    poemLines.forEach(function (line) {
-      line.classList.add("is-visible");
-    });
-
-    return;
-  }
-
-  const poemObserver = new IntersectionObserver(
-    function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-
-          // Stop watching a line once it has appeared
-          poemObserver.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.25,
-      rootMargin: "0px 0px -40px 0px"
+    if(reduceMotion){
+      // Static fallback: show everything immediately, no scroll-linked effects.
+      card.classList.add('revealed');
+      lines.forEach(l => l.classList.add('revealed'));
+      return;
     }
-  );
 
-  poemLines.forEach(function (line, index) {
-    // Creates a gentle staggered reveal
-    line.style.transitionDelay = index * 45 + "ms";
-    poemObserver.observe(line);
-  });
-});
+    // Give the track enough scroll distance to drive the reveal: one viewport for the
+    // photo itself, plus a slice per poem line so each one gets room to trigger.
+    function setTrackHeight(){
+      const perLineVh = 12;
+      const baseVh = 100;
+      track.style.height = (baseVh + lines.length * perLineVh) + 'vh';
+    }
+    setTrackHeight();
+
+    function update(){
+      const rect = track.getBoundingClientRect();
+      const total = track.offsetHeight - window.innerHeight;
+      let progress = total > 0 ? (-rect.top) / total : 0;
+      if(progress < 0) progress = 0;
+      if(progress > 1) progress = 1;
+
+      // subtle parallax drift on the photo — deliberately small, not a big slide effect
+      try{ photo.style.transform = 'translateY(' + (progress * 34 - 14) + 'px)'; }catch(e){}
+
+      card.classList.toggle('revealed', progress > 0.03);
+
+      const lineStart = 0.08, lineEnd = 0.94;
+      const span = lineEnd - lineStart;
+      lines.forEach((line, i) => {
+        const threshold = lineStart + span * (i / Math.max(1, lines.length - 1));
+        line.classList.toggle('revealed', progress >= threshold);
+      });
+    }
+
+    let ticking = false;
+    function onScroll(){
+      if(ticking) return;
+      ticking = true;
+      requestAnimationFrame(function(){ update(); ticking = false; });
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', function(){ setTrackHeight(); update(); });
+    update();
+  })();

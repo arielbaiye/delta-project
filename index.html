@@ -127,79 +127,39 @@
   </section>
 
   <!-- ============ INTRODUCTION ============ -->
- <section id="intro" class="tab-panel section-front intro-section">
-  <div class="running-head">
-    <span class="eyebrow">Introduction</span>
-    <span class="meta">
-      Delta Center for Culture and Learning · In Collaboration with NEH
-    </span>
-  </div>
+  <section id="intro" class="tab-panel intro-cinematic">
+    <div class="running-head"><span class="eyebrow" style="margin:0;">Introduction</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
 
-  <div class="intro-hero">
-    <img
-      src="images/introphoto.JPG"
-      alt="An American flag flying against a blue sky"
-      class="intro-image"
-    >
-
-    <div class="intro-overlay"></div>
-
-    <div class="intro-hero-content">
-      <p class="intro-kicker">Langston Hughes</p>
-      <h1>“I, Too”</h1>
-      <p class="intro-prompt">Scroll to read</p>
-    </div>
-  </div>
-
-  <div class="poem-wrap">
-    <div class="poem-heading">
-      <span class="eyebrow">I, Too</span>
-      <span class="poem-rule"></span>
-    </div>
-
-    <div class="poem-layout">
-      <div class="poem-introduction">
-        <p>
-          Written in 1925, “I, Too” speaks to exclusion, dignity,
-          resistance, and the promise of belonging.
-        </p>
-      </div>
-
-      <div class="poem" aria-label="I, Too by Langston Hughes">
-        <span class="poem-line">I, too, sing America.</span>
-        <span class="poem-line">I am the darker brother.</span>
-        <span class="poem-line">They send me to eat in the kitchen</span>
-        <span class="poem-line">When company comes,</span>
-        <span class="poem-line">But I laugh,</span>
-        <span class="poem-line">And eat well,</span>
-        <span class="poem-line">And grow strong.</span>
-
-        <span class="poem-space"></span>
-
-        <span class="poem-line">Tomorrow,</span>
-        <span class="poem-line">I’ll be at the table</span>
-        <span class="poem-line">When company comes.</span>
-        <span class="poem-line">Nobody’ll dare</span>
-        <span class="poem-line">Say to me,</span>
-        <span class="poem-line">“Eat in the kitchen,”</span>
-        <span class="poem-line">Then.</span>
-
-        <span class="poem-space"></span>
-
-        <span class="poem-line">Besides,</span>
-        <span class="poem-line">They’ll see how beautiful I am</span>
-        <span class="poem-line">And be ashamed—</span>
-        <span class="poem-line">I, too, am America.</span>
+    <!-- SCROLL TRACK: height is set by script.js based on how many .poem-line elements exist,
+         giving enough scroll distance for the sticky photo + line-by-line reveal below.
+         If prefers-reduced-motion is on, JS switches this to a plain static layout instead. -->
+    <div class="intro-scroll-track" id="intro-scroll-track">
+      <div class="intro-sticky" id="intro-sticky">
+        <div class="intro-photo" id="intro-photo" style="background-image:url('images/introphoto.JPG');"></div>
+        <div class="intro-photo-overlay"></div>
+        <div class="intro-poem-card" id="intro-poem-card">
+          <h3 id="sub-i-too">I, Too</h3>
+          <!-- POEM TEXT: these are placeholder lines only — do not put the real Langston Hughes
+               "I, Too" text here, it's still under copyright. Either write an original poem
+               (a workshop participant's own words) or credit/link to "I, Too" instead of
+               reproducing it. Each <p class="poem-line"> reveals one at a time as the reader
+               scrolls — add, remove, or edit lines freely; the reveal timing adjusts automatically. -->
+          <p class="poem-line">[Line 1 — open with a strong image of place]</p>
+          <p class="poem-line">[Line 2 — continue the thought]</p>
+          <p class="poem-line">[Line 3]</p>
+          <p class="poem-line">[Line 4]</p>
+          <p class="poem-line">[Line 5]</p>
+          <p class="poem-line">[Line 6]</p>
+          <p class="poem-line">[Line 7]</p>
+          <p class="poem-line">[Line 8 — close on an image that answers line 1]</p>
+          <p class="poem-line poem-credit">— [Poet name], workshop participant</p>
+        </div>
       </div>
     </div>
+    <div class="intro-caption">Photo: [photographer credit] — Delta Center for Culture and Learning</div>
 
-    <p class="image-credit">
-      Image: introphoto.JPG
-    </p>
-  </div>
-
-  <div class="tab-pager"></div>
-</section>
+    <div class="tab-pager"></div>
+  </section>
 
   <!-- ============ TOC ============ -->
   <section id="toc-front" class="tab-panel section-front">
@@ -1022,7 +982,7 @@
            no folder needed. Then reference it here as: <img src="team-ariel.jpg" alt="Ariel Baiye"> -->
       <div class="team-grid">
         <div class="team-card">
-          <img src="images/DSC_5108 copy.jpeg" alt="Ariel Baiye" style="aspect-ratio:1; object-fit:cover; width:100%; margin-bottom:10px;">
+          <img src="images/arieldelta.jpeg" alt="Ariel Baiye" style="aspect-ratio:1; object-fit:cover; width:100%; margin-bottom:10px;">
           <div class="name">Ariel Baiye</div>Designer and Editor
         </div>
         <div class="team-card">
