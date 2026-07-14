@@ -63,15 +63,13 @@ At the top of `index.html`, inside `<div id="utility-bar">`, replace these place
 
 ## The Forum
 
-The Forum tab runs on **[Cusdis](https://cusdis.com)** — a free, lightweight comment widget. Unlike GitHub Discussions/giscus, **visitors don't need any account at all** to comment (just an optional name) — comments are held in a moderation queue and you approve them by email, which also means no login-wall and no spam problem. It supports real threaded replies, so people can respond to each other under a comment, not just post one-off messages.
+The Forum tab is a **[Padlet](https://padlet.com)** board, embedded directly in the page via iframe. Padlet lets people post questions and comments to a shared wall, and others can reply — no separate account required to post unless you've set your specific Padlet board to require one.
 
-One-time setup:
+To manage it:
 
-1. Go to [cusdis.com](https://cusdis.com) and create a free account.
-2. On your dashboard, click **Create New Website**, name it (e.g. "Delta Issue"), and enter your site's URL.
-3. Cusdis gives you an **App ID** (a short code). Copy it.
-4. In `index.html`, find `REPLACE_ME_APP_ID` (inside `<section id="forum">`) and replace it with your real App ID.
-5. New comments will email you for approval — click the "Quick Approve" link in that email, no login needed on your end either.
+1. Log into [padlet.com](https://padlet.com) with whatever account created the board (`j7jm1ndsqqq8w8w6`).
+2. From there you can moderate posts, change who's allowed to post (public / people with the link / invite-only), turn on or off anonymous posting, and see all activity.
+3. **If you ever swap to a different Padlet board**, go to that board → **Share → Embed** on padlet.com, copy the new `<iframe src="...">` URL, and swap it into `index.html` — search for `PADLET EMBED` to find the exact spot.
 
 ## Team headshots
 
