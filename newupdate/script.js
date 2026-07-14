@@ -1,10 +1,10 @@
-const ORDER = ['cover','intro','toc-front','directors-note','voices','speaker-info',
+const ORDER = ['cover','intro','toc-front','directors-note','voices',
     'ch-mississippi','ch-education','ch-healthcare','ch-immigrants','ch-faiths',
     'ch-blues','ch-emmetttill','ch-civilrights','ch-media','ch-commemoration','closing'];
 
   const LABELS = {
     'cover':'Cover','intro':'Introduction','toc-front':'Contents','directors-note':"Director's Note",
-    'voices':'Voices','speaker-info':'Speaker Information','ch-mississippi':'I · Mississippi','ch-education':'II · Education',
+    'voices':'Voices','ch-mississippi':'I · Mississippi','ch-education':'II · Education',
     'ch-healthcare':'III · Healthcare','ch-immigrants':'IV · Immigrants','ch-faiths':'V · Other Faiths',
     'ch-blues':'VI · Delta Blues','ch-emmetttill':'VII · Emmett Till','ch-civilrights':'VIII · Civil Rights',
     'ch-media':'IX · Media Coverage','ch-commemoration':'X · Commemoration','closing':'Closing'
@@ -25,7 +25,7 @@ const ORDER = ['cover','intro','toc-front','directors-note','voices','speaker-in
   }
 
   // routes that exist outside the main chapter flow (e.g. linked only from the utility bar)
-  const EXTRA_ROUTES = ['forum'];
+  const EXTRA_ROUTES = ['forum', 'speaker-info'];
 
   function showTab(id){
     if(!ORDER.includes(id) && !EXTRA_ROUTES.includes(id)) id = 'cover';
