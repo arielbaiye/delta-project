@@ -445,11 +445,15 @@
 .photo-slot {
   width: 100%;
   overflow: hidden;
-  border-radius: 4px;
+  border: none;
+  outline: none;
+  background: none;
 }
 
 .photo-slot img {
   width: 100%;
   height: auto;
   display: block;
+  border: none;
+  outline: none;
 }
