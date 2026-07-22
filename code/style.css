@@ -398,6 +398,33 @@
   .praise cite{display:block; font-family:'Inter'; font-style:normal; font-weight:600; font-size:11px; margin-top:8px; color:var(--gold); text-transform:uppercase; letter-spacing:.05em;}
   footer.credits{background:var(--navy-deep); color:rgba(251,248,240,0.45); font-family:'Inter'; font-size:11px; padding:22px 0 36px; text-align:center;}
 
+  /* ---------- PER-PAGE AUDIO PLAYER ---------- */
+  .page-audio{
+    display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+    padding:12px 34px; max-width:var(--maxw); margin:0 auto;
+    font-family:'Inter'; font-size:12px; color:var(--charcoal-soft);
+    border-bottom:1px solid var(--rule);
+  }
+  .page-audio-label{
+    font-weight:700; text-transform:uppercase; letter-spacing:.05em; font-size:11px;
+    color:var(--navy); white-space:nowrap; flex-shrink:0;
+  }
+  .page-audio audio{height:32px; flex:1 1 260px; min-width:180px; max-width:340px;}
+  .page-audio a{color:var(--steel-azure);}
+
+  /* dark variant, used on Cover and Introduction where the page itself is dark/photographic */
+  .page-audio.on-dark{
+    border-bottom:1px solid rgba(251,248,240,.15); color:rgba(251,248,240,.65);
+    position:relative; z-index:5; max-width:100%; padding:10px 34px;
+  }
+  .page-audio.on-dark .page-audio-label{color:#e0a97e;}
+
+  @media (max-width:760px){
+    .page-audio{padding:10px 18px;}
+    .page-audio audio{flex:1 1 100%;}
+  }
+
+
   /* ---------- SPEAKER INFORMATION / DAY SCHEDULE ---------- */
   .day-card{border:1px solid var(--rule-strong); margin:0 0 44px;}
   .day-header{padding:22px 28px 14px;}
@@ -441,19 +468,3 @@
     .ub-tag{border-right:none; padding-right:0; width:100%; margin-bottom:2px;}
     main{margin-top:78px;}
   }
-
-.photo-slot {
-  width: 100%;
-  overflow: hidden;
-  border: none;
-  outline: none;
-  background: none;
-}
-
-.photo-slot img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border: none;
-  outline: none;
-}

@@ -107,15 +107,37 @@ All the visible text lives directly in `index.html`, in plain readable sentences
 
 `style.css` only controls appearance (colors, spacing, fonts) — you won't find sentence content there. `script.js` only controls behavior (tab switching, the dropdown) — no visible text there either.
 
-## Introduction spread (cinematic photo + poem reveal)
+## Speaker audio (embedded interview clips)
 
-The Introduction tab is a full-bleed photo with a subtle parallax drift as you scroll, and a translucent poem card that reveals one line at a time. It's already wired to `images/introphoto.JPG` — if you swap in a different photo, upload it the same way (repo root, no folder needed unless you're keeping it in `images/`) and update the filename in `index.html`, search for `intro-photo` to find the exact spot.
+Rather than one audio player per page, audio is embedded right next to each speaker's own bio block — so it plays in context with their photo and quote, not as a generic page soundtrack.
 
-**The poem lines are placeholders.** Search `index.html` for `POEM TEXT` — you'll find 8 bracketed `<p class="poem-line">` lines plus a credit line. Replace the placeholder text with a real poem (ideally an original one from a workshop participant). **Do not paste in the actual Langston Hughes "I, Too" text** — it's still copyrighted; if you want to reference it, link to it or credit it instead of reproducing it. You can add or remove `<p class="poem-line">` lines freely — the reveal timing automatically adjusts to however many lines exist.
+**Maggie Crawford's interview is already wired up and included in this download** — it's in the `audio` folder as `maggie-crawford.m4a`, and embedded in her section under Chapter VIII (Civil Rights) → "Freedom Riders & the history of the penitentiary." Just upload the whole `audio` folder to your repo the same way you did `images` (drag-and-drop the folder into GitHub's upload box), and it'll play immediately — no filename changes needed.
 
-Accessibility: anyone with "reduce motion" turned on in their OS/browser settings automatically gets a static version — full photo, full poem, no parallax, no scroll-triggered reveal. That's handled automatically; no setup needed.
+**To add audio for the other speakers your outline marks as having recordings** — Reggie Barnes, Kathy Wong, and the Emmett Till panel discussion currently have named voice-slots but no audio yet. To wire one up:
 
-On mobile, the photo crops toward the right side of the frame (assuming that's roughly where the flag sits in your photo) — if your actual photo's main subject is positioned differently, search `style.css` for `78% center` (inside the mobile media query, under `.intro-photo`) and adjust that percentage until it frames correctly on a phone-sized screen.
+1. Upload the clip to the `audio` folder, named however you like (e.g. `audio/reggie-barnes.m4a`).
+2. Find that speaker's `<div class="voice-slot">` in `index.html` and add this markup right after it, copying the pattern from Maggie Crawford's section:
+   ```html
+   <div class="page-audio" style="margin-top:8px; padding-left:0; padding-right:0; border-bottom:none;">
+     <span class="page-audio-label">Interview: Reggie Barnes</span>
+     <audio controls preload="none" src="audio/reggie-barnes.m4a">Your browser doesn't support inline audio — <a href="audio/reggie-barnes.m4a">download the interview</a> instead.</audio>
+   </div>
+   ```
+3. Swap the label text and both `src`/`href` values to match your filename.
+
+**A note on file size:** GitHub's drag-and-drop upload tops out around 25MB per file. Full-length recordings (especially anything hours long) won't fit — trim to a representative clip (30 seconds to a few minutes) for the embed, and keep the full recording linked from Google Drive or wherever it already lives if people want the whole thing.
+
+**If any of these are recordings of copyrighted music** rather than your own interviews, hosting the audio file itself requires a mechanical/master use license from the rights holder — the same category of permission as using song lyrics. Original recordings (your own interviews, participant readings) don't have this issue.
+
+## Introduction spread (photo + line-by-line lyric reveal)
+
+The Introduction tab is a full-bleed photo (`images/introphoto.JPG`) with a sticky-pinned parallax drift as you scroll, and a translucent card that reveals the song's lines one at a time as you keep scrolling.
+
+**The lines are placeholders.** Search `index.html` for `LYRICS PLACEHOLDER` — you'll find 14 bracketed `<p class="poem-line">` lines plus a credit line reading `— "A Change is Gonna Come" by Sam Cooke`. **Using the real lyrics requires a lyric/sync license from the rights holder before publishing** — song lyrics are copyrighted whether it's print or web. Licensing is usually arranged through the song's publisher, a performing rights organization (ASCAP/BMI), or a clearinghouse like the Harry Fox Agency. Once that's sorted, swap each bracketed line for the real one — the layout and scroll reveal don't need to change. Add or remove `<p class="poem-line">` elements freely; the reveal timing automatically adjusts to however many lines exist.
+
+Accessibility: anyone with "reduce motion" turned on in their OS/browser settings gets a fully static version instead — full photo, full lyrics, no parallax, no scroll-triggered reveal. That's automatic, no setup needed.
+
+On mobile, the photo crops toward the right side of the frame (assuming that's roughly where the plane/flag sits in your photo) — if your actual photo's subject is positioned differently, search `style.css` for `78% center` (inside the mobile media query, under `.intro-photo`) and adjust that percentage until it frames correctly on a phone-sized screen.
 
 ## Cover photo carousel
 
