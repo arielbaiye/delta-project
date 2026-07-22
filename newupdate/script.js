@@ -129,51 +129,25 @@ const ORDER = ['cover','intro','toc-front','directors-note','voices',
   })();
 
   // ---------- intro cinematic scroll (parallax photo + line-by-line poem reveal) ----------
-  (function initIntroCinematic(){
-    const track = document.getElementById('intro-scroll-track');
-    const sticky = document.getElementById('intro-sticky');
-    const photo = document.getElementById('intro-photo');
-    const card = document.getElementById('intro-poem-card');
-    if(!track || !sticky || !photo || !card) return;
-    const lines = Array.from(card.querySelectorAll('.poem-line'));
+  (function initIntroParallax(){
+    const el = document.getElementById('intro-fullbleed');
+    if(!el) return;
 
     let reduceMotion = false;
     try{ reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
+    if(reduceMotion) return; // leave background-position at its CSS default, no scroll listener at all
 
-    if(reduceMotion){
-      // Static fallback: show everything immediately, no scroll-linked effects.
-      card.classList.add('revealed');
-      lines.forEach(l => l.classList.add('revealed'));
-      return;
-    }
-
-    // Give the track enough scroll distance to drive the reveal: one viewport for the
-    // photo itself, plus a slice per poem line so each one gets room to trigger.
-    function setTrackHeight(){
-      const perLineVh = 12;
-      const baseVh = 100;
-      track.style.height = (baseVh + lines.length * perLineVh) + 'vh';
-    }
-    setTrackHeight();
-
+    // Shifts only the background-image position (not the text sitting on top of it),
+    // so the photo drifts slightly while the lyrics stay perfectly still and readable.
     function update(){
-      const rect = track.getBoundingClientRect();
-      const total = track.offsetHeight - window.innerHeight;
-      let progress = total > 0 ? (-rect.top) / total : 0;
-      if(progress < 0) progress = 0;
-      if(progress > 1) progress = 1;
-
-      // subtle parallax drift on the photo — deliberately small, not a big slide effect
-      try{ photo.style.transform = 'translateY(' + (progress * 34 - 14) + 'px)'; }catch(e){}
-
-      card.classList.toggle('revealed', progress > 0.03);
-
-      const lineStart = 0.08, lineEnd = 0.94;
-      const span = lineEnd - lineStart;
-      lines.forEach((line, i) => {
-        const threshold = lineStart + span * (i / Math.max(1, lines.length - 1));
-        line.classList.toggle('revealed', progress >= threshold);
-      });
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight || 800;
+      // how far the section has scrolled through the viewport, roughly -1 to 1
+      let t = (vh - rect.top) / (vh + rect.height);
+      if(t < 0) t = 0;
+      if(t > 1) t = 1;
+      const shift = 50 + (t - 0.5) * 12; // drifts a few percent around center — deliberately subtle
+      try{ el.style.backgroundPosition = 'center ' + shift + '%'; }catch(e){}
     }
 
     let ticking = false;
@@ -183,6 +157,6 @@ const ORDER = ['cover','intro','toc-front','directors-note','voices',
       requestAnimationFrame(function(){ update(); ticking = false; });
     }
     window.addEventListener('scroll', onScroll, {passive:true});
-    window.addEventListener('resize', function(){ setTrackHeight(); update(); });
+    window.addEventListener('resize', onScroll, {passive:true});
     update();
   })();
