@@ -34,7 +34,11 @@
     </button>
   </div>
   <ul id="spine-list">
-    <li><a data-tab="intro" title="Introduction">Introduction</a></li>
+    <li><a data-tab="intro" title="Introduction">Introduction</a>
+      <ul class="spine-sub">
+        <li><a data-tab="intro" data-target="sub-i-too">I, Too</a></li>
+      </ul>
+    </li>
     <li><a data-tab="toc-front" title="Table of Contents">Contents</a></li>
     <li><a data-tab="directors-note" title="Director's Note">Director's Note</a>
       <ul class="spine-sub">
@@ -111,8 +115,9 @@
     </div>
     <div class="cover-mid wrap" style="padding-left:0;padding-right:0;max-width:100%;">
       <span class="eyebrow">A field report from the Mississippi Delta</span>
-      <h1 class="cover-title">Land, <span class="hl-italic">Water,</span><br>and <span class="hl-bold">What Remains</span></h1>
-      <p class="cover-dek">Ten chapters of reporting, portraiture, and oral history built with the people of the Delta — on flood and cotton, faith and isolation, the blues and the civil rights road, and who gets to tell the story of a place.</p>
+     <h1 class="cover-title"> The Most <span class="hl-italic">Southern</span> Place on <span class="hl-bold">Earth</span></h1>
+      <p class="cover-dek">Ten chapters of Delta history and knowledge, featuring local art, community leaders, and stories of resilience. The annual Most Southern Place on Earth workshops bring educators to the Mississippi Delta to learn more about the forces that have shaped it. This virtual magazine was built to ensure these stories and lessons continue to be told for years to come. 
+</p>
     </div>
     <div class="cover-bottom wrap" style="padding-left:0;padding-right:0;max-width:100%;">
       <span>Developed by Gabriela La Rota and Ariel Baiye for the Delta Center for Culture and Learning</span>
@@ -124,33 +129,43 @@
 
   <!-- ============ INTRODUCTION ============ -->
   <section id="intro" class="tab-panel intro-cinematic">
-    <div class="intro-fullbleed" id="intro-fullbleed" style="background-image:url('images/introphoto.JPG');">
-      <div class="intro-photo-overlay"></div>
-      <div class="intro-page-num">2</div>
-      <div class="intro-lyrics-block" id="intro-lyrics-block">
-        <!-- LYRICS PLACEHOLDER: these bracketed lines stand in for the real song lyrics you want
-             here (e.g. "A Change Is Gonna Come" by Sam Cooke). Song lyrics are copyrighted —
-             using them in a print or web publication requires a lyric/sync license from the
-             rights holder (often handled through the publisher, ASCAP/BMI, or a licensing
-             clearinghouse like the Harry Fox Agency). Once you've secured that permission,
-             replace the bracketed lines below with the actual lyrics — the layout won't need
-             to change, just the text inside each <p class="lyric-line">. -->
-        <p class="lyric-line">[Lyric line 1]</p>
-        <p class="lyric-line">[Lyric line 2]</p>
-        <p class="lyric-line">[Lyric line 3]</p>
-        <p class="lyric-line">[Lyric line 4]</p>
-        <p class="lyric-line">[Lyric line 5]</p>
-        <p class="lyric-line">[Lyric line 6]</p>
-        <p class="lyric-line">[Lyric line 7]</p>
-        <p class="lyric-line">[Lyric line 8]</p>
-        <p class="lyric-line">[Lyric line 9]</p>
-        <div class="intro-song-credit">
-          <div class="song-title">[Song Title]</div>
-          <div class="song-by">By [Artist Name]</div>
+
+    <!-- SCROLL TRACK: height is set by script.js based on how many .poem-line elements exist,
+         giving enough scroll distance for the sticky photo + line-by-line reveal below.
+         If prefers-reduced-motion is on, JS switches this to a plain static layout instead. -->
+    <div class="intro-scroll-track" id="intro-scroll-track">
+      <div class="intro-sticky" id="intro-sticky">
+        <div class="intro-photo" id="intro-photo" style="background-image:url('images/introphoto.JPG');"></div>
+        <div class="intro-photo-overlay"></div>
+        <div class="intro-poem-card" id="intro-poem-card">
+          <h3 id="sub-i-too">I, Too</h3>
+          <!-- POEM TEXT: these are placeholder lines only — do not put the real Langston Hughes
+               "I, Too" text here, it's still under copyright. Either write an original poem
+               (a workshop participant's own words) or credit/link to "I, Too" instead of
+               reproducing it. Each <p class="poem-line"> reveals one at a time as the reader
+               scrolls — add, remove, or edit lines freely; the reveal timing adjusts automatically. -->
+          <p class="poem-line">I, too, sing America.</p>
+          <p class="poem-line">I am the darker brother.</p>
+          <p class="poem-line">They send me to eat in the kitchen</p>
+          <p class="poem-line">When company comes,</p>
+          <p class="poem-line">But I laugh,</p>
+          <p class="poem-line">And eat well,</p>
+          <p class="poem-line">And grow strong.</p>
+          <p class="poem-line">I’ll be at the table</p>
+          <p class="poem-line">When company comes.</p>
+          <p class="poem-line">Nobody’ll dare</p>
+          <p class="poem-line">Say to me,</p>
+          <p class="poem-line">“Eat in the kitchen,”</p>
+          <p class="poem-line">Then.</p>
+          <p class="poem-line">Besides,</p>
+          <p class="poem-line">They’ll see how beautiful I am</p>
+          <p class="poem-line">And be ashamed—</p>
+          <p class="poem-line">I, too, am America.</p>
+          <p class="poem-line poem-credit">— Langston Hughes</p>
         </div>
       </div>
     </div>
-    <div class="intro-caption">Photo: [photographer credit] — Delta Center for Culture and Learning</div>
+    <div class="intro-caption">Photo: Leila Brickley</div>
 
     <div class="tab-pager"></div>
   </section>
@@ -165,8 +180,8 @@
           <p class="tq">"The Delta is more diverse, culturally rich, beautiful, impoverished, rural, vibrant, and complicated than I had imagined."</p>
           <p class="tq">"This is my home, too."</p>
           <p class="tq">"Heaven and earth so close, but still miles apart."</p>
-          <p class="tq">[Add another participant quote here.]</p>
-          <p class="tq">[Add another participant quote here.]</p>
+          <p class="tq">"Being able to humanize people as individuals — that's the thing that's grounding me, as well as just being able to be in the place and ground your lessons and work in place."</p>
+          <p class="tq">"The more I do this, the more places you visit and people you talk to at these programs — man, that stuff all carries through in the classroom..."</p>
         </div>
         <div class="toc-listing">
           <div class="toc-list-item" onclick="showTab('directors-note')"><div class="tl-pg">Front</div><div><div class="tl-title">Director's Note</div><div class="tl-desc">Introducing the workshop, its origins, and this year's NEH session.</div></div></div>
@@ -225,30 +240,50 @@
     <div class="tab-pager"></div>
   </section>
 
-  <!-- ============ VOICES ============ -->
-  <section id="voices" class="tab-panel section-front">
-    <div class="running-head"><span class="eyebrow" style="margin:0;">Voices</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>
-    <div class="wrap" style="padding-top:36px;">
-      <p class="lede">A chorus of short lines from this year's participants, before the reporting begins — kept anonymous so people could speak freely.</p>
-
-      <div class="grid2" style="align-items:center;">
-        <div class="photo-slot" style="--ar:4/5;"><div class="ph-label">Large participant photo</div><div class="ph-suggest">A candid, expressive portrait — this pairs with the quote beside it, so let the photo carry as much weight as the words.</div></div>
-        <blockquote class="pull" style="margin:0;">[Participant quote — <span class="hl-bold">one to two sentences,</span> transcribed verbatim from a workshop session.]<cite>Anonymous participant</cite></blockquote>
+<!-- ============ VOICES ============ -->
+<section id="voices" class="tab-panel section-front">
+  <div class="running-head">
+    <span class="eyebrow" style="margin:0;">Voices</span>
+    <span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span>
+  </div>
+  <div class="wrap" style="padding-top:36px;">
+    <div class="grid2" style="align-items:center;">
+      <div class="photo-slot" style="--ar:4/5;">
+        <img src="images/participant_1.jpg"
+             onerror="this.onerror=null;this.src='images/participant_1.jpg';"
+             alt="Participant during a workshop">
       </div>
-
-      <div class="grid2" style="align-items:center; margin-top:44px;">
-        <blockquote class="pull" style="margin:0; order:2;">[Second participant quote.]<cite>Anonymous participant</cite></blockquote>
-        <div class="photo-slot" style="--ar:4/5; order:1;"><div class="ph-label">Large participant photo</div></div>
-      </div>
-
-      <div class="grid2" style="align-items:center; margin-top:44px;">
-        <div class="photo-slot" style="--ar:4/5;"><div class="ph-label">Large participant photo</div></div>
-        <blockquote class="pull" style="margin:0;">[Third participant quote.]<cite>Anonymous participant</cite></blockquote>
+      <blockquote class="pull" style="margin:0;">
+        I feel like you can only get so much from reading, to some degree. But until you're on the ground and living it, I think — like you said — it's deeper learning, and it just makes it more impactful.
+        Workshop Participant, following Mound Bayou
+      </blockquote>
+    </div>
+    <div class="grid2" style="align-items:center; margin-top:44px;">
+      <blockquote class="pull" style="margin:0; order:2;">
+        I sometimes think I know the answers to things that are really complicated, and even though I think I understand history, just encountering how it shapes us as humans — it's just so complicated
+        Workshop Participant, following Mound Bayou
+      </blockquote>
+      <div class="photo-slot" style="--ar:4/5; order:1;">
+        <img src="images/participant-2.jpg"
+             onerror="this.onerror=null;this.src='images/participant-2.jpg';"
+             alt="Participant during a workshop">
       </div>
     </div>
-    <div class="tab-pager"></div>
-  </section>
-
+    <div class="grid2" style="align-items:center; margin-top:44px;">
+      <div class="photo-slot" style="--ar:4/5;">
+        <img src="images/participant-3.jpg"
+             onerror="this.onerror=null;this.src='images/participant-3.jpg';"
+             alt="Participant during a workshop">
+      </div>
+      <blockquote class="pull" style="margin:0;">
+        Traveling through the Delta, visiting a bunch of the sites, has definitely given a lot of depth to things that I thought, or perceived, even with the understanding of what I've read and learned through history. But when you travel to some of those sites and see some of the places, it's almost as if the readings that we've done, some of the people that we've talked to, the music that we've listened to — it's almost as if that is flowing through you, like the Mississippi River is flowing through the Delta.
+        Workshop Participant, reflecting on the week
+      </blockquote>
+    </div>
+  </div>
+  <div class="tab-pager"></div>
+</section>
+  
   <!-- ============ FORUM ============ -->
   <section id="forum" class="tab-panel section-front">
     <div class="running-head"><span class="eyebrow" style="margin:0;">Forum</span><span class="meta">Delta Center for Culture and Learning · In Collaboration with NEH</span></div>

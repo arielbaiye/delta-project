@@ -107,15 +107,15 @@ All the visible text lives directly in `index.html`, in plain readable sentences
 
 `style.css` only controls appearance (colors, spacing, fonts) — you won't find sentence content there. `script.js` only controls behavior (tab switching, the dropdown) — no visible text there either.
 
-## Introduction spread (full-bleed lyric/poem page)
+## Introduction spread (cinematic photo + poem reveal)
 
-The Introduction tab is a single full-bleed photo (`images/introphoto.JPG`) with bold text sitting directly on top — a page number top-right, a block of short lines top-left, and an italicized title + artist credit lower-right, matching the layout of a page from your printed booklet. A very subtle background drift happens as you scroll past it — small on purpose, not a big slide effect.
+The Introduction tab is a full-bleed photo with a subtle parallax drift as you scroll, and a translucent poem card that reveals one line at a time. It's already wired to `images/introphoto.JPG` — if you swap in a different photo, upload it the same way (repo root, no folder needed unless you're keeping it in `images/`) and update the filename in `index.html`, search for `intro-photo` to find the exact spot.
 
-**The lines are placeholders.** Search `index.html` for `LYRICS PLACEHOLDER` — you'll find 9 bracketed `<p class="lyric-line">` lines, plus a `[Song Title]` / `By [Artist Name]` credit block. **If you're using real song lyrics (like "A Change Is Gonna Come"), you need a lyric/sync license from the rights holder before publishing them** — song lyrics are copyrighted, and that applies whether it's print or web. Licensing is usually arranged through the song's publisher, a performing rights organization (ASCAP/BMI), or a clearinghouse like the Harry Fox Agency. Once that's sorted, swap the bracketed placeholder text for the real lines — the layout doesn't need to change. You can add or remove `<p class="lyric-line">` elements freely to match however many lines you end up with.
+**The poem lines are placeholders.** Search `index.html` for `POEM TEXT` — you'll find 8 bracketed `<p class="poem-line">` lines plus a credit line. Replace the placeholder text with a real poem (ideally an original one from a workshop participant). **Do not paste in the actual Langston Hughes "I, Too" text** — it's still copyrighted; if you want to reference it, link to it or credit it instead of reproducing it. You can add or remove `<p class="poem-line">` lines freely — the reveal timing automatically adjusts to however many lines exist.
 
-Accessibility: anyone with "reduce motion" turned on in their OS/browser settings gets the photo completely static — no background drift, and the page doesn't even attach a scroll listener for them. That's automatic, no setup needed.
+Accessibility: anyone with "reduce motion" turned on in their OS/browser settings automatically gets a static version — full photo, full poem, no parallax, no scroll-triggered reveal. That's handled automatically; no setup needed.
 
-On mobile, the photo crops toward the right side of the frame (assuming that's roughly where the plane/flag sits in your photo) — if your actual photo's subject is positioned differently, search `style.css` for `78% center` (inside the mobile media query, under `.intro-fullbleed`) and adjust that percentage until it frames correctly on a phone-sized screen.
+On mobile, the photo crops toward the right side of the frame (assuming that's roughly where the flag sits in your photo) — if your actual photo's main subject is positioned differently, search `style.css` for `78% center` (inside the mobile media query, under `.intro-photo`) and adjust that percentage until it frames correctly on a phone-sized screen.
 
 ## Cover photo carousel
 
