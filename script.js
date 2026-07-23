@@ -186,3 +186,52 @@ const ORDER = ['cover','intro','toc-front','directors-note','voices',
     window.addEventListener('resize', function(){ setTrackHeight(); update(); });
     update();
   })();
+
+  /* ---------- DIASPORA SLIDESHOW (Dr. John Strait lecture slides) ---------- */
+  (function initDiasporaGallery(){
+    const gallery = document.getElementById('dg-strait');
+    if(!gallery) return;
+    const slides = Array.from(gallery.querySelectorAll('.dg-slide'));
+    const thumbs = Array.from(gallery.querySelectorAll('.dg-thumbs img'));
+    const countEl = gallery.querySelector('.dg-count');
+    const prevBtn = gallery.querySelector('.dg-prev');
+    const nextBtn = gallery.querySelector('.dg-next');
+    if(!slides.length) return;
+
+    let current = slides.findIndex(s => s.classList.contains('active'));
+    if(current < 0) current = 0;
+
+    function show(i){
+      slides[current].classList.remove('active');
+      if(thumbs[current]) thumbs[current].classList.remove('active');
+      current = (i + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      if(thumbs[current]){
+        thumbs[current].classList.add('active');
+        thumbs[current].scrollIntoView({inline:'center', block:'nearest', behavior:'smooth'});
+      }
+      if(countEl) countEl.textContent = (current + 1) + ' / ' + slides.length;
+    }
+
+    prevBtn && prevBtn.addEventListener('click', () => show(current - 1));
+    nextBtn && nextBtn.addEventListener('click', () => show(current + 1));
+    thumbs.forEach((t, i) => t.addEventListener('click', () => show(i)));
+
+    gallery.querySelector('.dg-viewer').addEventListener('keydown', function(e){
+      if(e.key === 'ArrowLeft') show(current - 1);
+      if(e.key === 'ArrowRight') show(current + 1);
+    });
+
+    // simple swipe support
+    let touchX = null;
+    const viewer = gallery.querySelector('.dg-viewer');
+    viewer.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, {passive:true});
+    viewer.addEventListener('touchend', e => {
+      if(touchX === null) return;
+      const dx = e.changedTouches[0].clientX - touchX;
+      if(Math.abs(dx) > 40) show(current + (dx < 0 ? 1 : -1));
+      touchX = null;
+    }, {passive:true});
+
+    show(current);
+  })();
