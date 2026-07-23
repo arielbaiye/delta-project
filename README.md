@@ -111,16 +111,16 @@ All the visible text lives directly in `index.html`, in plain readable sentences
 
 Rather than one audio player per page, audio is embedded right next to each speaker's own bio block — so it plays in context with their photo and quote, not as a generic page soundtrack.
 
-**Maggie Crawford's interview is already wired up and included in this download** — it's in the `audio` folder as `maggie-crawford.m4a`, and embedded in her section under Chapter VIII (Civil Rights) → "Freedom Riders & the history of the penitentiary." Just upload the whole `audio` folder to your repo the same way you did `images` (drag-and-drop the folder into GitHub's upload box), and it'll play immediately — no filename changes needed.
+**Maggie Crawford's interview is already wired up.** The file (`maggie-crawford.m4a`) sits at the repo root, right next to `index.html` — no folder needed. It's embedded in her section under Chapter VIII (Civil Rights) → "Freedom Riders & the history of the penitentiary."
 
 **To add audio for the other speakers your outline marks as having recordings** — Reggie Barnes, Kathy Wong, and the Emmett Till panel discussion currently have named voice-slots but no audio yet. To wire one up:
 
-1. Upload the clip to the `audio` folder, named however you like (e.g. `audio/reggie-barnes.m4a`).
+1. Upload the clip to the repo root, same as everything else (Add file → Upload files, no folder).
 2. Find that speaker's `<div class="voice-slot">` in `index.html` and add this markup right after it, copying the pattern from Maggie Crawford's section:
    ```html
    <div class="page-audio" style="margin-top:8px; padding-left:0; padding-right:0; border-bottom:none;">
      <span class="page-audio-label">Interview: Reggie Barnes</span>
-     <audio controls preload="none" src="audio/reggie-barnes.m4a">Your browser doesn't support inline audio — <a href="audio/reggie-barnes.m4a">download the interview</a> instead.</audio>
+     <audio controls preload="none" src="reggie-barnes.m4a">Your browser doesn't support inline audio — <a href="reggie-barnes.m4a">download the interview</a> instead.</audio>
    </div>
    ```
 3. Swap the label text and both `src`/`href` values to match your filename.
